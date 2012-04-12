@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
+		7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
+		7E195ABE153713440050C635 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED2153707280043B5BE /* UIKit.framework */; };
+		7E195ABF153713440050C635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
+		7E195AC0153713440050C635 /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
+		7E195AC2153713440050C635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DEC9153707280043B5BE /* CsvToSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEC8153707280043B5BE /* CsvToSqlite.m */; };
 		7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
@@ -15,9 +21,17 @@
 		7E31DED7153707280043B5BE /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
 		7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E31DEE0153707280043B5BE /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
+		7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7E195AB9153713440050C635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E31DEBE153707280043B5BE;
+			remoteInfo = CsvToSqlite;
+		};
 		7E31DED5153707280043B5BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
@@ -28,21 +42,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E195AB51537117B0050C635 /* CsvMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvMacros.h; sourceTree = "<group>"; };
+		7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CsvToSqliteTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CsvToSqliteTests copy-Info.plist"; path = "/Users/dodikk/projects/work/CsvToSqlite/CsvToSqliteTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		7E31DEBF153707280043B5BE /* libCsvToSqlite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCsvToSqlite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DEC2153707280043B5BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7E31DEC6153707280043B5BE /* CsvToSqlite-Prefix.pch */ = {isa = PBXFileReference; path = "CsvToSqlite-Prefix.pch"; sourceTree = "<group>"; };
-		7E31DEC7153707280043B5BE /* CsvToSqlite.h */ = {isa = PBXFileReference; path = CsvToSqlite.h; sourceTree = "<group>"; };
+		7E31DEC6153707280043B5BE /* CsvToSqlite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Prefix.pch"; sourceTree = "<group>"; };
+		7E31DEC7153707280043B5BE /* CsvToSqlite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqlite.h; sourceTree = "<group>"; };
 		7E31DEC8153707280043B5BE /* CsvToSqlite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CsvToSqlite.m; sourceTree = "<group>"; };
 		7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CsvToSqliteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DED0153707280043B5BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		7E31DED2153707280043B5BE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		7E31DEDA153707280043B5BE /* CsvToSqliteTests-Info.plist */ = {isa = PBXFileReference; path = "CsvToSqliteTests-Info.plist"; sourceTree = "<group>"; };
+		7E31DEDA153707280043B5BE /* CsvToSqliteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CsvToSqliteTests-Info.plist"; sourceTree = "<group>"; };
 		7E31DEDC153707280043B5BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */ = {isa = PBXFileReference; path = CsvToSqliteTests.h; sourceTree = "<group>"; };
+		7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqliteTests.h; sourceTree = "<group>"; };
 		7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CsvToSqliteTests.m; sourceTree = "<group>"; };
+		7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Framework.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7E195ABC153713440050C635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */,
+				7E195ABE153713440050C635 /* UIKit.framework in Frameworks */,
+				7E195ABF153713440050C635 /* Foundation.framework in Frameworks */,
+				7E195AC0153713440050C635 /* libCsvToSqlite.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DEBC153707280043B5BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,6 +101,7 @@
 				7E31DED8153707280043B5BE /* CsvToSqliteTests */,
 				7E31DEC1153707280043B5BE /* Frameworks */,
 				7E31DEC0153707280043B5BE /* Products */,
+				7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +110,7 @@
 			children = (
 				7E31DEBF153707280043B5BE /* libCsvToSqlite.a */,
 				7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */,
+				7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +131,8 @@
 				7E31DEC7153707280043B5BE /* CsvToSqlite.h */,
 				7E31DEC8153707280043B5BE /* CsvToSqlite.m */,
 				7E31DEC5153707280043B5BE /* Supporting Files */,
+				7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */,
+				7E195AB51537117B0050C635 /* CsvMacros.h */,
 			);
 			path = CsvToSqlite;
 			sourceTree = "<group>";
@@ -138,12 +171,32 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7E195AB7153713440050C635 /* CsvToSqliteTests-CI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E195AC4153713440050C635 /* Build configuration list for PBXNativeTarget "CsvToSqliteTests-CI" */;
+			buildPhases = (
+				7E195ABA153713440050C635 /* Sources */,
+				7E195ABC153713440050C635 /* Frameworks */,
+				7E195AC1153713440050C635 /* Resources */,
+				7E195AC3153713440050C635 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E195AB8153713440050C635 /* PBXTargetDependency */,
+			);
+			name = "CsvToSqliteTests-CI";
+			productName = CsvToSqliteTests;
+			productReference = 7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		7E31DEBE153707280043B5BE /* CsvToSqlite */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E31DEE3153707280043B5BE /* Build configuration list for PBXNativeTarget "CsvToSqlite" */;
@@ -202,11 +255,20 @@
 			targets = (
 				7E31DEBE153707280043B5BE /* CsvToSqlite */,
 				7E31DECE153707280043B5BE /* CsvToSqliteTests */,
+				7E195AB7153713440050C635 /* CsvToSqliteTests-CI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7E195AC1153713440050C635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E195AC2153713440050C635 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DECC153707280043B5BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -218,6 +280,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7E195AC3153713440050C635 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		7E31DECD153707280043B5BE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +309,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7E195ABA153713440050C635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DEBB153707280043B5BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +336,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7E195AB8153713440050C635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E31DEBE153707280043B5BE /* CsvToSqlite */;
+			targetProxy = 7E195AB9153713440050C635 /* PBXContainerItemProxy */;
+		};
 		7E31DED6153707280043B5BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E31DEBE153707280043B5BE /* CsvToSqlite */;
@@ -272,6 +360,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7E195AC5153713440050C635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
+				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
+				PRODUCT_NAME = "CsvToSqliteTests copy";
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		7E195AC6153713440050C635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
+				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
+				PRODUCT_NAME = "CsvToSqliteTests copy";
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		7E31DEE1153707280043B5BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -347,8 +469,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -362,8 +486,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = NO;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -371,6 +497,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7E195AC4153713440050C635 /* Build configuration list for PBXNativeTarget "CsvToSqliteTests-CI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E195AC5153713440050C635 /* Debug */,
+				7E195AC6153713440050C635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7E31DEB9153707280043B5BE /* Build configuration list for PBXProject "CsvToSqlite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -387,6 +522,7 @@
 				7E31DEE5153707280043B5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E31DEE6153707280043B5BE /* Build configuration list for PBXNativeTarget "CsvToSqliteTests" */ = {
 			isa = XCConfigurationList;
@@ -395,6 +531,7 @@
 				7E31DEE8153707280043B5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
