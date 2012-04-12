@@ -1,32 +1,72 @@
-//
-//  CsvToSqliteTests.m
-//  CsvToSqliteTests
-//
-//  Created by Владимир Горбенко on 4/12/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "CsvToSqliteTests.h"
+#import <CsvToSqlite/CsvToSqlite-Framework.h>
 
 @implementation CsvToSqliteTests
 
-- (void)setUp
+-(void)testConverterRejectsInit
 {
-    [super setUp];
-    
-    // Set-up code here.
+   STAssertThrows( [ CsvToSqlite new ], @"init should not be supported" );
 }
 
-- (void)tearDown
+-(void)testConverterRequiresDatabaseName
 {
-    // Tear-down code here.
-    
-    [super tearDown];
+   CsvToSqlite* converter_ = nil;
+   
+   {
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: nil
+                                                   dataFileName: @"data file stub" ];
+      STAssertNil( converter_, @"nil expected - DatabaseName" );
+   }
+   
+   
+   {
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
+                                                   dataFileName: nil ];
+      STAssertNil( converter_, @"nil expected - DatabaseName" );
+   }
+   
+   {
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @""
+                                                   dataFileName: @"data file stub" ];
+      STAssertNil( converter_, @"nil expected - DatabaseName" );
+   }
+   
+   
+   {
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
+                                                   dataFileName: @"" ];
+      STAssertNil( converter_, @"nil expected - DatabaseName" );
+   }   
 }
 
-- (void)testExample
+-(void)testConverterInitializedCorrectly
 {
-    STFail(@"Unit tests are not implemented yet in CsvToSqliteTests");
+   CsvToSqlite* converter_ = nil;   
+   NSString* dbFile_       = nil;
+   NSString* dataFile_     = nil;
+   
+   
+   {
+      dbFile_   = @"db stbu"  ;
+      dataFile_ = @"data stub";
+      
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
+                                                   dataFileName: dataFile_ ];
+
+      STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
+      STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
+   }
+
+   {
+      dbFile_   = @"abra"   ;
+      dataFile_ = @"kadabra";
+      
+      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
+                                                   dataFileName: dataFile_ ];
+      
+      STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
+      STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
+   }
 }
 
 @end
