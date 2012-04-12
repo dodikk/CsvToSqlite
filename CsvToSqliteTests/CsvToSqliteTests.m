@@ -133,6 +133,8 @@
                                         error: &error_ ];
       
       STAssertFalse( result_, @"Unexpected success" );
+      STAssertEquals( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
+      STAssertEquals( error_.code, 1, @"error code mismatch" );
    }
    
    {
@@ -140,6 +142,8 @@
                                         error: &error_ ];
       
       STAssertFalse( result_, @"Unexpected success" );
+      STAssertEquals( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
+      STAssertEquals( error_.code, 1, @"error code mismatch" );
    }   
 }
 
