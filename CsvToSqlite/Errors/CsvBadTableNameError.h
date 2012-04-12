@@ -3,5 +3,4 @@
 @interface CsvBadTableNameError : CsvImportError
 
 
-
 @end
