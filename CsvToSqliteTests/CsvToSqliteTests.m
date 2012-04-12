@@ -118,4 +118,29 @@
                                            error: NULL ], @"NSAssert expected" );
 }
 
+-(void)testStoreDataReturnsErrorForInvalidTableName
+{
+   NSError* error_ = nil;
+   CsvToSqlite* converter_ = nil;
+   BOOL result_ = YES;
+   
+   converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"a"
+                                                dataFileName: @"b" 
+                                              databaseSchema: self.defaultSchema ];
+   
+   {
+      result_ = [ converter_ storeDataInTable: nil 
+                                        error: &error_ ];
+      
+      STAssertFalse( result_, @"Unexpected success" );
+   }
+   
+   {
+      result_ = [ converter_ storeDataInTable: @"" 
+                                        error: &error_ ];
+      
+      STAssertFalse( result_, @"Unexpected success" );
+   }   
+}
+
 @end

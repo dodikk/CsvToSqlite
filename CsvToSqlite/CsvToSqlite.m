@@ -1,6 +1,7 @@
 #import "CsvToSqlite.h"
 
 #import "CsvMacros.h"
+#import "CsvBadTableNameError.h"
 
 @interface CsvToSqlite()
 
@@ -52,8 +53,15 @@
       NSAssert( NO, errorMessage_ );
       return 0;
    }
-
-   return NO;
+   else if ( nil == tableName_ || @"" == tableName_ )
+   {
+      *error_ = [ CsvBadTableNameError new ];
+      return NO;
+   }
+   
+   
+   
+   return YES;
 }
 
 @end
