@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
 		7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
-		7E195ABE153713440050C635 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED2153707280043B5BE /* UIKit.framework */; };
 		7E195ABF153713440050C635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
-		7E195AC0153713440050C635 /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
 		7E195AC2153713440050C635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E195ACB1537214F0050C635 /* SqliteTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AC91537214F0050C635 /* SqliteTypes.h */; };
 		7E195ACC1537214F0050C635 /* SqliteTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ACA1537214F0050C635 /* SqliteTypes.m */; };
@@ -26,7 +24,6 @@
 		7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DEC9153707280043B5BE /* CsvToSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEC8153707280043B5BE /* CsvToSqlite.m */; };
 		7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
-		7E31DED3153707280043B5BE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED2153707280043B5BE /* UIKit.framework */; };
 		7E31DED4153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DED7153707280043B5BE /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
 		7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
@@ -63,6 +60,7 @@
 		7E195AD61537301E0050C635 /* CsvImportError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvImportError.m; sourceTree = "<group>"; };
 		7E195AD9153730C90050C635 /* CsvBadTableNameError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvBadTableNameError.h; sourceTree = "<group>"; };
 		7E195ADA153730C90050C635 /* CsvBadTableNameError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvBadTableNameError.m; sourceTree = "<group>"; };
+		7E195AE0153733DA0050C635 /* libCoverageFopenFix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCoverageFopenFix.a; sourceTree = "<group>"; };
 		7E31DEBF153707280043B5BE /* libCsvToSqlite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCsvToSqlite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DEC2153707280043B5BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7E31DEC6153707280043B5BE /* CsvToSqlite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Prefix.pch"; sourceTree = "<group>"; };
@@ -84,9 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */,
-				7E195ABE153713440050C635 /* UIKit.framework in Frameworks */,
 				7E195ABF153713440050C635 /* Foundation.framework in Frameworks */,
-				7E195AC0153713440050C635 /* libCsvToSqlite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +99,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */,
-				7E31DED3153707280043B5BE /* UIKit.framework in Frameworks */,
 				7E31DED4153707280043B5BE /* Foundation.framework in Frameworks */,
 				7E31DED7153707280043B5BE /* libCsvToSqlite.a in Frameworks */,
 			);
@@ -141,6 +136,7 @@
 				7E31DEC1153707280043B5BE /* Frameworks */,
 				7E31DEC0153707280043B5BE /* Products */,
 				7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */,
+				7E195AE0153733DA0050C635 /* libCoverageFopenFix.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -446,6 +442,92 @@
 			};
 			name = Release;
 		};
+		7E195AE3153734570050C635 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = (
+					"-lCoverageFopenFix",
+					"-L.",
+				);
+				SDKROOT = iphoneos;
+			};
+			name = Coverage;
+		};
+		7E195AE4153734570050C635 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/CsvToSqlite.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Coverage;
+		};
+		7E195AE5153734570050C635 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
+				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = NO;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Coverage;
+		};
+		7E195AE6153734570050C635 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				HEADER_SEARCH_PATHS = .;
+				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
+				PRODUCT_NAME = "CsvToSqliteTests copy";
+				TEST_AFTER_BUILD = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Coverage;
+		};
 		7E31DEE1153707280043B5BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,6 +587,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
 				HEADER_SEARCH_PATHS = .;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -518,6 +604,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
 				HEADER_SEARCH_PATHS = .;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -565,6 +655,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E195AC5153713440050C635 /* Debug */,
+				7E195AE6153734570050C635 /* Coverage */,
 				7E195AC6153713440050C635 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -574,6 +665,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E31DEE1153707280043B5BE /* Debug */,
+				7E195AE3153734570050C635 /* Coverage */,
 				7E31DEE2153707280043B5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -583,6 +675,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E31DEE4153707280043B5BE /* Debug */,
+				7E195AE4153734570050C635 /* Coverage */,
 				7E31DEE5153707280043B5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -592,6 +685,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7E31DEE7153707280043B5BE /* Debug */,
+				7E195AE5153734570050C635 /* Coverage */,
 				7E31DEE8153707280043B5BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
