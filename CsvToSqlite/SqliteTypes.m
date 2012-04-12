@@ -15,3 +15,31 @@ NSString* const SQL_TEXT     = @"TEXT"    ;
 NSString* const SQL_VARCHAR  = @"VARCHAR" ;
 
 
+static NSSet* TYPES_SET = nil;
+
+@implementation SqliteTypes
+
++(NSSet*)typesSet
+{
+   if ( nil == TYPES_SET )
+   {
+      TYPES_SET = [ NSSet setWithObjects:
+                    SQL_NONE     ,
+                    SQL_BLOB     ,
+                    SQL_BOOLEAN  ,
+                    SQL_CHAR     ,
+                    SQL_DATE     ,
+                    SQL_DATETIME ,
+                    SQL_INT      ,
+                    SQL_INTEGER  ,
+                    SQL_NUMERIC  ,
+                    SQL_REAL     ,
+                    SQL_TEXT     ,
+                    SQL_VARCHAR  ,
+                    nil ];
+   }
+
+   return TYPES_SET;
+}
+
+@end 

@@ -14,4 +14,8 @@ extern NSString* const SQL_TEXT   ;
 extern NSString* const SQL_VARCHAR;
 
 
+@interface SqliteTypes : NSObject
 
++(NSSet*)typesSet;
+
+@end
