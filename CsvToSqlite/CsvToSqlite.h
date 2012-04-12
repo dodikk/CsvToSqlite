@@ -1,13 +1,11 @@
-//
-//  CsvToSqlite.h
-//  CsvToSqlite
-//
-//  Created by Владимир Горбенко on 4/12/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @interface CsvToSqlite : NSObject
+
+@property ( nonatomic, strong, readonly ) NSString* databaseName;
+@property ( nonatomic, strong, readonly ) NSString* dataFileName;
+
+-(id)initWithDatabaseName:( NSString* )databaseName_
+             dataFileName:( NSString* )dataFileName_;
 
 @end
