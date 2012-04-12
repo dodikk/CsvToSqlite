@@ -6,6 +6,7 @@
 
 @property ( nonatomic, strong ) NSString* databaseName;
 @property ( nonatomic, strong ) NSString* dataFileName;
+@property ( nonatomic, strong ) NSDictionary* schema  ;
 
 @end
 
@@ -14,7 +15,7 @@
 
 @synthesize databaseName;
 @synthesize dataFileName;
-
+@synthesize schema      ;
 
 -(id)init
 {
@@ -24,6 +25,7 @@
 
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
+           databaseSchema:( NSDictionary* )schema_
 {
    self = [ super init ];
 
@@ -32,6 +34,9 @@
 
    INIT_ASSERT_EMPTY_STRING( dataFileName_ );
    self.dataFileName = dataFileName_;
+   
+   INIT_ASSERT_NIL( schema_ );
+   self.schema = schema_;
 
    return self;
 }
