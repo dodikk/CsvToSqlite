@@ -41,4 +41,19 @@
    return self;
 }
 
+-(BOOL)storeDataInTable:( NSString* )tableName_
+                  error:( NSError** )error_
+{
+   if ( NULL == error_ )
+   {
+      NSString* errorMessage_ = @"[!!!ERROR!!!] : CsvToSqlite->storeDataInTable - NULL error not allowed";
+      
+      NSLog( @"%@", errorMessage_ );
+      NSAssert( NO, errorMessage_ );
+      return 0;
+   }
+
+   return NO;
+}
+
 @end

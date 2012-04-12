@@ -106,4 +106,16 @@
    }   
 }
 
+-(void)testStoreDataCrashesWithNullError
+{
+   CsvToSqlite* converter_ = nil;
+
+   converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"a"
+                                                dataFileName: @"b" 
+                                              databaseSchema: self.defaultSchema ];
+   
+   STAssertThrows( [ converter_ storeDataInTable: @"Values" 
+                                           error: NULL ], @"NSAssert expected" );
+}
+
 @end

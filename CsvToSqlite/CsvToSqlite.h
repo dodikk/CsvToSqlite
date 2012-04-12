@@ -11,4 +11,8 @@
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_;
 
+
+-(BOOL)storeDataInTable:( NSString* )tableName_
+                  error:( NSError** )error_;
+
 @end
