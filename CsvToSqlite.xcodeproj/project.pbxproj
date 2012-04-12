@@ -15,6 +15,10 @@
 		7E195AC2153713440050C635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E195ACB1537214F0050C635 /* SqliteTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AC91537214F0050C635 /* SqliteTypes.h */; };
 		7E195ACC1537214F0050C635 /* SqliteTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ACA1537214F0050C635 /* SqliteTypes.m */; };
+		7E195AD015372F400050C635 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E195ACE15372F400050C635 /* Campaigns.csv */; };
+		7E195AD115372F400050C635 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E195ACE15372F400050C635 /* Campaigns.csv */; };
+		7E195AD215372F400050C635 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E195ACF15372F400050C635 /* campaigns.sqlite */; };
+		7E195AD315372F400050C635 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E195ACF15372F400050C635 /* campaigns.sqlite */; };
 		7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DEC9153707280043B5BE /* CsvToSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEC8153707280043B5BE /* CsvToSqlite.m */; };
 		7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
@@ -49,6 +53,8 @@
 		7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CsvToSqliteTests copy-Info.plist"; path = "/Users/dodikk/projects/work/CsvToSqlite/CsvToSqliteTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		7E195AC91537214F0050C635 /* SqliteTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteTypes.h; sourceTree = "<group>"; };
 		7E195ACA1537214F0050C635 /* SqliteTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteTypes.m; sourceTree = "<group>"; };
+		7E195ACE15372F400050C635 /* Campaigns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Campaigns.csv; path = ../../ChartDB/Campaigns.csv; sourceTree = "<group>"; };
+		7E195ACF15372F400050C635 /* campaigns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = campaigns.sqlite; path = ../../ChartDB/campaigns.sqlite; sourceTree = "<group>"; };
 		7E31DEBF153707280043B5BE /* libCsvToSqlite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCsvToSqlite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DEC2153707280043B5BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7E31DEC6153707280043B5BE /* CsvToSqlite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Prefix.pch"; sourceTree = "<group>"; };
@@ -98,9 +104,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E195ACD15372E6D0050C635 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				7E195ACE15372F400050C635 /* Campaigns.csv */,
+				7E195ACF15372F400050C635 /* campaigns.sqlite */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
 		7E31DEB4153707280043B5BE = {
 			isa = PBXGroup;
 			children = (
+				7E195ACD15372E6D0050C635 /* TestData */,
 				7E31DEC4153707280043B5BE /* CsvToSqlite */,
 				7E31DED8153707280043B5BE /* CsvToSqliteTests */,
 				7E31DEC1153707280043B5BE /* Frameworks */,
@@ -273,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E195AC2153713440050C635 /* InfoPlist.strings in Resources */,
+				7E195AD115372F400050C635 /* Campaigns.csv in Resources */,
+				7E195AD315372F400050C635 /* campaigns.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */,
+				7E195AD015372F400050C635 /* Campaigns.csv in Resources */,
+				7E195AD215372F400050C635 /* campaigns.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
