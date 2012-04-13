@@ -30,6 +30,7 @@
 
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
    NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   stream_.close();
    
    STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
    STAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
@@ -38,6 +39,15 @@
    STAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
    STAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
    STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch" );
+}
+
+-(void)testParseColumnsReturnsNilForBadStream
+{
+   std::ifstream stream_;   
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
+   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   
+   STAssertNil( result_, @"nil expected for invalid stream input" );
 }
 
 @end

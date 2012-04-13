@@ -26,22 +26,24 @@
    return nil;
 }
 
+
+// TODO : fix Windows targeted hard code
 -(NSSet*)parseColumnsFromStream:( std::ifstream& )stream_
 {
-   if ( !stream_.good() )
+   if ( !stream_.is_open() || !stream_.good() )
    {
       NSLog( @"[!!!ERROR!!!] : CsvColumnsParser->parseColumnsFromStream - bad stream" );
       return nil;
    }
 
    std::string row_;
-   std::getline( stream_, row_ );
+   std::getline( stream_, row_, '\r' );
    
    @autoreleasepool 
    {
       NSString* rowString_ = [ NSString stringWithCString: row_.c_str()
                                                  encoding: NSUTF8StringEncoding ];
-      rowString_ = [ rowString_ stringByTrimmingCharactersInSet: [ NSCharacterSet newlineCharacterSet ] ];
+//      rowString_ = [ rowString_ stringByTrimmingCharactersInSet: [ NSCharacterSet newlineCharacterSet ] ];
       
       NSRange separatorRange_ = NSMakeRange( static_cast<NSUInteger>( self->separator ),  1 );
       NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
