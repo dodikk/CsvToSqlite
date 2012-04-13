@@ -29,11 +29,14 @@
 		7EA3A22F15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A23015380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
 		7EA3A23115380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
-		7EA3A23415380EE40058C603 /* CsvColumnsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.m */; };
-		7EA3A23515380EE40058C603 /* CsvColumnsParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.m */; };
+		7EA3A23415380EE40058C603 /* CsvColumnsParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */; };
+		7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */; };
 		7EA3A23815380F750058C603 /* CsvColumnsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A23615380F750058C603 /* CsvColumnsParser.h */; };
-		7EA3A23915380F750058C603 /* CsvColumnsParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23715380F750058C603 /* CsvColumnsParser.m */; };
+		7EA3A23915380F750058C603 /* CsvColumnsParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23715380F750058C603 /* CsvColumnsParser.mm */; };
 		7EA3A23A1538105E0058C603 /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
+		7EA3A23F153825610058C603 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
+		7EA3A2421538265F0058C603 /* StreamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2401538265F0058C603 /* StreamUtils.h */; };
+		7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2411538265F0058C603 /* StreamUtils.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,9 +83,12 @@
 		7EA3A22C15380E560058C603 /* Campaigns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campaigns.csv; sourceTree = "<group>"; };
 		7EA3A22D15380E560058C603 /* campaigns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = campaigns.sqlite; sourceTree = "<group>"; };
 		7EA3A23215380EE40058C603 /* CsvColumnsParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvColumnsParserTest.h; sourceTree = "<group>"; };
-		7EA3A23315380EE40058C603 /* CsvColumnsParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvColumnsParserTest.m; sourceTree = "<group>"; };
+		7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvColumnsParserTest.mm; sourceTree = "<group>"; };
 		7EA3A23615380F750058C603 /* CsvColumnsParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvColumnsParser.h; sourceTree = "<group>"; };
-		7EA3A23715380F750058C603 /* CsvColumnsParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvColumnsParser.m; sourceTree = "<group>"; };
+		7EA3A23715380F750058C603 /* CsvColumnsParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvColumnsParser.mm; sourceTree = "<group>"; };
+		7EA3A23B153823BF0058C603 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		7EA3A2401538265F0058C603 /* StreamUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamUtils.h; sourceTree = "<group>"; };
+		7EA3A2411538265F0058C603 /* StreamUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StreamUtils.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA3A23F153825610058C603 /* libc++.dylib in Frameworks */,
 				7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +147,7 @@
 		7E31DEB4153707280043B5BE = {
 			isa = PBXGroup;
 			children = (
+				7EA3A23B153823BF0058C603 /* libc++.dylib */,
 				7E195ACD15372E6D0050C635 /* TestData */,
 				7E31DEC4153707280043B5BE /* CsvToSqlite */,
 				7E31DED8153707280043B5BE /* CsvToSqliteTests */,
@@ -182,7 +190,9 @@
 				7E195AC91537214F0050C635 /* SqliteTypes.h */,
 				7E195ACA1537214F0050C635 /* SqliteTypes.m */,
 				7EA3A23615380F750058C603 /* CsvColumnsParser.h */,
-				7EA3A23715380F750058C603 /* CsvColumnsParser.m */,
+				7EA3A23715380F750058C603 /* CsvColumnsParser.mm */,
+				7EA3A2401538265F0058C603 /* StreamUtils.h */,
+				7EA3A2411538265F0058C603 /* StreamUtils.mm */,
 			);
 			path = CsvToSqlite;
 			sourceTree = "<group>";
@@ -202,7 +212,7 @@
 				7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */,
 				7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */,
 				7EA3A23215380EE40058C603 /* CsvColumnsParserTest.h */,
-				7EA3A23315380EE40058C603 /* CsvColumnsParserTest.m */,
+				7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */,
 			);
 			path = CsvToSqliteTests;
 			sourceTree = "<group>";
@@ -228,6 +238,7 @@
 				7E195AD71537301E0050C635 /* CsvImportError.h in Headers */,
 				7E195ADB153730C90050C635 /* CsvBadTableNameError.h in Headers */,
 				7EA3A23815380F750058C603 /* CsvColumnsParser.h in Headers */,
+				7EA3A2421538265F0058C603 /* StreamUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */,
-				7EA3A23515380EE40058C603 /* CsvColumnsParserTest.m in Sources */,
+				7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +397,8 @@
 				7E195ACC1537214F0050C635 /* SqliteTypes.m in Sources */,
 				7E195AD81537301E0050C635 /* CsvImportError.m in Sources */,
 				7E195ADC153730C90050C635 /* CsvBadTableNameError.m in Sources */,
-				7EA3A23915380F750058C603 /* CsvColumnsParser.m in Sources */,
+				7EA3A23915380F750058C603 /* CsvColumnsParser.mm in Sources */,
+				7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E31DEE0153707280043B5BE /* CsvToSqliteTests.m in Sources */,
-				7EA3A23415380EE40058C603 /* CsvColumnsParserTest.m in Sources */,
+				7EA3A23415380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
