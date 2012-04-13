@@ -7,7 +7,9 @@
 
 @property ( nonatomic, strong ) NSString* databaseName;
 @property ( nonatomic, strong ) NSString* dataFileName;
-@property ( nonatomic, strong ) NSDictionary* schema  ;
+
+@property ( nonatomic, strong ) NSDictionary* schema   ;
+@property ( nonatomic, strong ) NSSet*        csvSchema;
 
 @end
 
@@ -17,6 +19,7 @@
 @synthesize databaseName;
 @synthesize dataFileName;
 @synthesize schema      ;
+@synthesize csvSchema   ;
 
 -(id)init
 {
