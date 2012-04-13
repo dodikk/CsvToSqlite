@@ -52,4 +52,16 @@
    STAssertNil( result_, @"nil expected for invalid stream input" );
 }
 
+-(void)testParseColumnsReturnsNilForEmptyFile
+{
+   std::ifstream stream_;   
+   [ StreamUtils csvStream: stream_ 
+              withFileName: @"Empty" ];
+   
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
+   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   
+   STAssertNil( result_, @"nil expected for invalid stream input" );
+}
+
 @end
