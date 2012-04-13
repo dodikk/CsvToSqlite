@@ -3,6 +3,12 @@
 #include <string>
 
 
+@interface CsvColumnsParser() 
+
+@property ( nonatomic, strong ) id<LineReader> lineReader;
+
+@end
+
 @implementation CsvColumnsParser
 {
 @private
@@ -10,12 +16,15 @@
 }
 
 @synthesize separatorChar = separator;
+@synthesize lineReader;
 
 -(id)initWithSeparatorChar:( char )separator_
+                lineReader:( id<LineReader> )lineReader_
 {
    self = [ super init ];
    
    self->separator = separator_;
+   self.lineReader = lineReader_;
    
    return self;
 }
@@ -37,9 +46,9 @@
    }
 
 
-   // TODO : fix MS Windows related hard code
-   std::string row_;
-   std::getline( stream_, row_, '\r' );
+   std::string row_;  
+   [ self.lineReader readLine: row_ 
+                   fromStream: stream_ ];
 
    @autoreleasepool 
    {

@@ -39,6 +39,11 @@
 		7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2411538265F0058C603 /* StreamUtils.mm */; };
 		7EA3A2451538399B0058C603 /* Empth.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A2441538399B0058C603 /* Empth.csv */; };
 		7EA3A2461538399B0058C603 /* Empth.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A2441538399B0058C603 /* Empth.csv */; };
+		7EA3A24D15383B050058C603 /* LineReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A24C15383B050058C603 /* LineReader.h */; };
+		7EA3A25015383B610058C603 /* WindowsLineReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A24E15383B610058C603 /* WindowsLineReader.h */; };
+		7EA3A25115383B610058C603 /* WindowsLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A24F15383B610058C603 /* WindowsLineReader.mm */; };
+		7EA3A25415383D440058C603 /* UnixLineReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A25215383D440058C603 /* UnixLineReader.h */; };
+		7EA3A25515383D440058C603 /* UnixLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A25315383D440058C603 /* UnixLineReader.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +97,11 @@
 		7EA3A2401538265F0058C603 /* StreamUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamUtils.h; sourceTree = "<group>"; };
 		7EA3A2411538265F0058C603 /* StreamUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StreamUtils.mm; sourceTree = "<group>"; };
 		7EA3A2441538399B0058C603 /* Empth.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Empth.csv; sourceTree = "<group>"; };
+		7EA3A24C15383B050058C603 /* LineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineReader.h; sourceTree = "<group>"; };
+		7EA3A24E15383B610058C603 /* WindowsLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowsLineReader.h; sourceTree = "<group>"; };
+		7EA3A24F15383B610058C603 /* WindowsLineReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WindowsLineReader.mm; sourceTree = "<group>"; };
+		7EA3A25215383D440058C603 /* UnixLineReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnixLineReader.h; sourceTree = "<group>"; };
+		7EA3A25315383D440058C603 /* UnixLineReader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UnixLineReader.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,9 +196,10 @@
 			isa = PBXGroup;
 			children = (
 				7E195AD415372FEC0050C635 /* Errors */,
+				7EA3A24B15383B050058C603 /* LineReaders */,
+				7E31DEC5153707280043B5BE /* Supporting Files */,
 				7E31DEC7153707280043B5BE /* CsvToSqlite.h */,
 				7E31DEC8153707280043B5BE /* CsvToSqlite.m */,
-				7E31DEC5153707280043B5BE /* Supporting Files */,
 				7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */,
 				7E195AB51537117B0050C635 /* CsvMacros.h */,
 				7E195AC91537214F0050C635 /* SqliteTypes.h */,
@@ -230,6 +241,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		7EA3A24B15383B050058C603 /* LineReaders */ = {
+			isa = PBXGroup;
+			children = (
+				7EA3A24C15383B050058C603 /* LineReader.h */,
+				7EA3A24E15383B610058C603 /* WindowsLineReader.h */,
+				7EA3A24F15383B610058C603 /* WindowsLineReader.mm */,
+				7EA3A25215383D440058C603 /* UnixLineReader.h */,
+				7EA3A25315383D440058C603 /* UnixLineReader.mm */,
+			);
+			path = LineReaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -243,6 +266,9 @@
 				7E195ADB153730C90050C635 /* CsvBadTableNameError.h in Headers */,
 				7EA3A23815380F750058C603 /* CsvColumnsParser.h in Headers */,
 				7EA3A2421538265F0058C603 /* StreamUtils.h in Headers */,
+				7EA3A24D15383B050058C603 /* LineReader.h in Headers */,
+				7EA3A25015383B610058C603 /* WindowsLineReader.h in Headers */,
+				7EA3A25415383D440058C603 /* UnixLineReader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +431,8 @@
 				7E195ADC153730C90050C635 /* CsvBadTableNameError.m in Sources */,
 				7EA3A23915380F750058C603 /* CsvColumnsParser.mm in Sources */,
 				7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */,
+				7EA3A25115383B610058C603 /* WindowsLineReader.mm in Sources */,
+				7EA3A25515383D440058C603 /* UnixLineReader.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
