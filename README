@@ -1,0 +1,6 @@
+This is a library for parsing simple *.CSV files.  
+The library does not fully comply to rfc4180 because we do not support quoted values.
+
+The main goal is importing *.CSV data to the SQLite database with the minimal memory footprint.
+
+License : BSD
