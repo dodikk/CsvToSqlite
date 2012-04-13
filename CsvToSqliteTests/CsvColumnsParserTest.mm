@@ -34,7 +34,7 @@
 
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
                                                                        lineReader: [ WindowsLineReader new ]]; 
-   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
    stream_.close();
@@ -53,7 +53,7 @@
    std::ifstream stream_;   
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
                                                                        lineReader: [ WindowsLineReader new ] ]; 
-   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertNil( result_, @"nil expected for invalid stream input" );
 }
@@ -66,7 +66,7 @@
    
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
                                                                        lineReader: [ WindowsLineReader new ] ]; 
-   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertNil( result_, @"nil expected for invalid stream input" );
 }
@@ -79,7 +79,7 @@
    
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
                                                                        lineReader: [ UnixLineReader new ]]; 
-   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
    stream_.close();
@@ -101,7 +101,7 @@
    
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
                                                                        lineReader: [ UnixLineReader new ] ]; 
-   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
    stream_.close();

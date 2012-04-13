@@ -37,7 +37,7 @@
 
 
 
--(NSSet*)parseColumnsFromStream:( std::ifstream& )stream_
+-(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_
 {
    if ( !stream_.is_open() || !stream_.good() )
    {
@@ -59,7 +59,7 @@
       NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
       NSArray* tokens_ = [ rowString_ componentsSeparatedByCharactersInSet: separators_ ];
       
-      return [ NSSet setWithArray: tokens_ ];
+      return [ NSOrderedSet orderedSetWithArray: tokens_ ];
    }
 }
 

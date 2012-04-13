@@ -9,7 +9,7 @@
 -(id)initWithSeparatorChar:( char )separator_
                 lineReader:( id<LineReader> )lineReader_;
 
--(NSSet*)parseColumnsFromStream:( std::ifstream& )stream_;
+-(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_;
 
 @property ( nonatomic, assign, readonly ) char separatorChar;
 
