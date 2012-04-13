@@ -3,7 +3,9 @@
 
 #import "CsvColumnsParser.h"
 #import "StreamUtils.h"
+
 #import "WindowsLineReader.h"
+#import "UnixLineReader.h"
 
 #include <fstream>
 
@@ -67,6 +69,28 @@
    NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertNil( result_, @"nil expected for invalid stream input" );
+}
+
+-(void)testParseColumnsSupportsUnix
+{
+   std::ifstream stream_;
+   [ StreamUtils csvStream: stream_ 
+              withFileName: @"UnixTest" ];
+   
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                       lineReader: [ UnixLineReader new ]]; 
+   NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
+   
+   STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
+   stream_.close();
+   
+   STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
+   STAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
+   STAssertTrue( [ result_ containsObject: @"Visits"   ], @"Visits   mismatch" );
+   STAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
+   STAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
+   STAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
+   STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch" );
 }
 
 @end
