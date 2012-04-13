@@ -3,6 +3,7 @@
 
 #import "CsvColumnsParser.h"
 #import "StreamUtils.h"
+#import "WindowsLineReader.h"
 
 #include <fstream>
 
@@ -17,7 +18,8 @@
 {
    char separator = ';';
    
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator ];
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator
+                                                                       lineReader: [ WindowsLineReader new ] ];
    STAssertNotNil( parser_, @"valid object expected" );
    STAssertTrue( separator == parser_.separatorChar, @"Incorrect initialization" );
 }
@@ -28,7 +30,8 @@
    [ StreamUtils csvStream: stream_ 
               withFileName: @"Campaigns" ];
 
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                       lineReader: [ WindowsLineReader new ]]; 
    NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
@@ -46,7 +49,8 @@
 -(void)testParseColumnsReturnsNilForBadStream
 {
    std::ifstream stream_;   
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
+                                                                       lineReader: [ WindowsLineReader new ] ]; 
    NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertNil( result_, @"nil expected for invalid stream input" );
@@ -58,7 +62,8 @@
    [ StreamUtils csvStream: stream_ 
               withFileName: @"Empty" ];
    
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' ]; 
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
+                                                                       lineReader: [ WindowsLineReader new ] ]; 
    NSSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
    STAssertNil( result_, @"nil expected for invalid stream input" );
