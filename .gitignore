@@ -1,5 +1,6 @@
 .svn
 build
+DerivedData
 svnignore.*
 *.svnignore
 *.DS_Store
