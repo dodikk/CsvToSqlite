@@ -27,7 +27,7 @@
 }
 
 
-// TODO : fix Windows targeted hard code
+
 -(NSSet*)parseColumnsFromStream:( std::ifstream& )stream_
 {
    if ( !stream_.is_open() || !stream_.good() )
@@ -36,15 +36,16 @@
       return nil;
    }
 
+
+   // TODO : fix MS Windows related hard code
    std::string row_;
    std::getline( stream_, row_, '\r' );
-   
+
    @autoreleasepool 
    {
       NSString* rowString_ = [ NSString stringWithCString: row_.c_str()
                                                  encoding: NSUTF8StringEncoding ];
-//      rowString_ = [ rowString_ stringByTrimmingCharactersInSet: [ NSCharacterSet newlineCharacterSet ] ];
-      
+
       NSRange separatorRange_ = NSMakeRange( static_cast<NSUInteger>( self->separator ),  1 );
       NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
       NSArray* tokens_ = [ rowString_ componentsSeparatedByCharactersInSet: separators_ ];
