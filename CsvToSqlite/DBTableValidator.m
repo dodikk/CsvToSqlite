@@ -1,0 +1,20 @@
+#import "DBTableValidator.h"
+
+@implementation DBTableValidator
+
++(BOOL)csvSchema:( NSOrderedSet* )csvSchema_
+matchesTableSchema:( NSDictionary* )tableSchema_
+{
+   for ( NSString* column_ in csvSchema_ )
+   {
+      NSString* type_ = [ tableSchema_ objectForKey: column_ ];
+      if ( nil == type_ )
+      {
+         return NO;
+      }
+   }
+   
+   return YES;
+}
+
+@end
