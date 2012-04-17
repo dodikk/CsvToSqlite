@@ -13,8 +13,10 @@
 #import "StreamUtils.h"
 
 #import "WindowsLineReader.h"
+#import "UnixLineReader.h"
 #import "FMDatabase.h"
 
+#include <map>
 #include <fstream>
 #include <ObjcScopedGuard/ObjcScopedGuard.h>
 
@@ -54,17 +56,45 @@ using namespace ::Utils;
 }
 
 
-// TODO : fix hard code
+-(id)initWithDatabaseName:( NSString* )databaseName_
+             dataFileName:( NSString* )dataFileName_
+           databaseSchema:( NSDictionary* )schema_
+          lineEndingStyle:( CsvLineEndings )lineEndingStyle_
+      recordSeparatorChar:( char )separatorChar_
+{
+   static std::map< CsvLineEndings, Class > lineEndingsMap_;
+   if ( lineEndingsMap_.empty() )
+   {
+      lineEndingsMap_[ CSV_LE_WIN  ] = [ WindowsLineReader class ];
+      lineEndingsMap_[ CSV_LE_UNIX ] = [ UnixLineReader    class ];
+   }
+   
+   Class readerClass_ = lineEndingsMap_[ lineEndingStyle_ ];
+   if ( nil == readerClass_ )
+   {
+      NSLog( @"Unsupported line endings style : %d", lineEndingStyle_ );
+      return nil;
+   }
+   
+   
+   return [ self initWithDatabaseName: databaseName_
+                         dataFileName: dataFileName_ 
+                       databaseSchema: schema_
+                        separatorChar: separatorChar_
+                           lineReader: [ readerClass_ new ]
+                       dbWrapperClass: [ FMDatabase class ] ];
+}
+
+
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
 {
    return [ self initWithDatabaseName: databaseName_
-                         dataFileName: dataFileName_ 
+                         dataFileName: dataFileName_
                        databaseSchema: schema_
-                        separatorChar: ';'
-                           lineReader: [ WindowsLineReader new ]
-                       dbWrapperClass: [ FMDatabase class ] ];
+                      lineEndingStyle: CSV_LE_WIN
+                  recordSeparatorChar: ';' ];
 }
 
 

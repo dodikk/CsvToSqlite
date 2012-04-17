@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <CsvToSqlite/CsvLineEndings.h>
 
 @interface CsvToSqlite : NSObject
 
@@ -9,9 +10,16 @@
 
 -(id)dbWrapper;
 
+
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_;
+
+-(id)initWithDatabaseName:( NSString* )databaseName_
+             dataFileName:( NSString* )dataFileName_
+           databaseSchema:( NSDictionary* )schema_
+          lineEndingStyle:( CsvLineEndings )lineEndingStyle_
+      recordSeparatorChar:( char )separatorChar_;
 
 
 -(BOOL)storeDataInTable:( NSString* )tableName_
