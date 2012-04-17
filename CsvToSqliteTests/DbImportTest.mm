@@ -92,6 +92,9 @@
       query_    = [ qLog_ objectAtIndex: 1 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
+   
+   NSLog( @"%@", [ qLog_ objectAtIndex: 0 ] );
+   NSLog( @"%@", [ qLog_ objectAtIndex: 1 ] );
 }
 
 @end
