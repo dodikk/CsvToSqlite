@@ -30,6 +30,12 @@
                   error:( NSError** )errorPtr_
 {
    NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
+
+   id<DbWrapper> db_ = [ self castedWrapper ];
+   if ( [ db_ tableExists:tableName_ ] )
+   {
+      return;
+   }
    
    NSString* createFormat_ = @"CREATE TABLE [%@] ( %@ );";
    NSString* columnFormat_ = @"[%@] %@";
@@ -56,8 +62,8 @@
    
    NSString* query_ = [ NSString stringWithFormat: createFormat_, tableName_, columns_ ];
    
-   [ [ self castedWrapper ] createTable: query_ 
-                                  error: errorPtr_ ];
+   [ db_ createTable: query_ 
+               error: errorPtr_ ];
 }
 
 -(void)storeLine:( NSString* )line_

@@ -42,6 +42,11 @@
    return nil;
 }
 
+-(BOOL)tableExists:(NSString*)tableName_
+{
+   return NO;
+}
+
 -(BOOL)insert:( NSString* )sql_
         error:( NSError** )error_
 {

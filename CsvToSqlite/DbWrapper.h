@@ -15,4 +15,6 @@
 -(BOOL)createTable:( NSString* )sql_
              error:( NSError** )error_;
 
+-(BOOL)tableExists:(NSString*)tableName_;
+
 @end
