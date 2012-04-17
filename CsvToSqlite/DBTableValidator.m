@@ -5,6 +5,12 @@
 +(BOOL)csvSchema:( NSOrderedSet* )csvSchema_
 matchesTableSchema:( NSDictionary* )tableSchema_
 {
+   if ( ( nil == csvSchema_ ) || ( nil == tableSchema_ ) )
+   {
+      return NO;
+   }
+   
+   
    for ( NSString* column_ in csvSchema_ )
    {
       NSString* type_ = [ tableSchema_ objectForKey: column_ ];

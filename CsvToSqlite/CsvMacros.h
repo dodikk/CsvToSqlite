@@ -14,4 +14,18 @@
    }
 
 
+#define CHECK_ERROR__RET_BOOL( ERROR_PTR ) \
+   if ( nil != *error_ )                   \
+   {                                       \
+      return NO;                           \
+   }
+
+
+#define CHECK_ERROR__RET( ERROR_PTR ) \
+   if ( nil != *error_ )              \
+   {                                  \
+      return;                         \
+   }
+
+
 #endif
