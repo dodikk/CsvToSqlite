@@ -12,5 +12,6 @@
 -(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_;
 
 @property ( nonatomic, assign, readonly ) char separatorChar;
+@property ( nonatomic, strong, readonly ) NSString* separatorString;
 
 @end

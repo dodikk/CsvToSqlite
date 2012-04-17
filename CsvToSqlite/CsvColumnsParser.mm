@@ -16,6 +16,7 @@
 }
 
 @synthesize separatorChar = separator;
+@dynamic separatorString;
 @synthesize lineReader;
 
 -(id)initWithSeparatorChar:( char )separator_
@@ -34,8 +35,6 @@
    [ self doesNotRecognizeSelector: _cmd ];
    return nil;
 }
-
-
 
 -(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_
 {
@@ -61,6 +60,14 @@
       
       return [ NSOrderedSet orderedSetWithArray: tokens_ ];
    }
+}
+
+-(NSString*)separatorString
+{
+   return [ [ NSString alloc ] initWithBytesNoCopy: &(self->separator)
+                                            length: 1
+                                          encoding: NSUTF8StringEncoding
+                                      freeWhenDone: NO ];
 }
 
 @end
