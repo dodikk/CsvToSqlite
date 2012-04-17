@@ -111,8 +111,9 @@
                             , @"VARCHAR" , @"FacetId3"                            
                             , nil ];
    
-   NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"Campaigns-small-win" 
-                                                                               ofType: @"csv" ];
+   NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
+   NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
+                                               ofType: @"csv" ];
    
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"2.sqlite" 
                                                              dataFileName: csvPath_ 
@@ -125,6 +126,16 @@
    [ converter_  storeDataInTable: @"Campaigns" 
                             error: &error_ ];
    STAssertNil( error_, @"Unexpected error" );   
+   
+   
+   
+   NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"2" 
+                                                      ofType: @"sqlite" ];
+   
+   NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"2.sqlite" ];
+   NSData* expectedDb_ = [ NSData dataWithContentsOfFile: expectedDbPath_ ];
+   
+   STAssertTrue( [ receivedDb_ isEqual: expectedDb_ ], @"database mismatch" );
 }
 
 -(void)testCampaignImportQueriesWin
