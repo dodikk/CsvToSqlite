@@ -45,6 +45,7 @@
 		7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */; };
 		7E99872F153D907400811BA8 /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
 		7E998730153D907400811BA8 /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
+		7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998741153D9AB300811BA8 /* CsvLineEndings.h */; };
 		7EA3A22E15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A22F15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A23015380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
@@ -208,6 +209,7 @@
 		7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite+Test.h"; sourceTree = "<group>"; };
 		7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CsvToSqlite+Test.mm"; sourceTree = "<group>"; };
 		7E99872E153D907400811BA8 /* Campaigns-small-win.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Campaigns-small-win.csv"; sourceTree = "<group>"; };
+		7E998741153D9AB300811BA8 /* CsvLineEndings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvLineEndings.h; sourceTree = "<group>"; };
 		7EA3A22C15380E560058C603 /* Campaigns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campaigns.csv; sourceTree = "<group>"; };
 		7EA3A22D15380E560058C603 /* campaigns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = campaigns.sqlite; sourceTree = "<group>"; };
 		7EA3A23215380EE40058C603 /* CsvColumnsParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvColumnsParserTest.h; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				7EA3A25C15386BE50058C603 /* DBTableValidator.h */,
 				7EA3A25D15386BE50058C603 /* DBTableValidator.m */,
 				7E99870D153D546700811BA8 /* DbWrapper.h */,
+				7E998741153D9AB300811BA8 /* CsvLineEndings.h */,
 			);
 			path = CsvToSqlite;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				7E99870E153D546700811BA8 /* DbWrapper.h in Headers */,
 				7E998711153D573700811BA8 /* FMDatabase+Wrapper.h in Headers */,
 				7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */,
+				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
