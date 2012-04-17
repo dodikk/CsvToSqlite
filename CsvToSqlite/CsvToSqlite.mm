@@ -26,7 +26,7 @@ using namespace ::Utils;
 @property ( nonatomic, strong ) NSString* dataFileName;
 
 @property ( nonatomic, strong ) NSDictionary* schema   ;
-@property ( nonatomic, strong ) NSSet*        csvSchema;
+@property ( nonatomic, strong ) NSOrderedSet* csvSchema;
 
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;
@@ -109,12 +109,12 @@ using namespace ::Utils;
       NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
       BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
                                       matchesTableSchema: self.schema ];
-
       if ( !isValidSchema_ )
       {
          *error_ = [ CsvSchemaMismatchError new ];
          return NO;
       }
+      self.csvSchema = csvSchema_;
 
 
 
