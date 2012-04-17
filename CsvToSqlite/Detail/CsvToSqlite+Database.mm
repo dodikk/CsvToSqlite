@@ -1,4 +1,8 @@
 #import "CsvToSqlite+Database.h"
+#import "CsvToSqlite+Test.h"
+
+#import "CsvColumnsParser.h"
+
 #import "CsvMacros.h"
 
 
@@ -63,9 +67,28 @@
    NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
 
    
-   NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( %@ );";
-   NSString* headerFields_ = @"1";
-   NSString* values_ = @"2";
+   NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
+
+	
+   NSMutableString* headerFields_ = [ NSMutableString new ];
+   NSString* values_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
+                                                         withString: @"', '" ];
+
+
+   BOOL processingFirstItem_ = YES;
+   for ( NSString* columnName_ in self.csvSchema.array )
+   {    
+      if ( processingFirstItem_ )
+      {
+         processingFirstItem_ = NO;
+      }
+      else
+      {
+         [ headerFields_ appendString: @", " ];
+      }
+      
+      [ headerFields_ appendString: columnName_ ];
+   }
 
    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
    
