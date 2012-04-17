@@ -126,11 +126,16 @@ using namespace ::Utils;
       };
       ObjcScopedGuard dbGuard_( closeDbBlock_ );
 
+      
+      
+      
       [ self createTableNamed: tableName_
                         error: error_ ];
       CHECK_ERROR__RET_BOOL( error_ );
 
 
+      
+      
       std::string line_;
       NSString* lineStr_ = nil;
       while ( !stream_.eof() )
@@ -141,6 +146,11 @@ using namespace ::Utils;
          
          
          size_t lineSize_ = line_.size();
+         if ( 0 == lineSize_ )
+         {
+            break;
+         }
+
          void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
          lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
                                                       length: lineSize_
