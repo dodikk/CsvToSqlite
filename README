@@ -3,4 +3,15 @@ The library does not fully comply to rfc4180 because we do not support quoted va
 
 The main goal is importing *.CSV data to the SQLite database with the minimal memory footprint.
 
+
+Dependencies : 
+1. dodikk / ObjcScopedGuard
+git clone git://github.com/dodikk/ObjcScopedGuard.git
+git://github.com/ccgus/fmdb.git
+-----
+
+2. ccgus / fmdb
+git clone git://github.com/ccgus/fmdb.git
+-----
+
 License : BSD
