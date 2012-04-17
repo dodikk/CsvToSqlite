@@ -17,7 +17,7 @@
 @property ( nonatomic, strong ) NSString* dataFileName;
 
 @property ( nonatomic, strong ) NSDictionary* schema   ;
-@property ( nonatomic, strong ) NSSet*        csvSchema;
+@property ( nonatomic, strong ) NSOrderedSet* csvSchema;
 
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;
