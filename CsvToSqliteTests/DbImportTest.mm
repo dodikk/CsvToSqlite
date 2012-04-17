@@ -49,9 +49,13 @@
    STAssertTrue( 2 == [ qLog_ count ], @"Queries count mismatch" );
 
    {
-//      expected_ = @"CREATE TABLE [Campaigns]"
-//                  @" ( [Date] DATE, [Visits] INTEGER, [Value] INTEGER,"
-//                  @" [FacetId1] VARCHAR, [FacetId2] VARCHAR, [FacetId3] VARCHAR );" ;
+#if 0
+{
+      expected_ = @"CREATE TABLE [Campaigns]"
+                  @" ( [Date] DATE, [Visits] INTEGER, [Value] INTEGER,"
+                  @" [FacetId1] VARCHAR, [FacetId2] VARCHAR, [FacetId3] VARCHAR );" ;
+}
+#endif
 
       query_    = [ qLog_ objectAtIndex: 0 ];
       
@@ -81,12 +85,12 @@
       substringRange_ = [ query_ rangeOfString: @"[FacetId3] VARCHAR" ];
       STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
    }
-   
+
    {
-      expected_ = @"INSERT INTO 'Values' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-                  @"VALUES ('20081222', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000'); ";
+      expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
+                  @"VALUES ( '20081222', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 1 ];
-      STAssertEquals( query_, expected_, @"INSERT INTO mismatch" );
+      STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
 }
 
