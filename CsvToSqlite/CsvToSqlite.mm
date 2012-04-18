@@ -27,7 +27,9 @@ using namespace ::Utils;
 @property ( nonatomic, strong ) NSString* databaseName;
 @property ( nonatomic, strong ) NSString* dataFileName;
 
-@property ( nonatomic, strong ) NSDictionary* schema   ;
+@property ( nonatomic, strong ) NSDictionary* schema    ;
+@property ( nonatomic, strong ) NSOrderedSet* primaryKey;
+
 @property ( nonatomic, strong ) NSOrderedSet* csvSchema;
 
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
@@ -42,6 +44,7 @@ using namespace ::Utils;
 @synthesize databaseName ;
 @synthesize dataFileName ;
 @synthesize schema       ;
+@synthesize primaryKey   ;
 @synthesize csvSchema    ;
 
 @synthesize columnsParser;
@@ -59,6 +62,7 @@ using namespace ::Utils;
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
+               primaryKey:( NSOrderedSet* )primaryKey_
           lineEndingStyle:( CsvLineEndings )lineEndingStyle_
       recordSeparatorChar:( char )separatorChar_
 {
@@ -80,6 +84,7 @@ using namespace ::Utils;
    return [ self initWithDatabaseName: databaseName_
                          dataFileName: dataFileName_ 
                        databaseSchema: schema_
+                           primaryKey: primaryKey_
                         separatorChar: separatorChar_
                            lineReader: [ readerClass_ new ]
                        dbWrapperClass: [ FMDatabase class ] ];
@@ -89,10 +94,12 @@ using namespace ::Utils;
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
+               primaryKey:( NSOrderedSet* )primaryKey_
 {
    return [ self initWithDatabaseName: databaseName_
                          dataFileName: dataFileName_
                        databaseSchema: schema_
+                           primaryKey: primaryKey_
                       lineEndingStyle: CSV_LE_WIN
                   recordSeparatorChar: ';' ];
 }

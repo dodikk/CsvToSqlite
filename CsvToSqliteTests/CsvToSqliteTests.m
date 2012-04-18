@@ -25,7 +25,8 @@
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: nil
                                                    dataFileName: @"data file stub" 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_ 
+                                                     primaryKey: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
@@ -33,14 +34,16 @@
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: nil 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_ 
+                                                     primaryKey: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @""
                                                    dataFileName: @"data file stub" 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_ 
+                                                     primaryKey: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
@@ -48,7 +51,8 @@
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: @"" 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_ 
+                                                     primaryKey: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }   
 }
@@ -68,7 +72,8 @@
       
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
                                                    dataFileName: dataFile_ 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_ 
+                                                     primaryKey: nil ];
       
       STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
       STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
@@ -80,7 +85,8 @@
       
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
                                                    dataFileName: dataFile_ 
-                                                 databaseSchema: schema_ ];
+                                                 databaseSchema: schema_
+                                                     primaryKey: nil ];
       
       STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
       STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
@@ -94,14 +100,16 @@
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: @"file stub" 
-                                                 databaseSchema: nil ];
+                                                 databaseSchema: nil 
+                                                     primaryKey: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    } 
    
    {
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: @"file stub" 
-                                                 databaseSchema: self.defaultSchema ];
+                                                 databaseSchema: self.defaultSchema 
+                                                     primaryKey: nil ];
       STAssertNotNil( converter_, @"nil expected - DatabaseName" );
    }   
 }
@@ -109,10 +117,11 @@
 -(void)testStoreDataCrashesWithNullError
 {
    CsvToSqlite* converter_ = nil;
-
+   
    converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"a"
                                                 dataFileName: @"b" 
-                                              databaseSchema: self.defaultSchema ];
+                                              databaseSchema: self.defaultSchema
+                                                  primaryKey: nil ];
    
    STAssertThrows( [ converter_ storeDataInTable: @"Values" 
                                            error: NULL ], @"NSAssert expected" );
@@ -126,7 +135,8 @@
    
    converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"a"
                                                 dataFileName: @"b" 
-                                              databaseSchema: self.defaultSchema ];
+                                              databaseSchema: self.defaultSchema 
+                                                  primaryKey: nil ];
    
    {
       result_ = [ converter_ storeDataInTable: nil 

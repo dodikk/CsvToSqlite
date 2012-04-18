@@ -10,6 +10,20 @@
 
 @implementation DbImportTest
 
+-(void)setUp
+{
+   schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
+              @"DATETIME", @"Date"
+              , @"INTEGER" , @"Visits"
+              , @"INTEGER" , @"Value"                            
+              , @"VARCHAR" , @"FacetId1"
+              , @"VARCHAR" , @"FacetId2"
+              , @"VARCHAR" , @"FacetId3"                            
+              , nil ];
+   
+   
+}
+
 -(void)testCampaignImportQueries
 {
    NSError*  error_    = nil;
@@ -18,14 +32,7 @@
    NSRange substringRange_ = { 0u, 0u };
    NSRange emptyRange_ =  { 0u, 0u };
    
-   NSDictionary* schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-                                @"DATETIME", @"Date"
-                              , @"INTEGER" , @"Visits"
-                              , @"INTEGER" , @"Value"                            
-                              , @"VARCHAR" , @"FacetId1"
-                              , @"VARCHAR" , @"FacetId2"
-                              , @"VARCHAR" , @"FacetId3"                            
-                              , nil ];
+
  
    NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"UnixTest" 
                                                                                ofType: @"csv" ];
@@ -33,6 +40,7 @@
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"1.sqlite" 
                                                              dataFileName: csvPath_ 
                                                            databaseSchema: schema_ 
+                                                               primaryKey: nil
                                                             separatorChar: ';'
                                                                lineReader: [ UnixLineReader new ] 
                                                            dbWrapperClass: [ MockDb class ] ];
@@ -102,22 +110,17 @@
    NSError*  error_    = nil;
 
    
-   NSDictionary* schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-                            @"DATETIME", @"Date"
-                            , @"INTEGER" , @"Visits"
-                            , @"INTEGER" , @"Value"                            
-                            , @"VARCHAR" , @"FacetId1"
-                            , @"VARCHAR" , @"FacetId2"
-                            , @"VARCHAR" , @"FacetId3"                            
-                            , nil ];
-   
    NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
    NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                ofType: @"csv" ];
    
+   [ [ NSFileManager defaultManager ] removeItemAtPath: @"2.sqlite"
+                                                 error: &error_ ];
+
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"2.sqlite" 
                                                              dataFileName: csvPath_ 
-                                                           databaseSchema: schema_ ];
+                                                           databaseSchema: schema_ 
+                                                               primaryKey: nil ];
    
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -146,7 +149,7 @@
    NSRange substringRange_ = { 0u, 0u };
    NSRange emptyRange_ =  { 0u, 0u };
    
-   NSDictionary* schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
+   schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
                             @"DATETIME", @"Date"
                             , @"INTEGER" , @"Visits"
                             , @"INTEGER" , @"Value"                            
@@ -161,6 +164,7 @@
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"3.sqlite" 
                                                              dataFileName: csvPath_ 
                                                            databaseSchema: schema_ 
+                                                               primaryKey: nil
                                                             separatorChar: ';'
                                                                lineReader: [ WindowsLineReader new ] 
                                                            dbWrapperClass: [ MockDb class ] ];
@@ -249,6 +253,53 @@
    NSLog( @"%@", [ qLog_ objectAtIndex: 2 ] );   
    NSLog( @"%@", [ qLog_ objectAtIndex: 3 ] );   
    NSLog( @"%@", [ qLog_ objectAtIndex: 4 ] );   
+}
+
+-(void)testSameDataImportDoesNotChangeDb
+{
+   NSError*  error_    = nil;
+
+   primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
+                                    @"Date"
+                                  , @"FacetId1"
+                                  , @"FacetId2"
+                                  , @"FacetId3"                                
+                                  , nil ];
+
+
+   NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
+   NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
+                                               ofType: @"csv" ];
+
+   [ [ NSFileManager defaultManager ] removeItemAtPath: @"4.sqlite"
+                                                 error: &error_ ];
+
+   CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"4.sqlite" 
+                                                             dataFileName: csvPath_ 
+                                                           databaseSchema: schema_ 
+                                                               primaryKey: primaryKey_ ];
+
+   MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+   STAssertNotNil( dbWrapper_, @"DB initialization error ");
+
+
+   [ converter_  storeDataInTable: @"Campaigns" 
+                            error: &error_ ];
+   STAssertNil( error_, @"Unexpected error" );
+   
+   
+   
+   [ converter_  storeDataInTable: @"Campaigns" 
+                            error: &error_ ];   
+   STAssertNil( error_, @"Unexpected error" );
+   
+   
+   NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"2" 
+                                                      ofType: @"sqlite" ];
+   
+   NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"4.sqlite" ];
+   NSData* expectedDb_ = [ NSData dataWithContentsOfFile: expectedDbPath_ ];
+   STAssertTrue( [ receivedDb_ isEqual: expectedDb_ ], @"database mismatch" );
 }
 
 @end

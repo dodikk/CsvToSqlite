@@ -12,7 +12,9 @@
 @dynamic databaseName;
 @dynamic dataFileName;
 
-@dynamic schema   ;
+@dynamic schema    ;
+@dynamic primaryKey;
+
 @dynamic csvSchema;
 
 @dynamic columnsParser;
@@ -23,6 +25,7 @@
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
+               primaryKey:( NSOrderedSet* )primaryKey_
             separatorChar:( char )separator_
                lineReader:( id<LineReader> )reader_
            dbWrapperClass:( Class )dbWrapperClass_
@@ -38,6 +41,7 @@
    INIT_ASSERT_NIL( schema_ );
    self.schema = schema_;
    
+   self.primaryKey = primaryKey_;
    self.lineReader = reader_;
    self.dbWrapper  = [ [ dbWrapperClass_ alloc ] initWithPath: databaseName_ ];
    self.columnsParser = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator_
