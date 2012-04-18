@@ -26,6 +26,39 @@
    }
 }
 
+
+-(NSString*)comaSeparatedList:( id )collection_
+{
+   NSMutableString* result_ = [ NSMutableString new ];
+
+   BOOL processingFirstItem_ = YES;
+   for ( NSString* columnName_ in collection_ )
+   {    
+      if ( processingFirstItem_ )
+      {
+         processingFirstItem_ = NO;
+      }
+      else
+      {
+         [ result_ appendString: @", " ];
+      }
+      
+      [ result_ appendString: columnName_ ];
+   }
+   
+   return result_;
+}
+
+-(NSString*)primaryKeyConstraint
+{
+   NSString* primaryKeyFormat_ = @", CONSTRAINT pkey PRIMARY KEY ( %@ )";
+   NSString* pkeyColumns_ = [ self comaSeparatedList: self.primaryKey.array ];
+   
+   NSString* result_ = [ NSString stringWithFormat: primaryKeyFormat_, pkeyColumns_ ];
+   
+   return result_;
+}
+
 -(void)createTableNamed:( NSString* )tableName_
                   error:( NSError** )errorPtr_
 {
@@ -59,8 +92,17 @@
       [ columns_ appendFormat: columnFormat_, columnName_, columnType_ ];
       *stop_ = NO;
    } ];
+
+   NSString* columnsClause_ = [ [ NSString alloc ] initWithString: columns_  ];
+   if ( nil != self.primaryKey )
+   {
+      NSString* pkeyClause_ = [ self primaryKeyConstraint ];
+      columnsClause_ = [ columnsClause_ stringByAppendingString: pkeyClause_ ];
+   }
    
-   NSString* query_ = [ NSString stringWithFormat: createFormat_, tableName_, columns_ ];
+   NSString* query_ = [ NSString stringWithFormat: createFormat_, tableName_, columnsClause_ ];
+   
+
    
    [ db_ createTable: query_ 
                error: errorPtr_ ];
@@ -76,25 +118,10 @@
    NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
 
 	
-   NSMutableString* headerFields_ = [ NSMutableString new ];
+   NSString* headerFields_ = [ self comaSeparatedList: self.csvSchema.array ];
    NSString* values_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
                                                          withString: @"', '" ];
 
-
-   BOOL processingFirstItem_ = YES;
-   for ( NSString* columnName_ in self.csvSchema.array )
-   {    
-      if ( processingFirstItem_ )
-      {
-         processingFirstItem_ = NO;
-      }
-      else
-      {
-         [ headerFields_ appendString: @", " ];
-      }
-      
-      [ headerFields_ appendString: columnName_ ];
-   }
 
    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
    
