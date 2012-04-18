@@ -77,6 +77,8 @@
 		7EA3A263153877150058C603 /* CsvSchemaMismatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */; };
 		7EA3A2661538793F0058C603 /* CsvInitializationError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2641538793F0058C603 /* CsvInitializationError.h */; };
 		7EA3A2671538793F0058C603 /* CsvInitializationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2651538793F0058C603 /* CsvInitializationError.m */; };
+		7EE54324153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
+		7EE54325153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +238,7 @@
 		7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaMismatchError.m; sourceTree = "<group>"; };
 		7EA3A2641538793F0058C603 /* CsvInitializationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvInitializationError.h; sourceTree = "<group>"; };
 		7EA3A2651538793F0058C603 /* CsvInitializationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvInitializationError.m; sourceTree = "<group>"; };
+		7EE54323153EACBC00565408 /* 4.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				7E998743153D9F0F00811BA8 /* 2.sqlite */,
+				7EE54323153EACBC00565408 /* 4.sqlite */,
 				7EA3A2441538399B0058C603 /* Empth.csv */,
 				7EA3A22C15380E560058C603 /* Campaigns.csv */,
 				7E99872E153D907400811BA8 /* Campaigns-small-win.csv */,
@@ -632,6 +636,7 @@
 				7EA3A25B153841F30058C603 /* Unix-NoHeader.csv in Resources */,
 				7E998730153D907400811BA8 /* Campaigns-small-win.csv in Resources */,
 				7E998745153D9F0F00811BA8 /* 2.sqlite in Resources */,
+				7EE54325153EACBC00565408 /* 4.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +652,7 @@
 				7EA3A25A153841F30058C603 /* Unix-NoHeader.csv in Resources */,
 				7E99872F153D907400811BA8 /* Campaigns-small-win.csv in Resources */,
 				7E998744153D9F0F00811BA8 /* 2.sqlite in Resources */,
+				7EE54324153EACBC00565408 /* 4.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,15 +13,21 @@
 -(void)setUp
 {
    schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-              @"DATETIME", @"Date"
+                @"DATETIME", @"Date"
               , @"INTEGER" , @"Visits"
               , @"INTEGER" , @"Value"                            
               , @"VARCHAR" , @"FacetId1"
               , @"VARCHAR" , @"FacetId2"
               , @"VARCHAR" , @"FacetId3"                            
               , nil ];
-   
-   
+
+
+   primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
+                    @"Date"
+                  , @"FacetId1"
+                  , @"FacetId2"
+                  , @"FacetId3"                                
+                  , nil ];
 }
 
 -(void)testCampaignImportQueries
@@ -149,14 +155,6 @@
    NSRange substringRange_ = { 0u, 0u };
    NSRange emptyRange_ =  { 0u, 0u };
    
-   schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-                            @"DATETIME", @"Date"
-                            , @"INTEGER" , @"Visits"
-                            , @"INTEGER" , @"Value"                            
-                            , @"VARCHAR" , @"FacetId1"
-                            , @"VARCHAR" , @"FacetId2"
-                            , @"VARCHAR" , @"FacetId3"                            
-                            , nil ];
    
    NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"Campaigns-small-win" 
                                                                                ofType: @"csv" ];
@@ -259,14 +257,7 @@
 {
    NSError*  error_    = nil;
 
-   primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
-                                    @"Date"
-                                  , @"FacetId1"
-                                  , @"FacetId2"
-                                  , @"FacetId3"                                
-                                  , nil ];
-
-
+   
    NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
    NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                ofType: @"csv" ];
@@ -294,7 +285,7 @@
    STAssertNil( error_, @"Unexpected error" );
    
    
-   NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"2" 
+   NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"4" 
                                                       ofType: @"sqlite" ];
    
    NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"4.sqlite" ];
