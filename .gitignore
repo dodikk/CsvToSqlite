@@ -9,4 +9,4 @@ svnignore.*
 xcuserdata
 *.xcworkspace
 .idea
-
+._*

@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "DbWrapper.h"
+#import <CsvToSqlite/DbWrapper.h>
 
 @interface MockDb : NSObject<DbWrapper>
 
