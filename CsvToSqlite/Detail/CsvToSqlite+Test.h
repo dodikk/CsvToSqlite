@@ -1,4 +1,4 @@
-#import "CsvToSqlite.h"
+#import <CsvToSqlite/CsvToSqlite.h>
 
 @class CsvColumnsParser;
 @protocol DbWrapper;
