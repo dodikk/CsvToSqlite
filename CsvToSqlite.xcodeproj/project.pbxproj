@@ -30,6 +30,8 @@
 		7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E31DEE0153707280043B5BE /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
 		7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */; };
+		7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
+		7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
 		7E9986F1153D4E9800811BA8 /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
 		7E9986F2153D4E9D00811BA8 /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
 		7E9986F4153D4EC200811BA8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */; };
@@ -203,6 +205,8 @@
 		7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqliteTests.h; sourceTree = "<group>"; };
 		7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CsvToSqliteTests.m; sourceTree = "<group>"; };
 		7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Framework.h"; sourceTree = "<group>"; };
+		7E96C70715406A0700E90751 /* CsvFailedImportTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvFailedImportTest.h; sourceTree = "<group>"; };
+		7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvFailedImportTest.mm; sourceTree = "<group>"; };
 		7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjcScopedGuard.xcodeproj; path = ../ObjcScopedGuard/ObjcScopedGuard/ObjcScopedGuard.xcodeproj; sourceTree = "<group>"; };
 		7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = ../fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
@@ -406,6 +410,8 @@
 				7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */,
 				7E998718153D67D800811BA8 /* DbImportTest.h */,
 				7E998719153D67D800811BA8 /* DbImportTest.mm */,
+				7E96C70715406A0700E90751 /* CsvFailedImportTest.h */,
+				7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */,
 			);
 			path = CsvToSqliteTests;
 			sourceTree = "<group>";
@@ -702,6 +708,7 @@
 				7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */,
 				7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 				7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */,
+				7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +741,7 @@
 				7E31DEE0153707280043B5BE /* CsvToSqliteTests.m in Sources */,
 				7EA3A23415380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 				7E99871A153D67D800811BA8 /* DbImportTest.mm in Sources */,
+				7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

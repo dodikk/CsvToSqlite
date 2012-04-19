@@ -129,78 +129,79 @@ using namespace ::Utils;
 
 
    std::ifstream stream_;
-   std::ifstream* pStream_ = &stream_;
-   GuardCallbackBlock streamGuardBlock_ = ^
-   {
-      pStream_->close();
-   };
-   ObjcScopedGuard streamGuard_( streamGuardBlock_ );
+   [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ]; // stream gets opened here
+
+    __block std::ifstream* pStream_ = &stream_;
+    GuardCallbackBlock streamGuardBlock_ = ^
+    {
+        pStream_->close();
+    };
+    ObjcScopedGuard streamGuard_( streamGuardBlock_ );
 
 
 
-   [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ];
 
-
-   @autoreleasepool 
-   {
-      NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
-      BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
-                                      matchesTableSchema: self.schema ];
-      if ( !isValidSchema_ )
-      {
-         *error_ = [ CsvSchemaMismatchError new ];
-         return NO;
-      }
-      self.csvSchema = csvSchema_;
+  NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
+  BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
+                                  matchesTableSchema: self.schema ];
+  if ( !isValidSchema_ )
+  {
+     *error_ = [ CsvSchemaMismatchError new ];
+     return NO;
+  }
+  self.csvSchema = csvSchema_;
 
 
 
-      [ self openDatabaseWithError: error_ ];
-      CHECK_ERROR__RET_BOOL( error_ );
-      GuardCallbackBlock closeDbBlock_ = ^
-      {
-         [ self closeDatabase ];
-      };
-      ObjcScopedGuard dbGuard_( closeDbBlock_ );
+  [ self openDatabaseWithError: error_ ];
+  CHECK_ERROR__RET_BOOL( error_ );
+  GuardCallbackBlock closeDbBlock_ = ^
+  {
+     [ self closeDatabase ];
+  };
+  ObjcScopedGuard dbGuard_( closeDbBlock_ );
 
-      
-      
-      
-      [ self createTableNamed: tableName_
-                        error: error_ ];
-      CHECK_ERROR__RET_BOOL( error_ );
+  
+  
+  
+  [ self createTableNamed: tableName_
+                    error: error_ ];
+  CHECK_ERROR__RET_BOOL( error_ );
 
 
-      
-      
-      std::string line_;
-      NSString* lineStr_ = nil;
-      while ( !stream_.eof() )
-      {
-         [ self.lineReader readLine: line_ 
-                         fromStream: stream_ ];
-         
-         
-         
-         size_t lineSize_ = line_.size();
-         if ( 0 == lineSize_ )
-         {
-            break;
-         }
+  
+  
+    std::string line_;
+    NSString* lineStr_ = nil;
+    while ( !stream_.eof() )
+    {
+    @autoreleasepool 
+    {
+     [ self.lineReader readLine: line_ 
+                     fromStream: stream_ ];
+     
+     
+     
+     size_t lineSize_ = line_.size();
+     if ( 0 == lineSize_ )
+     {
+        break;
+     }
 
-         void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
-         lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
-                                                      length: lineSize_
-                                                    encoding: NSUTF8StringEncoding
-                                                freeWhenDone: NO ];
-         
-         [ self storeLine: lineStr_ 
-                  inTable: tableName_
-                    error: error_];
-         
-         CHECK_ERROR__RET_BOOL( error_ );
-      }
-   }
+     void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
+     lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
+                                                  length: lineSize_
+                                                encoding: NSUTF8StringEncoding
+                                            freeWhenDone: NO ];
+     
+     [ self storeLine: lineStr_ 
+              inTable: tableName_
+                error: error_];
+     
+     CHECK_ERROR__RET_BOOL( error_ );
+    }
+    }
+
 
    return YES;
 }
