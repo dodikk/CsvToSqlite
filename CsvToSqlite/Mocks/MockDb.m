@@ -13,12 +13,12 @@
 
 -(id)initWithPath:(NSString*)inPath_
 {
-   return [ super init ];
+    return [ super init ];
 }
 
 -(NSArray*)queriesLog
 {
-   return [ self.mQueriesLog copy ];
+    return [ self.mQueriesLog copy ];
 }
 
 
@@ -26,39 +26,39 @@
 #pragma mark DbWrapper
 -(BOOL)open
 {
-   self.mQueriesLog = [ NSMutableArray new ];
-   return YES;
+    self.mQueriesLog = [ NSMutableArray new ];
+    return YES;
 }
 
 // TODO : adk - maybe cleanup the log
 -(BOOL)close
 {
-   return YES;
+    return YES;
 }
 
 
 -(NSError*)lastError
 {
-   return nil;
+    return nil;
 }
 
 -(BOOL)tableExists:(NSString*)tableName_
 {
-   return NO;
+    return NO;
 }
 
 -(BOOL)insert:( NSString* )sql_
         error:( NSError** )error_
 {
-   [ self.mQueriesLog addObject: sql_ ];
-   return YES;
+    [ self.mQueriesLog addObject: sql_ ];
+    return YES;
 }
 
 -(BOOL)createTable:( NSString* )sql_
              error:( NSError** )error_
 {
-   [ self.mQueriesLog addObject: sql_ ];
-   return YES;
+    [ self.mQueriesLog addObject: sql_ ];
+    return YES;
 }
 
 @end

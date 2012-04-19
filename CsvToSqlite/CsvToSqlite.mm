@@ -66,28 +66,27 @@ using namespace ::Utils;
           lineEndingStyle:( CsvLineEndings )lineEndingStyle_
       recordSeparatorChar:( char )separatorChar_
 {
-   static std::map< CsvLineEndings, Class > lineEndingsMap_;
-   if ( lineEndingsMap_.empty() )
-   {
-      lineEndingsMap_[ CSV_LE_WIN  ] = [ WindowsLineReader class ];
-      lineEndingsMap_[ CSV_LE_UNIX ] = [ UnixLineReader    class ];
-   }
-   
-   Class readerClass_ = lineEndingsMap_[ lineEndingStyle_ ];
-   if ( nil == readerClass_ )
-   {
-      NSLog( @"Unsupported line endings style : %d", lineEndingStyle_ );
-      return nil;
-   }
-   
-   
-   return [ self initWithDatabaseName: databaseName_
-                         dataFileName: dataFileName_ 
-                       databaseSchema: schema_
-                           primaryKey: primaryKey_
-                        separatorChar: separatorChar_
-                           lineReader: [ readerClass_ new ]
-                       dbWrapperClass: [ FMDatabase class ] ];
+    static std::map< CsvLineEndings, Class > lineEndingsMap_;
+    if ( lineEndingsMap_.empty() )
+    {
+        lineEndingsMap_[ CSV_LE_WIN  ] = [ WindowsLineReader class ];
+        lineEndingsMap_[ CSV_LE_UNIX ] = [ UnixLineReader    class ];
+    }
+
+    Class readerClass_ = lineEndingsMap_[ lineEndingStyle_ ];
+    if ( nil == readerClass_ )
+    {
+        NSLog( @"Unsupported line endings style : %d", lineEndingStyle_ );
+        return nil;
+    }
+
+    return [ self initWithDatabaseName: databaseName_
+                          dataFileName: dataFileName_ 
+                        databaseSchema: schema_
+                            primaryKey: primaryKey_
+                         separatorChar: separatorChar_
+                            lineReader: [ readerClass_ new ]
+                        dbWrapperClass: [ FMDatabase class ] ];
 }
 
 
@@ -96,42 +95,40 @@ using namespace ::Utils;
            databaseSchema:( NSDictionary* )schema_
                primaryKey:( NSOrderedSet* )primaryKey_
 {
-   return [ self initWithDatabaseName: databaseName_
-                         dataFileName: dataFileName_
-                       databaseSchema: schema_
-                           primaryKey: primaryKey_
-                      lineEndingStyle: CSV_LE_WIN
-                  recordSeparatorChar: ';' ];
+    return [ self initWithDatabaseName: databaseName_
+                          dataFileName: dataFileName_
+                        databaseSchema: schema_
+                            primaryKey: primaryKey_
+                       lineEndingStyle: CSV_LE_WIN
+                   recordSeparatorChar: ';' ];
 }
 
 
 -(BOOL)storeDataInTable:( NSString* )tableName_
                   error:( NSError** )error_
 {
-   if ( NULL == error_ )
-   {
-      NSString* errorMessage_ = @"[!!!ERROR!!!] : CsvToSqlite->storeDataInTable - NULL error not allowed";
-      
-      NSLog( @"%@", errorMessage_ );
-      NSAssert( NO, errorMessage_ );
-      return 0;
-   }
-   else if ( nil == tableName_ || @"" == tableName_ )
-   {
-      *error_ = [ CsvBadTableNameError new ];
-      return NO;
-   }
-   else if ( nil == self.columnsParser )
-   {
-      *error_ = [ CsvInitializationError new ];
-      return NO;
-   }
+    if ( NULL == error_ )
+    {
+        NSString* errorMessage_ = @"[!!!ERROR!!!] : CsvToSqlite->storeDataInTable - NULL error not allowed";
+
+        NSLog( @"%@", errorMessage_ );
+        NSAssert( NO, errorMessage_ );
+        return NO;
+    }
+    else if ( nil == tableName_ || @"" == tableName_ )
+    {
+        *error_ = [ CsvBadTableNameError new ];
+        return NO;
+    }
+    else if ( nil == self.columnsParser )
+    {
+        *error_ = [ CsvInitializationError new ];
+        return NO;
+    }
 
 
-   std::ifstream stream_;
-   [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ]; // stream gets opened here
-
-    __block std::ifstream* pStream_ = &stream_;
+    std::ifstream stream_;
+    std::ifstream* pStream_ = &stream_;
     GuardCallbackBlock streamGuardBlock_ = ^
     {
         pStream_->close();
@@ -140,33 +137,35 @@ using namespace ::Utils;
 
 
 
-
-  NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
-  BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
-                                  matchesTableSchema: self.schema ];
-  if ( !isValidSchema_ )
-  {
-     *error_ = [ CsvSchemaMismatchError new ];
-     return NO;
-  }
-  self.csvSchema = csvSchema_;
+    [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ];
 
 
+    NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
+    BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
+                                    matchesTableSchema: self.schema ];
+    if ( !isValidSchema_ )
+    {
+        *error_ = [ CsvSchemaMismatchError new ];
+        return NO;
+    }
+    self.csvSchema = csvSchema_;
 
-  [ self openDatabaseWithError: error_ ];
-  CHECK_ERROR__RET_BOOL( error_ );
-  GuardCallbackBlock closeDbBlock_ = ^
-  {
-     [ self closeDatabase ];
-  };
-  ObjcScopedGuard dbGuard_( closeDbBlock_ );
+
+
+    [ self openDatabaseWithError: error_ ];
+    CHECK_ERROR__RET_BOOL( error_ );
+    GuardCallbackBlock closeDbBlock_ = ^
+    {
+        [ self closeDatabase ];
+    };
+    ObjcScopedGuard dbGuard_( closeDbBlock_ );
 
   
   
   
-  [ self createTableNamed: tableName_
-                    error: error_ ];
-  CHECK_ERROR__RET_BOOL( error_ );
+    [ self createTableNamed: tableName_
+                      error: error_ ];
+    CHECK_ERROR__RET_BOOL( error_ );
 
 
   
@@ -175,35 +174,34 @@ using namespace ::Utils;
     NSString* lineStr_ = nil;
     while ( !stream_.eof() )
     {
-    @autoreleasepool 
-    {
-     [ self.lineReader readLine: line_ 
-                     fromStream: stream_ ];
-     
-     
-     
-     size_t lineSize_ = line_.size();
-     if ( 0 == lineSize_ )
-     {
-        break;
-     }
+        @autoreleasepool
+        {
+            [ self.lineReader readLine: line_ 
+                            fromStream: stream_ ];
+         
+         
+         
+            size_t lineSize_ = line_.size();
+            if ( 0 == lineSize_ )
+            {
+                break;
+            }
 
-     void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
-     lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
-                                                  length: lineSize_
-                                                encoding: NSUTF8StringEncoding
-                                            freeWhenDone: NO ];
-     
-     [ self storeLine: lineStr_ 
-              inTable: tableName_
-                error: error_];
-     
-     CHECK_ERROR__RET_BOOL( error_ );
+            void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
+            lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
+                                                         length: lineSize_
+                                                       encoding: NSUTF8StringEncoding
+                                                   freeWhenDone: NO ];
+
+            [ self storeLine: lineStr_ 
+                     inTable: tableName_
+                       error: error_];
+         
+            CHECK_ERROR__RET_BOOL( error_ );
+        }
     }
-    }
 
-
-   return YES;
+    return YES;
 }
 
 @end
