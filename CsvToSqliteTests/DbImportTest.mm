@@ -12,6 +12,15 @@
 
 -(void)setUp
 {
+    NSFileManager* fm_ = [ NSFileManager new ];
+    {
+        [ fm_ removeItemAtPath: @"2.sqlite" 
+                         error: NULL ]; 
+
+        [ fm_ removeItemAtPath: @"4.sqlite" 
+                         error: NULL ]; 
+    }
+    
    schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
                 @"DATETIME", @"Date"
               , @"INTEGER" , @"Visits"
@@ -28,6 +37,18 @@
                   , @"FacetId2"
                   , @"FacetId3"                                
                   , nil ];
+}
+
+-(void)tearDown
+{
+    NSFileManager* fm_ = [ NSFileManager new ];
+    {
+        [ fm_ removeItemAtPath: @"2.sqlite" 
+                         error: NULL ]; 
+        
+        [ fm_ removeItemAtPath: @"4.sqlite" 
+                         error: NULL ]; 
+    }
 }
 
 -(void)testCampaignImportQueries
@@ -120,9 +141,6 @@
    NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                ofType: @"csv" ];
    
-   [ [ NSFileManager defaultManager ] removeItemAtPath: @"2.sqlite"
-                                                 error: &error_ ];
-
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"2.sqlite" 
                                                              dataFileName: csvPath_ 
                                                            databaseSchema: schema_ 
@@ -338,8 +356,6 @@
    NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                ofType: @"csv" ];
 
-   [ [ NSFileManager defaultManager ] removeItemAtPath: @"4.sqlite"
-                                                 error: &error_ ];
 
    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"4.sqlite" 
                                                              dataFileName: csvPath_ 
