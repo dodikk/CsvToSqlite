@@ -1,6 +1,10 @@
 #import "CsvToSqliteTests.h"
 #import <CsvToSqlite/CsvToSqlite-Framework.h>
 
+#import "CsvInitializationError.h"
+
+#import <objc/message.h>
+
 @implementation CsvToSqliteTests
 
 @synthesize defaultSchema;
@@ -155,6 +159,27 @@
       STAssertEquals( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
       STAssertEquals( error_.code, 1, @"error code mismatch" );
    }   
+}
+
+-(void)testStoreRequiresColumnParser
+{
+    CsvToSqlite* converter_ = nil;
+    NSError* error_ = nil;
+    
+    converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"a"
+                                                 dataFileName: @"b" 
+                                               databaseSchema: self.defaultSchema
+                                                   primaryKey: nil ];
+    
+    objc_msgSend( converter_, @selector( setColumnsParser: ), nil );
+    
+    BOOL result_ = [ converter_ storeDataInTable: @"Values" 
+                                           error: &error_ ];
+        
+    STAssertFalse ( result_, @"error expected" );
+    STAssertNotNil( error_ , @"error expected" );
+    
+    STAssertTrue( [ error_ isMemberOfClass: [ CsvInitializationError class ] ], @"error class mismatch" );
 }
 
 @end

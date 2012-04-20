@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
+		7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
 		7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
 		7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
 		7E195ABF153713440050C635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
@@ -180,6 +182,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvSchemaValidatorTest.h; sourceTree = "<group>"; };
+		7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaValidatorTest.m; sourceTree = "<group>"; };
 		7E195AB51537117B0050C635 /* CsvMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvMacros.h; sourceTree = "<group>"; };
 		7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CsvToSqliteTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CsvToSqliteTests copy-Info.plist"; path = "/Users/dodikk/projects/work/CsvToSqlite/CsvToSqliteTests copy-Info.plist"; sourceTree = "<absolute>"; };
@@ -412,6 +416,8 @@
 				7E998719153D67D800811BA8 /* DbImportTest.mm */,
 				7E96C70715406A0700E90751 /* CsvFailedImportTest.h */,
 				7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */,
+				7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */,
+				7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */,
 			);
 			path = CsvToSqliteTests;
 			sourceTree = "<group>";
@@ -709,6 +715,7 @@
 				7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 				7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */,
 				7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
+				7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +749,7 @@
 				7EA3A23415380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
 				7E99871A153D67D800811BA8 /* DbImportTest.mm in Sources */,
 				7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
+				7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
