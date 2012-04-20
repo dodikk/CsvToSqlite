@@ -27,32 +27,10 @@
 }
 
 
--(NSString*)comaSeparatedList:( id )collection_
-{
-    NSMutableString* result_ = [ NSMutableString new ];
-
-    BOOL processingFirstItem_ = YES;
-    for ( NSString* columnName_ in collection_ )
-    {    
-        if ( processingFirstItem_ )
-        {
-            processingFirstItem_ = NO;
-        }
-        else
-        {
-            [ result_ appendString: @", " ];
-        }
-
-        [ result_ appendString: columnName_ ];
-    }
-
-    return result_;
-}
-
 -(NSString*)primaryKeyConstraint
 {
     NSString* primaryKeyFormat_ = @", CONSTRAINT pkey PRIMARY KEY ( %@ )";
-    NSString* pkeyColumns_ = [ self comaSeparatedList: self.primaryKey.array ];
+    NSString* pkeyColumns_ = [ self.primaryKey.array componentsJoinedByString: @", " ];
 
     NSString* result_ = [ NSString stringWithFormat: primaryKeyFormat_, pkeyColumns_ ];
 
@@ -117,7 +95,7 @@
     NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
 
 
-    NSString* headerFields_ = [ self comaSeparatedList: self.csvSchema.array ];
+    NSString* headerFields_ = [ self.csvSchema.array componentsJoinedByString: @", " ];
     NSString* values_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
                                                           withString: @"', '" ];
 
