@@ -51,4 +51,24 @@
     }
 }
 
+-(void)testUnsupportedSqlTypeReusltsInNo
+{
+    BOOL result_ = YES;
+
+    NSDictionary* invalidSchema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
+                                      @"a" , @"Date"
+                                    , @"b" , @"Visits"
+                                    , @"c" , @"Value"                            
+                                    , @"d" , @"FacetId1"
+                                    , @"e" , @"FacetId2"
+                                    , @"f" , @"FacetId3"                            
+                                    , nil ];
+
+    result_ = [ DBTableValidator csvSchema: primaryKey_
+                        matchesTableSchema: invalidSchema_ ];
+
+    STAssertFalse( result_, @"false expected" );
+
+}
+
 @end

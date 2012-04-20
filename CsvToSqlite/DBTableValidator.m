@@ -1,4 +1,6 @@
 #import "DBTableValidator.h"
+#import "SqliteTypes.h"
+
 
 @implementation DBTableValidator
 
@@ -15,6 +17,10 @@ matchesTableSchema:( NSDictionary* )tableSchema_
     {
         NSString* type_ = [ tableSchema_ objectForKey: column_ ];
         if ( nil == type_ )
+        {
+            return NO;
+        }
+        else if ( ![ [ SqliteTypes typesSet ] containsObject: type_ ] )
         {
             return NO;
         }
