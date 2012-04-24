@@ -13,7 +13,7 @@
     return (id<DbWrapper>)[ self dbWrapper ];
 }
 
--(void)openDatabaseWithError:( NSError** )errorPtr_
+-(BOOL)openDatabaseWithError:( NSError** )errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );
 
@@ -23,7 +23,10 @@
     if ( !result_ )
     {
         *errorPtr_ = [ [ db_ lastError ] copy ];
+        return NO;
     }
+    
+    return YES;
 }
 
 
@@ -37,7 +40,7 @@
     return result_;
 }
 
--(void)createTableNamed:( NSString* )tableName_
+-(BOOL)createTableNamed:( NSString* )tableName_
                   error:( NSError** )errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
@@ -45,7 +48,7 @@
     id<DbWrapper> db_ = [ self castedWrapper ];
     if ( [ db_ tableExists: tableName_ ] )
     {
-        return;
+        return YES;
     }
 
     NSString* createFormat_ = @"CREATE TABLE [%@] ( %@ );";
@@ -81,11 +84,11 @@
    
 
    
-    [ db_ createTable: query_ 
-                error: errorPtr_ ];
+    return [ db_ createTable: query_ 
+                       error: errorPtr_ ];
 }
 
--(void)storeLine:( NSString* )line_
+-(BOOL)storeLine:( NSString* )line_
          inTable:( NSString* )tableName_
            error:( NSError** )errorPtr_
 {
@@ -102,8 +105,8 @@
 
     NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
 
-    [ [ self castedWrapper ] insert: query_
-                              error: errorPtr_ ];
+    return [ [ self castedWrapper ] insert: query_
+                                     error: errorPtr_ ];
 }
 
 -(void)closeDatabase

@@ -5,12 +5,12 @@
 
 -(id<DbWrapper>)castedWrapper;
 
--(void)openDatabaseWithError:( NSError** )errorPtr_;
+-(BOOL)openDatabaseWithError:( NSError** )errorPtr_;
 
--(void)createTableNamed:( NSString* )tableName_
+-(BOOL)createTableNamed:( NSString* )tableName_
                   error:( NSError** )errorPtr_;
 
--(void)storeLine:( NSString* )line_
+-(BOOL)storeLine:( NSString* )line_
          inTable:( NSString* )tableName_
            error:( NSError** )errorPtr_;
 
