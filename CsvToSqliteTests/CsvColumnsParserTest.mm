@@ -45,7 +45,7 @@
    STAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
    STAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
    STAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch" );
+   STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch - %@", result_ );
 }
 
 -(void)testParseColumnsReturnsNilForBadStream

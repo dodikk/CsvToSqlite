@@ -260,7 +260,7 @@
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
       @"VALUES ( '20081225', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 4 ];
-      STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
+      STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch - %@", query_ );
    }   
    
    
@@ -336,7 +336,7 @@
       STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
       
       substringRange_ = [ query_ rangeOfString: @"[FacetId3] VARCHAR" ];
-      STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+      STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing - %@", query_ );
    }
  
    
