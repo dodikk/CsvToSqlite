@@ -41,14 +41,14 @@
 
 -(void)tearDown
 {
-    NSFileManager* fm_ = [ NSFileManager new ];
-    {
-        [ fm_ removeItemAtPath: @"2.sqlite" 
-                         error: NULL ]; 
-        
-        [ fm_ removeItemAtPath: @"4.sqlite" 
-                         error: NULL ]; 
-    }
+//    NSFileManager* fm_ = [ NSFileManager new ];
+//    {
+//        [ fm_ removeItemAtPath: @"2.sqlite" 
+//                         error: NULL ]; 
+//        
+//        [ fm_ removeItemAtPath: @"4.sqlite" 
+//                         error: NULL ]; 
+//    }
 }
 
 -(void)testCampaignImportQueries
@@ -383,6 +383,32 @@
    NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"4.sqlite" ];
    NSData* expectedDb_ = [ NSData dataWithContentsOfFile: expectedDbPath_ ];
    STAssertTrue( [ receivedDb_ isEqual: expectedDb_ ], @"database mismatch" );
+}
+
+-(void)testHeaderOnlyCsvImportedCorrectly
+{
+    NSError*  error_    = nil;
+
+    NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
+    NSString* csvPath_ = [ mainBundle_ pathForResource: @"OnlyHeader" 
+                                                ofType: @"csv" ];
+
+    
+    
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"OnlyHeader.sqlite" 
+                                                              dataFileName: csvPath_ 
+                                                            databaseSchema: schema_ 
+                                                                primaryKey: primaryKey_
+                                                           lineEndingStyle: CSV_LE_UNIX
+                                                       recordSeparatorChar: ';' ];    
+    
+    STAssertNotNil( converter_, @"DB initialization error" );
+    
+    BOOL result_ = [ converter_ storeDataInTable: @"Campaigns"
+                                           error: &error_ ];
+
+    STAssertTrue( result_, @"Unexpected import error" );
+    STAssertNil ( error_ , @"Unexpected import error" );
 }
 
 @end
