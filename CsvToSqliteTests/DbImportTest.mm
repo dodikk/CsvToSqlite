@@ -41,14 +41,14 @@
 
 -(void)tearDown
 {
-//    NSFileManager* fm_ = [ NSFileManager new ];
-//    {
-//        [ fm_ removeItemAtPath: @"2.sqlite" 
-//                         error: NULL ]; 
-//        
-//        [ fm_ removeItemAtPath: @"4.sqlite" 
-//                         error: NULL ]; 
-//    }
+    NSFileManager* fm_ = [ NSFileManager new ];
+    {
+        [ fm_ removeItemAtPath: @"2.sqlite" 
+                         error: NULL ]; 
+        
+        [ fm_ removeItemAtPath: @"4.sqlite" 
+                         error: NULL ]; 
+    }
 }
 
 -(void)testCampaignImportQueries
@@ -409,6 +409,40 @@
 
     STAssertTrue( result_, @"Unexpected import error" );
     STAssertNil ( error_ , @"Unexpected import error" );
+}
+
+-(void)testDamagedCsvPartiallyImportedWithError
+{
+    //line11 is damaged
+    NSError*  error_    = nil;
+    
+    NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
+    NSString* csvPath_ = [ mainBundle_ pathForResource: @"Damaged" 
+                                                ofType: @"csv" ];
+    
+    
+    
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"Damaged.sqlite" 
+                                                              dataFileName: csvPath_ 
+                                                            databaseSchema: schema_ 
+                                                                primaryKey: primaryKey_
+                                                           lineEndingStyle: CSV_LE_UNIX
+                                                       recordSeparatorChar: ';' ];    
+    
+    STAssertNotNil( converter_, @"DB initialization error" );
+    
+    BOOL result_ = [ converter_ storeDataInTable: @"Campaigns"
+                                           error: &error_ ];
+    
+    STAssertFalse ( result_, @"Import error expected" );
+    STAssertNotNil( error_ , @"Import error expected" );
+    
+    
+    
+    STAssertTrue( [ error_.domain isEqualToString: @"FMDatabase" ], @"error domain mismatch" );
+    STAssertTrue( error_.code == 1, @"error code mismatch" );
+    
+    STAssertTrue( [ error_.localizedDescription isEqualToString: @"4 values for 6 columns" ], @"error description mismatch" );
 }
 
 @end

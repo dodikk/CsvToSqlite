@@ -34,8 +34,8 @@
 		7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */; };
 		7E5EC4A315580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
 		7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
-		7E5EC4A61558118400E946C9 /* Campaigns-damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Campaigns-damaged.csv */; };
-		7E5EC4A71558118400E946C9 /* Campaigns-damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Campaigns-damaged.csv */; };
+		7E5EC4A61558118400E946C9 /* Damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Damaged.csv */; };
+		7E5EC4A71558118400E946C9 /* Damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Damaged.csv */; };
 		7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
 		7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
 		7E9986F1153D4E9800811BA8 /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
@@ -212,7 +212,7 @@
 		7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CsvToSqliteTests.m; sourceTree = "<group>"; };
 		7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Framework.h"; sourceTree = "<group>"; };
 		7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OnlyHeader.csv; sourceTree = "<group>"; };
-		7E5EC4A51558118400E946C9 /* Campaigns-damaged.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Campaigns-damaged.csv"; sourceTree = "<group>"; };
+		7E5EC4A51558118400E946C9 /* Damaged.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Damaged.csv; sourceTree = "<group>"; };
 		7E96C70715406A0700E90751 /* CsvFailedImportTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvFailedImportTest.h; sourceTree = "<group>"; };
 		7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvFailedImportTest.mm; sourceTree = "<group>"; };
 		7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjcScopedGuard.xcodeproj; path = ../ObjcScopedGuard/ObjcScopedGuard/ObjcScopedGuard.xcodeproj; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 				7E998743153D9F0F00811BA8 /* 2.sqlite */,
 				7EE54323153EACBC00565408 /* 4.sqlite */,
 				7EA3A22C15380E560058C603 /* Campaigns.csv */,
-				7E5EC4A51558118400E946C9 /* Campaigns-damaged.csv */,
+				7E5EC4A51558118400E946C9 /* Damaged.csv */,
 				7E99872E153D907400811BA8 /* Campaigns-small-win.csv */,
 				7EA3A22D15380E560058C603 /* campaigns.sqlite */,
 				7EA3A256153840DB0058C603 /* UnixTest.csv */,
@@ -660,7 +660,7 @@
 				7E998745153D9F0F00811BA8 /* 2.sqlite in Resources */,
 				7EE54325153EACBC00565408 /* 4.sqlite in Resources */,
 				7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */,
-				7E5EC4A71558118400E946C9 /* Campaigns-damaged.csv in Resources */,
+				7E5EC4A71558118400E946C9 /* Damaged.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +677,7 @@
 				7E998744153D9F0F00811BA8 /* 2.sqlite in Resources */,
 				7EE54324153EACBC00565408 /* 4.sqlite in Resources */,
 				7E5EC4A315580CA200E946C9 /* OnlyHeader.csv in Resources */,
-				7E5EC4A61558118400E946C9 /* Campaigns-damaged.csv in Resources */,
+				7E5EC4A61558118400E946C9 /* Damaged.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

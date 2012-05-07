@@ -192,13 +192,13 @@ using namespace ::Utils;
                                                          length: lineSize_
                                                        encoding: NSUTF8StringEncoding
                                                    freeWhenDone: NO ];
-
-            [ self storeLine: lineStr_ 
-                     inTable: tableName_
-                       error: error_];
-         
-            CHECK_ERROR__RET_BOOL( error_ );
         }
+
+        [ self storeLine: lineStr_ 
+                 inTable: tableName_
+                   error: error_];
+
+        CHECK_ERROR__RET_BOOL( error_ );
     }
 
     return YES;
