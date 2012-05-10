@@ -42,4 +42,12 @@ static NSSet* TYPES_SET = nil;
    return TYPES_SET;
 }
 
++(BOOL)isSqlDateType:( NSString* )sqlType_
+{
+    BOOL hasDatetime_ = [ sqlType_ isEqualToString: SQL_DATETIME ];
+    BOOL hasDate_     = [ sqlType_ isEqualToString: SQL_DATE     ];
+    
+    return hasDatetime_ || hasDate_;
+}
+
 @end 
