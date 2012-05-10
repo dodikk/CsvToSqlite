@@ -85,6 +85,8 @@
 		7EA3A263153877150058C603 /* CsvSchemaMismatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */; };
 		7EA3A2661538793F0058C603 /* CsvInitializationError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2641538793F0058C603 /* CsvInitializationError.h */; };
 		7EA3A2671538793F0058C603 /* CsvInitializationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2651538793F0058C603 /* CsvInitializationError.m */; };
+		7ED61742155BBE6400DE6328 /* libESLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED61720155BBDE000DE6328 /* libESLocale.a */; };
+		7ED61743155BBE6800DE6328 /* libESLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED61720155BBDE000DE6328 /* libESLocale.a */; };
 		7EE54324153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
 		7EE54325153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
 /* End PBXBuildFile section */
@@ -181,6 +183,48 @@
 			remoteGlobalIDString = 7E8B6C4715388BD500435EDA;
 			remoteInfo = ObjcScopedGuard;
 		};
+		7ED6171F155BBDE000DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7ED3E57715400C1E008268CF;
+			remoteInfo = ESLocale;
+		};
+		7ED61721155BBDE000DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7ED3E58715400C1E008268CF;
+			remoteInfo = ESLocaleTests;
+		};
+		7ED61723155BBDE000DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7ED3E5B515400C8E008268CF;
+			remoteInfo = "ESLocaleTests-CI";
+		};
+		7ED6173C155BBE5200DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED3E57615400C1E008268CF;
+			remoteInfo = ESLocale;
+		};
+		7ED6173E155BBE5700DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED3E57615400C1E008268CF;
+			remoteInfo = ESLocale;
+		};
+		7ED61740155BBE5D00DE6328 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED3E57615400C1E008268CF;
+			remoteInfo = ESLocale;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +296,7 @@
 		7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaMismatchError.m; sourceTree = "<group>"; };
 		7EA3A2641538793F0058C603 /* CsvInitializationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvInitializationError.h; sourceTree = "<group>"; };
 		7EA3A2651538793F0058C603 /* CsvInitializationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvInitializationError.m; sourceTree = "<group>"; };
+		7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESLocale.xcodeproj; path = ../ESLocale/ESLocale.xcodeproj; sourceTree = "<group>"; };
 		7EE54323153EACBC00565408 /* 4.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -260,6 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED61742155BBE6400DE6328 /* libESLocale.a in Frameworks */,
 				7E998708153D524000811BA8 /* libFMDB.a in Frameworks */,
 				7EA3A23A1538105E0058C603 /* libCsvToSqlite.a in Frameworks */,
 				7E9986F2153D4E9D00811BA8 /* libObjcScopedGuard.a in Frameworks */,
@@ -284,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED61743155BBE6800DE6328 /* libESLocale.a in Frameworks */,
 				7E998707153D523A00811BA8 /* libFMDB.a in Frameworks */,
 				7E31DED7153707280043B5BE /* libCsvToSqlite.a in Frameworks */,
 				7E9986F1153D4E9800811BA8 /* libObjcScopedGuard.a in Frameworks */,
@@ -364,6 +411,7 @@
 		7E31DEC1153707280043B5BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */,
 				7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */,
 				7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */,
 				7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */,
@@ -479,6 +527,16 @@
 			path = LineReaders;
 			sourceTree = "<group>";
 		};
+		7ED6171A155BBDE000DE6328 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7ED61720155BBDE000DE6328 /* libESLocale.a */,
+				7ED61722155BBDE000DE6328 /* ESLocaleTests.octest */,
+				7ED61724155BBDE000DE6328 /* ESLocaleTests copy.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -522,6 +580,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7ED61741155BBE5D00DE6328 /* PBXTargetDependency */,
 				7E998727153D6D4600811BA8 /* PBXTargetDependency */,
 				7E998725153D6D4400811BA8 /* PBXTargetDependency */,
 				7E195AB8153713440050C635 /* PBXTargetDependency */,
@@ -542,6 +601,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7ED6173D155BBE5200DE6328 /* PBXTargetDependency */,
 				7E998706153D521C00811BA8 /* PBXTargetDependency */,
 				7E9986EF153D457D00811BA8 /* PBXTargetDependency */,
 			);
@@ -562,6 +622,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7ED6173F155BBE5700DE6328 /* PBXTargetDependency */,
 				7E998723153D6D3F00811BA8 /* PBXTargetDependency */,
 				7E998721153D6D3800811BA8 /* PBXTargetDependency */,
 				7E31DED6153707280043B5BE /* PBXTargetDependency */,
@@ -590,6 +651,10 @@
 			productRefGroup = 7E31DEC0153707280043B5BE /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 7ED6171A155BBDE000DE6328 /* Products */;
+					ProjectRef = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+				},
 				{
 					ProductGroup = 7E9986F9153D51C500811BA8 /* Products */;
 					ProjectRef = 7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */;
@@ -642,6 +707,27 @@
 			fileType = archive.ar;
 			path = libFMDB.a;
 			remoteRef = 7E998703153D51C600811BA8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7ED61720155BBDE000DE6328 /* libESLocale.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libESLocale.a;
+			remoteRef = 7ED6171F155BBDE000DE6328 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7ED61722155BBDE000DE6328 /* ESLocaleTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ESLocaleTests.octest;
+			remoteRef = 7ED61721155BBDE000DE6328 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7ED61724155BBDE000DE6328 /* ESLocaleTests copy.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ESLocaleTests copy.octest";
+			remoteRef = 7ED61723155BBDE000DE6328 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -802,6 +888,21 @@
 			name = ObjcScopedGuard;
 			targetProxy = 7E998726153D6D4600811BA8 /* PBXContainerItemProxy */;
 		};
+		7ED6173D155BBE5200DE6328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESLocale;
+			targetProxy = 7ED6173C155BBE5200DE6328 /* PBXContainerItemProxy */;
+		};
+		7ED6173F155BBE5700DE6328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESLocale;
+			targetProxy = 7ED6173E155BBE5700DE6328 /* PBXContainerItemProxy */;
+		};
+		7ED61741155BBE5D00DE6328 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESLocale;
+			targetProxy = 7ED61740155BBE5D00DE6328 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -882,6 +983,9 @@
 				HEADER_SEARCH_PATHS = (
 					../ObjcScopedGuard/ObjcScopedGuard,
 					../fmdb/src,
+					../ESLocale,
+					..,
+					.,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
@@ -923,7 +1027,6 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				HEADER_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
@@ -978,6 +1081,9 @@
 				HEADER_SEARCH_PATHS = (
 					../ObjcScopedGuard/ObjcScopedGuard,
 					../fmdb/src,
+					../ESLocale,
+					..,
+					.,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
@@ -1011,6 +1117,9 @@
 				HEADER_SEARCH_PATHS = (
 					../ObjcScopedGuard/ObjcScopedGuard,
 					../fmdb/src,
+					../ESLocale,
+					..,
+					.,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
@@ -1071,7 +1180,6 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				HEADER_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
@@ -1088,7 +1196,6 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				HEADER_SEARCH_PATHS = .;
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_AFTER_BUILD = NO;
