@@ -1,7 +1,10 @@
 #import "CsvToSqlite+Database.h"
 #import "CsvToSqlite+Test.h"
 
+#import "CsvSchemaMismatchError.h"
+
 #import "CsvColumnsParser.h"
+#import "SqliteTypes.h"
 
 #import "CsvMacros.h"
 
@@ -88,25 +91,121 @@
                        error: errorPtr_ ];
 }
 
+
+-(BOOL)sqlSchemaHasDates
+{
+    __block BOOL result_ = NO;
+    [ self.schema.allValues enumerateObjectsUsingBlock: ^(NSString* schemaType_, NSUInteger idx_, BOOL *stop_) 
+    {
+        if ( [ SqliteTypes isSqlDateType: schemaType_ ] )
+        {
+            result_ = YES;
+            *stop_  = YES;
+        }
+    } ];
+
+    return result_;
+}
+
+
+-(BOOL)parseAndStoreLine:( NSString* )line_
+                 inTable:( NSString* )tableName_
+                   error:( NSError** )errorPtr_
+{
+    NSParameterAssert( errorPtr_ != NULL );
+    NSAssert( self.csvDateFormat, @"Csv date format not set" );
+    
+    
+    NSOrderedSet* csvSchema_ = self.csvSchema;
+    NSArray* lineRecords_ = [ line_ componentsSeparatedByString: self.columnsParser.separatorString ];
+    if ( [ lineRecords_ count ] != [ csvSchema_ count ] )
+    {
+        *errorPtr_ = [ CsvSchemaMismatchError new ];
+        return NO;
+    }
+
+    NSDate* date_ = nil;
+    NSString* wrappedLineRecord_ = nil;
+    
+    NSDateFormatter* csvFormatter_ = [ ESLocaleFactory posixDateFormatter ];
+    csvFormatter_.dateFormat = self.csvDateFormat;
+    
+    NSDateFormatter* sqlFormatter_ = [ ESLocaleFactory posixDateFormatter ];
+    sqlFormatter_.dateFormat = @"yyyy-MM-dd";
+    
+    NSMutableArray* wrappedLine_ = [ NSMutableArray new ];
+
+    
+    NSUInteger i_ = 0;
+    for ( NSString* lineRecord_ in lineRecords_ )
+    {
+        NSString* sqlType_ = [ self.schema objectForKey: [ csvSchema_ objectAtIndex: i_ ] ];
+        if ( [ SqliteTypes isSqlDateType: sqlType_ ] )
+        {
+            date_ = [ csvFormatter_ dateFromString: lineRecord_ ];
+            wrappedLineRecord_ = [ sqlFormatter_ stringFromDate: date_ ];
+        }
+        else
+        {
+            wrappedLineRecord_ = lineRecord_;
+        }
+        
+        [ wrappedLine_ addObject: [ NSString stringWithFormat: @"'%@'", wrappedLineRecord_ ] ];
+
+        ++i_;
+    }
+
+    
+    
+    NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( %@ );";
+    NSString* headerFields_ = [ self.csvSchema.array componentsJoinedByString: @", " ];
+    NSString* values_ = [ wrappedLine_ componentsJoinedByString: @", " ];
+
+    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
+    
+    return [ [ self castedWrapper ] insert: query_
+                                     error: errorPtr_ ];
+}
+
+-(BOOL)storeLineAsIs:(NSString *)line_ 
+             inTable:(NSString *)tableName_ 
+               error:(NSError *__autoreleasing *)errorPtr_
+{
+    NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
+    
+    
+    NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
+    
+    
+    NSString* headerFields_ = [ self.csvSchema.array componentsJoinedByString: @", " ];
+    NSString* values_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
+                                                          withString: @"', '" ];
+    
+    
+    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
+    
+    return [ [ self castedWrapper ] insert: query_
+                                     error: errorPtr_ ];
+}
+
 -(BOOL)storeLine:( NSString* )line_
          inTable:( NSString* )tableName_
            error:( NSError** )errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
-
-   
-    NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
-
-
-    NSString* headerFields_ = [ self.csvSchema.array componentsJoinedByString: @", " ];
-    NSString* values_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
-                                                          withString: @"', '" ];
-
-
-    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
-
-    return [ [ self castedWrapper ] insert: query_
-                                     error: errorPtr_ ];
+    
+    if ( [ self sqlSchemaHasDates ] )
+    {
+        return [ self parseAndStoreLine: line_ 
+                                inTable: tableName_ 
+                                  error: errorPtr_ ];
+    }
+    else 
+    {
+        return [ self storeLineAsIs: line_ 
+                            inTable: tableName_ 
+                              error: errorPtr_ ];
+    }
 }
 
 -(void)closeDatabase

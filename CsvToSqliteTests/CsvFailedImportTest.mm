@@ -26,6 +26,7 @@
                                                              separatorChar: ';'
                                                                 lineReader: [ UnixLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
+    converter_.csvDateFormat = @"yyyyMMdd";    
     
     MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -57,6 +58,7 @@
                                                                 primaryKey: nil
                                                            lineEndingStyle: CSV_LE_MAC_LEGACY 
                                                        recordSeparatorChar: ';' ];
+    converter_.csvDateFormat = @"yyyyMMdd";    
 
     STAssertNil( converter_, @"Not supported line endings : nil expected" );
 }

@@ -3,10 +3,11 @@
 
 @interface CsvToSqlite : NSObject
 
-@property ( nonatomic, strong, readonly ) NSString* databaseName  ;
-@property ( nonatomic, strong, readonly ) NSString* dataFileName  ;
-@property ( nonatomic, strong, readonly ) NSDictionary* schema    ;
-@property ( nonatomic, strong, readonly ) NSOrderedSet* primaryKey;
+@property ( nonatomic, strong, readonly  ) NSString*     databaseName  ;
+@property ( nonatomic, strong, readonly  ) NSString*     dataFileName  ;
+@property ( nonatomic, strong, readonly  ) NSDictionary* schema        ;
+@property ( nonatomic, strong, readonly  ) NSOrderedSet* primaryKey    ;
+@property ( nonatomic, strong, readwrite ) NSString*     csvDateFormat ;
 
 -(id)dbWrapper;
 

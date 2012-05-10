@@ -46,6 +46,7 @@ using namespace ::Utils;
 @synthesize schema       ;
 @synthesize primaryKey   ;
 @synthesize csvSchema    ;
+@synthesize csvDateFormat;
 
 @synthesize columnsParser;
 @synthesize lineReader   ;
@@ -95,12 +96,15 @@ using namespace ::Utils;
            databaseSchema:( NSDictionary* )schema_
                primaryKey:( NSOrderedSet* )primaryKey_
 {
-    return [ self initWithDatabaseName: databaseName_
-                          dataFileName: dataFileName_
-                        databaseSchema: schema_
-                            primaryKey: primaryKey_
-                       lineEndingStyle: CSV_LE_WIN
-                   recordSeparatorChar: ';' ];
+    CsvToSqlite* result_ =  [ self initWithDatabaseName: databaseName_
+                                           dataFileName: dataFileName_
+                                         databaseSchema: schema_
+                                             primaryKey: primaryKey_
+                                        lineEndingStyle: CSV_LE_WIN
+                                    recordSeparatorChar: ';' ];
+    result_.csvDateFormat = @"yyyyMMdd";
+    
+    return result_;
 }
 
 

@@ -72,6 +72,8 @@
                                                                lineReader: [ UnixLineReader new ] 
                                                            dbWrapperClass: [ MockDb class ] ];
    
+   converter_.csvDateFormat = @"yyyyMMdd";
+    
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
@@ -123,7 +125,7 @@
 
    {
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-                  @"VALUES ( '20081222', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+                  @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 1 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
@@ -145,6 +147,7 @@
                                                              dataFileName: csvPath_ 
                                                            databaseSchema: schema_ 
                                                                primaryKey: nil ];
+   converter_.csvDateFormat = @"yyyyMMdd";
    
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -184,6 +187,8 @@
                                                             separatorChar: ';'
                                                                lineReader: [ WindowsLineReader new ] 
                                                            dbWrapperClass: [ MockDb class ] ];
+   converter_.csvDateFormat = @"yyyyMMdd";
+    
    
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -237,28 +242,28 @@
    
    {
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-      @"VALUES ( '20081222', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+      @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 1 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
    
    {
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-      @"VALUES ( '20081223', '32', '200', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+      @"VALUES ( '2008-12-23', '32', '200', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 2 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
    
    {
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-      @"VALUES ( '20081224', '14', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+      @"VALUES ( '2008-12-24', '14', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 3 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
    }
 
    {
       expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-      @"VALUES ( '20081225', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+      @"VALUES ( '2008-12-25', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
       query_    = [ qLog_ objectAtIndex: 4 ];
       STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch - %@", query_ );
    }   
@@ -289,6 +294,7 @@
                                                             separatorChar: ';'
                                                                lineReader: [ WindowsLineReader new ] 
                                                            dbWrapperClass: [ MockDb class ] ];
+    converter_.csvDateFormat = @"yyyyMMdd";
    
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -361,6 +367,7 @@
                                                              dataFileName: csvPath_ 
                                                            databaseSchema: schema_ 
                                                                primaryKey: primaryKey_ ];
+        converter_.csvDateFormat = @"yyyyMMdd";
 
    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
    STAssertNotNil( dbWrapper_, @"DB initialization error ");
@@ -401,6 +408,7 @@
                                                                 primaryKey: primaryKey_
                                                            lineEndingStyle: CSV_LE_UNIX
                                                        recordSeparatorChar: ';' ];    
+        converter_.csvDateFormat = @"yyyyMMdd";
     
     STAssertNotNil( converter_, @"DB initialization error" );
     
@@ -428,6 +436,7 @@
                                                                 primaryKey: primaryKey_
                                                            lineEndingStyle: CSV_LE_UNIX
                                                        recordSeparatorChar: ';' ];    
+        converter_.csvDateFormat = @"yyyyMMdd";
     
     STAssertNotNil( converter_, @"DB initialization error" );
     
@@ -439,10 +448,8 @@
     
     
     
-    STAssertTrue( [ error_.domain isEqualToString: @"FMDatabase" ], @"error domain mismatch" );
-    STAssertTrue( error_.code == 1, @"error code mismatch" );
-    
-    STAssertTrue( [ error_.localizedDescription isEqualToString: @"4 values for 6 columns" ], @"error description mismatch" );
+    STAssertTrue( [ error_.domain isEqualToString: @"org.EmbeddedSources.CSV.import" ], @"error domain mismatch" );
+    STAssertTrue( error_.code == 2, @"error code mismatch" );
 }
 
 @end
