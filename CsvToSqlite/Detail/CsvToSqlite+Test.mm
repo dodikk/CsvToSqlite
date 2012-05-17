@@ -21,6 +21,9 @@
 @dynamic lineReader   ;
 @dynamic dbWrapper    ;
 
+@dynamic csvFormatter ;
+@dynamic ansiFormatter;
+
 
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
@@ -30,25 +33,28 @@
                lineReader:( id<LineReader> )reader_
            dbWrapperClass:( Class )dbWrapperClass_
 {
-   self = [ super init ];
-   
-   INIT_ASSERT_EMPTY_STRING( databaseName_ );
-   self.databaseName = databaseName_;
-   
-   INIT_ASSERT_EMPTY_STRING( dataFileName_ );
-   self.dataFileName = dataFileName_;
-   
-   INIT_ASSERT_NIL( schema_ );
-   self.schema = schema_;
-   
-   self.primaryKey = primaryKey_;
-   self.lineReader = reader_;
-   self.dbWrapper  = [ [ dbWrapperClass_ alloc ] initWithPath: databaseName_ ];
-   self.columnsParser = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator_
-                                                                lineReader: reader_ ];
-
-   return self;
+    self = [ super init ];
+    
+    INIT_ASSERT_EMPTY_STRING( databaseName_ );
+    self.databaseName = databaseName_;
+    
+    INIT_ASSERT_EMPTY_STRING( dataFileName_ );
+    self.dataFileName = dataFileName_;
+    
+    INIT_ASSERT_NIL( schema_ );
+    self.schema = schema_;
+    
+    self.primaryKey = primaryKey_;
+    self.lineReader = reader_;
+    self.dbWrapper  = [ [ dbWrapperClass_ alloc ] initWithPath: databaseName_ ];
+    self.columnsParser = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator_
+                                                                 lineReader: reader_ ];
+    
+    
+    self.ansiFormatter = [ ESLocaleFactory ansiDateFormatter  ];
+    self.csvFormatter  = [ ESLocaleFactory posixDateFormatter ];
+    
+    return self;
 }
-
 
 @end

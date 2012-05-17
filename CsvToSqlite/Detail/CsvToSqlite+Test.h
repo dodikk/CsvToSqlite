@@ -26,4 +26,9 @@
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;
 @property ( nonatomic, strong ) id<DbWrapper>     dbWrapper    ;
 
+@property ( nonatomic, strong ) NSDateFormatter* csvFormatter;
+@property ( nonatomic, strong ) NSDateFormatter* ansiFormatter;
+
+
+
 @end

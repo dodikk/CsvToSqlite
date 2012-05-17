@@ -32,6 +32,9 @@ using namespace ::Utils;
 
 @property ( nonatomic, strong ) NSOrderedSet* csvSchema;
 
+@property ( nonatomic, strong ) NSDateFormatter* csvFormatter ;
+@property ( nonatomic, strong ) NSDateFormatter* ansiFormatter;
+
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;
 @property ( nonatomic, strong ) id<DbWrapper>     dbWrapper    ;
@@ -52,6 +55,10 @@ using namespace ::Utils;
 @synthesize lineReader   ;
 
 @synthesize dbWrapper;
+
+@synthesize csvFormatter ;
+@synthesize ansiFormatter;
+
 
 -(id)init
 {
@@ -182,9 +189,7 @@ using namespace ::Utils;
         {
             [ self.lineReader readLine: line_ 
                             fromStream: stream_ ];
-         
-         
-         
+
             size_t lineSize_ = line_.size();
             if ( 0 == lineSize_ )
             {
@@ -207,5 +212,14 @@ using namespace ::Utils;
 
     return YES;
 }
+
+
+-(void)setCsvDateFormat:(NSString *)csvDateFormat_
+{
+    self->csvDateFormat = csvDateFormat_;
+    self.csvFormatter.dateFormat = csvDateFormat_;
+}
+
+
 
 @end

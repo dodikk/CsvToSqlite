@@ -11,6 +11,8 @@
 
 @implementation CsvToSqlite (Database)
 
+
+
 -(id<DbWrapper>)castedWrapper
 {
     return (id<DbWrapper>)[ self dbWrapper ];
@@ -127,11 +129,6 @@
     NSDate* date_ = nil;
     NSString* wrappedLineRecord_ = nil;
     
-    NSDateFormatter* csvFormatter_ = [ ESLocaleFactory posixDateFormatter ];
-    csvFormatter_.dateFormat = self.csvDateFormat;
-    
-    NSDateFormatter* sqlFormatter_ = [ ESLocaleFactory posixDateFormatter ];
-    sqlFormatter_.dateFormat = @"yyyy-MM-dd";
     
     NSMutableArray* wrappedLine_ = [ NSMutableArray new ];
 
@@ -142,8 +139,8 @@
         NSString* sqlType_ = [ self.schema objectForKey: [ csvSchema_ objectAtIndex: i_ ] ];
         if ( [ SqliteTypes isSqlDateType: sqlType_ ] )
         {
-            date_ = [ csvFormatter_ dateFromString: lineRecord_ ];
-            wrappedLineRecord_ = [ sqlFormatter_ stringFromDate: date_ ];
+            date_ = [ self.csvFormatter dateFromString: lineRecord_ ];
+            wrappedLineRecord_ = [ self.ansiFormatter stringFromDate: date_ ];
         }
         else
         {
