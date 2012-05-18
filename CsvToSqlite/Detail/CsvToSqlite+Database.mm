@@ -154,7 +154,7 @@
 
     
     
-    NSString* insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( %@ );";
+    NSString* insertFormat_ = @"INSERT OR IGNORE INTO '%@' ( %@ ) VALUES ( %@ );";
     NSString* headerFields_ = [ self.csvSchema.array componentsJoinedByString: @", " ];
     NSString* values_ = [ wrappedLine_ componentsJoinedByString: @", " ];
 
@@ -208,6 +208,28 @@
 -(void)closeDatabase
 {
     [ [ self castedWrapper ] close ];
+}
+
+
+#pragma mark -
+#pragma mark Transactions
+
+-(void)beginTransaction
+{
+    [ [ self castedWrapper ] insert: @"BEGIN TRANSACTION" 
+                              error: NULL ];
+}
+
+-(void)commitTransaction
+{
+    [ [ self castedWrapper ] insert: @"COMMIT TRANSACTION"
+                              error: NULL ];
+}
+
+-(void)rollbackTransaction
+{
+    [ [ self castedWrapper ] insert: @"ROLLBACK TRANSACTION"
+                              error: NULL ];    
 }
 
 @end

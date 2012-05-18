@@ -179,10 +179,10 @@ using namespace ::Utils;
     CHECK_ERROR__RET_BOOL( error_ );
 
 
-  
-  
     std::string line_;
     NSString* lineStr_ = nil;
+    
+    [ self beginTransaction ];
     while ( !stream_.eof() )
     {
         @autoreleasepool
@@ -207,8 +207,15 @@ using namespace ::Utils;
                  inTable: tableName_
                    error: error_];
 
-        CHECK_ERROR__RET_BOOL( error_ );
+        if ( nil != *error_ )               
+        {
+            [ self rollbackTransaction ];
+
+            NSLog( @"%@", *error_ );        
+            return NO;                         
+        }
     }
+    [ self commitTransaction ];
 
     return YES;
 }

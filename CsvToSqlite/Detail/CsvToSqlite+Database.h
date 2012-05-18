@@ -14,6 +14,10 @@
          inTable:( NSString* )tableName_
            error:( NSError** )errorPtr_;
 
+-(void)beginTransaction;
+-(void)commitTransaction;
+-(void)rollbackTransaction;
+
 -(void)closeDatabase;
 
 @end
