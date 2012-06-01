@@ -19,6 +19,13 @@
         
         [ fm_ removeItemAtPath: @"4.sqlite" 
                          error: NULL ]; 
+        
+        [ fm_ removeItemAtPath: @"Damaged.sqlite" 
+                         error: NULL ];  
+
+        
+        [ fm_ removeItemAtPath: @"OnlyHeader.sqlite" 
+                         error: NULL ];
     }
     
     schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
@@ -47,7 +54,14 @@
                          error: NULL ]; 
         
         [ fm_ removeItemAtPath: @"4.sqlite" 
-                         error: NULL ]; 
+                         error: NULL ];
+        
+        [ fm_ removeItemAtPath: @"Damaged.sqlite" 
+                         error: NULL ];  
+        
+        
+        [ fm_ removeItemAtPath: @"OnlyHeader.sqlite" 
+                         error: NULL ];        
     }
 }
 
