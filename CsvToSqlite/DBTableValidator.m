@@ -11,7 +11,10 @@ matchesTableSchema:( NSDictionary* )tableSchema_
     {
         return NO;
     }
-
+    else if ( csvSchema_.count != tableSchema_.count )
+    {
+        return NO;
+    }
 
     for ( NSString* column_ in csvSchema_ )
     {
