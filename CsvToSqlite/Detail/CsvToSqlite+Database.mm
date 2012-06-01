@@ -30,7 +30,7 @@
         *errorPtr_ = [ [ db_ lastError ] copy ];
         return NO;
     }
-    
+
     return YES;
 }
 
@@ -108,7 +108,6 @@
 
     return result_;
 }
-
 
 -(BOOL)parseAndStoreLine:( NSString* )line_
                  inTable:( NSString* )tableName_
