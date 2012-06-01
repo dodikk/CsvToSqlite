@@ -56,7 +56,7 @@
         NSString* rowString_ = [ NSString stringWithCString: row_.c_str()
                                                    encoding: NSUTF8StringEncoding ];
 
-        NSRange separatorRange_ = NSMakeRange( static_cast<NSUInteger>( self->separator ),  1 );
+        NSRange separatorRange_ = { static_cast<NSUInteger>( self->separator ),  1 };
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
         NSArray* tokens_ = [ rowString_ componentsSeparatedByCharactersInSet: separators_ ];
 
