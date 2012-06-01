@@ -18,6 +18,8 @@
     
     primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
                      @"Date"
+                   , @"Visits"
+                   , @"Value"                    
                    , @"FacetId1"
                    , @"FacetId2"
                    , @"FacetId3"                                
@@ -48,6 +50,21 @@
                             matchesTableSchema: schema_ ];
         
         STAssertTrue( result_, @"true expected" );
+    }
+    
+    {
+        primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
+                       @"Date"
+                       , @"Visits"
+                       , @"FacetId2"
+                       , @"FacetId3"                                
+                       , nil ];
+        
+        result_ = [ DBTableValidator csvSchema: primaryKey_
+                            matchesTableSchema: schema_ ];
+        
+        STAssertFalse( result_, @"incomplete schema should not pass" );
+        
     }
 }
 
