@@ -32,6 +32,8 @@
 		7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E31DEE0153707280043B5BE /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
 		7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */; };
+		7E54C14A157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */; };
+		7E54C14B157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */; };
 		7E5EC4A315580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
 		7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
 		7E5EC4A61558118400E946C9 /* Damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Damaged.csv */; };
@@ -255,6 +257,8 @@
 		7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqliteTests.h; sourceTree = "<group>"; };
 		7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CsvToSqliteTests.m; sourceTree = "<group>"; };
 		7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Framework.h"; sourceTree = "<group>"; };
+		7E54C148157F4CC6007D89F1 /* BuiltInApiTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuiltInApiTest.h; sourceTree = "<group>"; };
+		7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuiltInApiTest.m; sourceTree = "<group>"; };
 		7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OnlyHeader.csv; sourceTree = "<group>"; };
 		7E5EC4A51558118400E946C9 /* Damaged.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Damaged.csv; sourceTree = "<group>"; };
 		7E96C70715406A0700E90751 /* CsvFailedImportTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvFailedImportTest.h; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */,
 				7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */,
 				7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */,
+				7E54C148157F4CC6007D89F1 /* BuiltInApiTest.h */,
+				7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */,
 			);
 			path = CsvToSqliteTests;
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */,
 				7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 				7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
+				7E54C14B157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,6 +849,7 @@
 				7E99871A153D67D800811BA8 /* DbImportTest.mm in Sources */,
 				7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 				7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
+				7E54C14A157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
