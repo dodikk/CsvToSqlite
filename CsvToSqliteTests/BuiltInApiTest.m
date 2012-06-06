@@ -24,7 +24,7 @@
                                                ofType: @"sqlite" ];
     
     sqlite3* dbHandle_ = NULL;
-    //SQLITE_OPEN_FULLMUTEX
+
     int error_  = sqlite3_open_v2
     ( 
         [ dbPath_ UTF8String ], &dbHandle_, 
