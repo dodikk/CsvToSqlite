@@ -2,8 +2,8 @@
 
 @interface CsvDefaultValues()
 
-@property ( nonatomic, readonly ) NSMutableOrderedSet* mutableColumns ;
-@property ( nonatomic, readonly ) NSMutableArray*      mutableDefaults;
+@property ( nonatomic, strong ) NSMutableOrderedSet* mutableColumns ;
+@property ( nonatomic, strong ) NSMutableArray*      mutableDefaults;
 
 @end
 
@@ -16,6 +16,16 @@
 @dynamic columns ;
 @dynamic defaults;
 
+-(id)init
+{
+    self = [ super init ];
+    {
+        self.mutableColumns  = [ NSMutableOrderedSet new ];
+        self.mutableDefaults = [ NSMutableArray new ];
+    }
+    
+    return self;
+}
 
 -(void)addDefaultValue:( NSString* )defaultValue_
              forColumn:( NSString* )column_
@@ -53,6 +63,12 @@
     NSParameterAssert( columnCount_ == valuesCount_ );
     
     return valuesCount_;
+}
+
+-(void)clear
+{
+    self.mutableColumns  = [ NSMutableOrderedSet new ];
+    self.mutableDefaults = [ NSMutableArray new ];
 }
 
 @end
