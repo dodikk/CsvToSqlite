@@ -5,6 +5,25 @@
 
 @implementation DBTableValidator
 
++(BOOL)columns:( id<NSFastEnumeration> )columns_
+matchesTableSchema:( NSDictionary* )tableSchema_
+{
+    for ( NSString* column_ in columns_ )
+    {
+        NSString* type_ = [ tableSchema_ objectForKey: column_ ];
+        if ( nil == type_ )
+        {
+            return NO;
+        }
+        else if ( ![ [ SqliteTypes typesSet ] containsObject: type_ ] )
+        {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 +(BOOL)csvSchema:( NSOrderedSet* )csvSchema_
     withDefaults:( CsvDefaultValues* )defaults_
 matchesTableSchema:( NSDictionary* )tableSchema_
@@ -17,21 +36,15 @@ matchesTableSchema:( NSDictionary* )tableSchema_
     {
         return NO;
     }
+    
+    
+    BOOL csvSchemaOk_ = [ self columns: csvSchema_
+                    matchesTableSchema: tableSchema_ ];
 
-    for ( NSString* column_ in csvSchema_ )
-    {
-        NSString* type_ = [ tableSchema_ objectForKey: column_ ];
-        if ( nil == type_ )
-        {
-            return NO;
-        }
-        else if ( ![ [ SqliteTypes typesSet ] containsObject: type_ ] )
-        {
-            return NO;
-        }
-    }
+    BOOL defaultsOk_ = [ self columns: defaults_.columns
+                   matchesTableSchema: tableSchema_ ];
 
-    return YES;
+    return csvSchemaOk_ && defaultsOk_;
 }
 
 @end
