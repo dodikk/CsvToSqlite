@@ -190,7 +190,8 @@
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
     
-    if ( [ self sqlSchemaHasDates ] )
+    BOOL isCsvHasAnsiFormat_ = [ self.csvDateFormat isEqualToString: @"yyyy-MM-dd" ];
+    if ( !isCsvHasAnsiFormat_ && [ self sqlSchemaHasDates ] )
     {
         return [ self parseAndStoreLine: line_ 
                                 inTable: tableName_ 
