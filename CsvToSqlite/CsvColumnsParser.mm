@@ -53,8 +53,8 @@
 
     @autoreleasepool
     {
-        NSString* rowString_ = [ NSString stringWithCString: row_.c_str()
-                                                   encoding: NSUTF8StringEncoding ];
+        NSString* rowString_ = [ [ NSString alloc ]initWithCString: row_.c_str()
+                                                          encoding: NSUTF8StringEncoding ];
 
         NSRange separatorRange_ = { static_cast<NSUInteger>( self->separator ),  1 };
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
