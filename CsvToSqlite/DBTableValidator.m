@@ -1,17 +1,19 @@
 #import "DBTableValidator.h"
-#import "SqliteTypes.h"
 
+#import "SqliteTypes.h"
+#import "CsvDefaultValues.h"
 
 @implementation DBTableValidator
 
 +(BOOL)csvSchema:( NSOrderedSet* )csvSchema_
+    withDefaults:( CsvDefaultValues* )defaults_
 matchesTableSchema:( NSDictionary* )tableSchema_
 {
     if ( ( nil == csvSchema_ ) || ( nil == tableSchema_ ) )
     {
         return NO;
     }
-    else if ( csvSchema_.count != tableSchema_.count )
+    else if ( csvSchema_.count + defaults_.count != tableSchema_.count )
     {
         return NO;
     }

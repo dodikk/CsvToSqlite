@@ -32,6 +32,7 @@
     
     {
         result_ = [ DBTableValidator csvSchema: nil
+                                  withDefaults: nil
                             matchesTableSchema: schema_ ];
     
         STAssertFalse( result_, @"false expected" );
@@ -39,6 +40,7 @@
     
     {
         result_ = [ DBTableValidator csvSchema: primaryKey_
+                                  withDefaults: nil
                             matchesTableSchema: nil ];
         
         STAssertFalse( result_, @"false expected" );
@@ -47,6 +49,7 @@
 
     {
         result_ = [ DBTableValidator csvSchema: primaryKey_
+                                  withDefaults: nil
                             matchesTableSchema: schema_ ];
         
         STAssertTrue( result_, @"true expected" );
@@ -61,6 +64,7 @@
                        , nil ];
         
         result_ = [ DBTableValidator csvSchema: primaryKey_
+                                  withDefaults: nil
                             matchesTableSchema: schema_ ];
         
         STAssertFalse( result_, @"incomplete schema should not pass" );
@@ -82,6 +86,7 @@
                                     , nil ];
 
     result_ = [ DBTableValidator csvSchema: primaryKey_
+                              withDefaults: nil
                         matchesTableSchema: invalidSchema_ ];
 
     STAssertFalse( result_, @"false expected" );

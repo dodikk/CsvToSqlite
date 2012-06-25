@@ -82,6 +82,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
+                                                             defaultValues: nil
                                                              separatorChar: ';'
                                                                 lineReader: [ UnixLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
@@ -209,6 +210,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
+                                                             defaultValues: nil
                                                              separatorChar: ';'
                                                                 lineReader: [ WindowsLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
@@ -321,6 +323,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: primaryKey_
+                                                             defaultValues: nil
                                                              separatorChar: ';'
                                                                 lineReader: [ WindowsLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
@@ -429,6 +432,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: primaryKey_
+                                                             defaultValues: nil
                                                            lineEndingStyle: CSV_LE_UNIX
                                                        recordSeparatorChar: ';' ];    
     converter_.csvDateFormat = @"yyyyMMdd";
@@ -457,6 +461,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: primaryKey_
+                                                             defaultValues: nil
                                                            lineEndingStyle: CSV_LE_UNIX
                                                        recordSeparatorChar: ';' ];    
     converter_.csvDateFormat = @"yyyyMMdd";

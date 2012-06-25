@@ -1,5 +1,6 @@
 #import <CsvToSqlite/CsvToSqlite.h>
 
+@class CsvDefaultValues;
 @class CsvColumnsParser;
 @protocol DbWrapper;
 @protocol LineReader;
@@ -10,6 +11,7 @@
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
                primaryKey:( NSOrderedSet* )primaryKey_
+            defaultValues:( CsvDefaultValues* )defaults_
             separatorChar:( char )separator_
                lineReader:( id<LineReader> )reader_
            dbWrapperClass:( Class )dbWrapperClass_;
@@ -21,6 +23,8 @@
 @property ( nonatomic, strong ) NSOrderedSet* primaryKey;
 
 @property ( nonatomic, strong ) NSOrderedSet* csvSchema;
+@property ( nonatomic, strong ) CsvDefaultValues* defaultValues;
+
 
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;

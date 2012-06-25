@@ -30,7 +30,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: nil
                                                    dataFileName: @"data file stub" 
                                                  databaseSchema: schema_ 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil ];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
@@ -39,7 +40,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: nil 
                                                  databaseSchema: schema_ 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
@@ -47,7 +49,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @""
                                                    dataFileName: @"data file stub" 
                                                  databaseSchema: schema_ 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }
    
@@ -56,7 +59,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: @"" 
                                                  databaseSchema: schema_ 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    }   
 }
@@ -77,7 +81,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
                                                    dataFileName: dataFile_ 
                                                  databaseSchema: schema_ 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil ];
       
       STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
       STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
@@ -90,7 +95,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbFile_
                                                    dataFileName: dataFile_ 
                                                  databaseSchema: schema_
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil
+                                                  defaultValues: nil];
       
       STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
       STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
@@ -105,7 +111,8 @@
       converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
                                                    dataFileName: @"file stub" 
                                                  databaseSchema: nil 
-                                                     primaryKey: nil ];
+                                                     primaryKey: nil 
+                                                  defaultValues: nil];
       STAssertNil( converter_, @"nil expected - DatabaseName" );
    } 
    

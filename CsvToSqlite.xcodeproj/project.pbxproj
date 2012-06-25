@@ -19,6 +19,8 @@
 		7E195AD81537301E0050C635 /* CsvImportError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195AD61537301E0050C635 /* CsvImportError.m */; };
 		7E195ADB153730C90050C635 /* CsvBadTableNameError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AD9153730C90050C635 /* CsvBadTableNameError.h */; };
 		7E195ADC153730C90050C635 /* CsvBadTableNameError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ADA153730C90050C635 /* CsvBadTableNameError.m */; };
+		7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E20830115986D80005A26EF /* CsvDefaultValues.h */; };
+		7E20830415986D80005A26EF /* CsvDefaultValues.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E20830215986D80005A26EF /* CsvDefaultValues.m */; };
 		7E2CB934153ED92900FEC16E /* MockDb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E2CB932153ED92900FEC16E /* MockDb.h */; };
 		7E2CB935153ED92900FEC16E /* MockDb.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CB933153ED92900FEC16E /* MockDb.m */; };
 		7E2CB972153F00F000FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
@@ -242,6 +244,8 @@
 		7E195AD9153730C90050C635 /* CsvBadTableNameError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvBadTableNameError.h; sourceTree = "<group>"; };
 		7E195ADA153730C90050C635 /* CsvBadTableNameError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvBadTableNameError.m; sourceTree = "<group>"; };
 		7E195AE0153733DA0050C635 /* libCoverageFopenFix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCoverageFopenFix.a; sourceTree = "<group>"; };
+		7E20830115986D80005A26EF /* CsvDefaultValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvDefaultValues.h; sourceTree = "<group>"; };
+		7E20830215986D80005A26EF /* CsvDefaultValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvDefaultValues.m; sourceTree = "<group>"; };
 		7E2CB932153ED92900FEC16E /* MockDb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDb.h; sourceTree = "<group>"; };
 		7E2CB933153ED92900FEC16E /* MockDb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDb.m; sourceTree = "<group>"; };
 		7E2CB96B153F004100FEC16E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -448,6 +452,8 @@
 				7EA3A25D15386BE50058C603 /* DBTableValidator.m */,
 				7E99870D153D546700811BA8 /* DbWrapper.h */,
 				7E998741153D9AB300811BA8 /* CsvLineEndings.h */,
+				7E20830115986D80005A26EF /* CsvDefaultValues.h */,
+				7E20830215986D80005A26EF /* CsvDefaultValues.m */,
 			);
 			path = CsvToSqlite;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 				7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */,
 				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 				7E2CB934153ED92900FEC16E /* MockDb.h in Headers */,
+				7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +844,7 @@
 				7E998712153D573700811BA8 /* FMDatabase+Wrapper.m in Sources */,
 				7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */,
 				7E2CB935153ED92900FEC16E /* MockDb.m in Sources */,
+				7E20830415986D80005A26EF /* CsvDefaultValues.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
+                                                             defaultValues: nil
                                                              separatorChar: ';'
                                                                 lineReader: [ UnixLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
@@ -56,6 +57,7 @@
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
+                                                             defaultValues: nil
                                                            lineEndingStyle: CSV_LE_MAC_LEGACY 
                                                        recordSeparatorChar: ';' ];
     converter_.csvDateFormat = @"yyyyMMdd";    

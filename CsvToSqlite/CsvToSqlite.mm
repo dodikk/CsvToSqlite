@@ -31,6 +31,7 @@ using namespace ::Utils;
 @property ( nonatomic, strong ) NSOrderedSet* primaryKey;
 
 @property ( nonatomic, strong ) NSOrderedSet* csvSchema;
+@property ( nonatomic, strong ) CsvDefaultValues* defaultValues;
 
 @property ( nonatomic, strong ) NSDateFormatter* csvFormatter ;
 @property ( nonatomic, strong ) NSDateFormatter* ansiFormatter;
@@ -50,6 +51,7 @@ using namespace ::Utils;
 @synthesize primaryKey   ;
 @synthesize csvSchema    ;
 @synthesize csvDateFormat;
+@synthesize defaultValues;
 
 @synthesize columnsParser;
 @synthesize lineReader   ;
@@ -71,6 +73,7 @@ using namespace ::Utils;
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
                primaryKey:( NSOrderedSet* )primaryKey_
+            defaultValues:( CsvDefaultValues* )defaults_
           lineEndingStyle:( CsvLineEndings )lineEndingStyle_
       recordSeparatorChar:( char )separatorChar_
 {
@@ -92,6 +95,7 @@ using namespace ::Utils;
                           dataFileName: dataFileName_ 
                         databaseSchema: schema_
                             primaryKey: primaryKey_
+                         defaultValues: defaults_
                          separatorChar: separatorChar_
                             lineReader: [ readerClass_ new ]
                         dbWrapperClass: [ FMDatabase class ] ];
@@ -102,11 +106,13 @@ using namespace ::Utils;
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_
                primaryKey:( NSOrderedSet* )primaryKey_
+            defaultValues:( CsvDefaultValues* )defaults_
 {
     CsvToSqlite* result_ =  [ self initWithDatabaseName: databaseName_
                                            dataFileName: dataFileName_
                                          databaseSchema: schema_
                                              primaryKey: primaryKey_
+                                          defaultValues: defaults_
                                         lineEndingStyle: CSV_LE_WIN
                                     recordSeparatorChar: ';' ];
     result_.csvDateFormat = @"yyyyMMdd";
@@ -114,6 +120,17 @@ using namespace ::Utils;
     return result_;
 }
 
+-(id)initWithDatabaseName:( NSString* )databaseName_
+             dataFileName:( NSString* )dataFileName_
+           databaseSchema:( NSDictionary* )schema_
+               primaryKey:( NSOrderedSet* )primaryKey_
+{
+    return [ self initWithDatabaseName: databaseName_
+                          dataFileName: dataFileName_
+                        databaseSchema: schema_
+                            primaryKey: primaryKey_
+                         defaultValues: nil ];
+}
 
 -(BOOL)storeDataInTable:( NSString* )tableName_
                   error:( NSError** )error_
@@ -153,6 +170,7 @@ using namespace ::Utils;
 
     NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
     BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
+                                          withDefaults: self.defaultValues
                                     matchesTableSchema: self.schema ];
     if ( !isValidSchema_ )
     {
