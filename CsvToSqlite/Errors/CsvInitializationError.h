@@ -2,4 +2,3 @@
 
 @interface CsvInitializationError : CsvImportError
 @end
-

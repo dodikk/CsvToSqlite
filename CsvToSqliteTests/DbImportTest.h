@@ -3,8 +3,8 @@
 @interface DbImportTest : SenTestCase
 {
 @private
-   NSDictionary* schema_    ;
-   NSOrderedSet* primaryKey_;
+   NSDictionary* _schema    ;
+   NSOrderedSet* _primaryKey;
 }
 
 @end

@@ -114,8 +114,8 @@
 {
     NSParameterAssert( errorPtr_ != NULL );
     NSAssert( self.csvDateFormat, @"Csv date format not set" );
-    
-    
+
+
     NSOrderedSet* defaultColumns_ = self.defaultValues.columns ;
     
     NSOrderedSet* csvSchema_ = self.csvSchema;
@@ -150,8 +150,7 @@
             tmpHeader_ = [ defaultColumns_ objectAtIndex: i_ - csvCount_ ];
         }
         sqlType_ = [ self.schema objectForKey: tmpHeader_ ];
-        
-        
+
         if ( [ SqliteTypes isSqlDateType: sqlType_ ] )
         {
             date_ = [ self.csvFormatter dateFromString: lineRecord_ ];
@@ -161,7 +160,7 @@
         {
             wrappedLineRecord_ = lineRecord_;
         }
-        
+
         [ wrappedLine_ addObject: [ NSString stringWithFormat: @"'%@'", wrappedLineRecord_ ] ];
 
         ++i_;

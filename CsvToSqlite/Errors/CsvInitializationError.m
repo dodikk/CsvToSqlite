@@ -4,7 +4,7 @@
 
 -(id)init
 {
-   return [ super initWithErrorCode: CSV_PARSER_INITIALIZATION_ERROR ];
+    return [ super initWithErrorCode: CSV_PARSER_INITIALIZATION_ERROR ];
 }
 
 @end
