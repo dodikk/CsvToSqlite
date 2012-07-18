@@ -1,11 +1,11 @@
 #import "DbImportTest.h"
 
-#import "MockDb.h"
+#import <CsvToSqlite/Mocks/MockDb.h>
 
-#import "CsvToSqlite+Test.h"
+#import <CsvToSqlite/Detail/CsvToSqlite+Test.h>
 
-#import "UnixLineReader.h"
-#import "WindowsLineReader.h"
+#import <CsvToSqlite/LineReaders/UnixLineReader.h>
+#import <CsvToSqlite/LineReaders/WindowsLineReader.h>
 
 
 @implementation DbImportTest
