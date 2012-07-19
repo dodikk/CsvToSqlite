@@ -32,12 +32,11 @@ matchesTableSchema:( NSDictionary* )tableSchema_
     {
         return NO;
     }
-    else if ( csvSchema_.count + defaults_.count != tableSchema_.count )
+    else if ( [ csvSchema_ count ] + [ defaults_.columns count ] != [ tableSchema_ count ] )
     {
         return NO;
     }
-    
-    
+
     BOOL csvSchemaOk_ = [ self columns: csvSchema_
                     matchesTableSchema: tableSchema_ ];
 
