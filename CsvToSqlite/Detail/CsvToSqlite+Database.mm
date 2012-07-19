@@ -9,6 +9,7 @@
 
 #import "CsvMacros.h"
 
+#import "NSString+Sqlite3Escape.h"
 
 @implementation CsvToSqlite (Database)
 
@@ -161,19 +162,21 @@
             wrappedLineRecord_ = lineRecord_;
         }
 
+        wrappedLineRecord_ = [ wrappedLineRecord_ sqlite3Escape ];
+
         [ wrappedLine_ addObject: [ NSString stringWithFormat: @"'%@'", wrappedLineRecord_ ] ];
 
         ++i_;
     }
 
-    NSArray* heaers_ = [ self.csvSchema.array arrayByAddingObjectsFromArray: defaultColumns_.array ];
-    
+    NSArray* headers_ = [ self.csvSchema.array arrayByAddingObjectsFromArray: defaultColumns_.array ];
+
     NSString* insertFormat_ = @"INSERT OR IGNORE INTO '%@' ( %@ ) VALUES ( %@ );";
-    NSString* headerFields_ = [ heaers_ componentsJoinedByString: @", " ];
+    NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
     NSString* values_ = [ wrappedLine_ componentsJoinedByString: @", " ];
 
     NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
-    
+
     return [ [ self castedWrapper ] insert: query_
                                      error: errorPtr_ ];
 }
@@ -183,22 +186,25 @@
                error:(NSError *__autoreleasing *)errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
-    
-    
-    
-    static NSString* const insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
 
     NSArray* headers_ = [ self.csvSchema.array arrayByAddingObjectsFromArray: self.defaultValues.columns.array ];   
     NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
-    
+
     NSString* defaultValues_ = [ self.defaultValues.defaults componentsJoinedByString: @"', '" ];
+    line_ = [ line_ sqlite3Escape ];
     NSString* lineValues_ = [ line_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
                                                               withString: @"', '" ];
-    NSString* values_ = [ lineValues_ stringByAppendingString: defaultValues_ ];
-    
-    
-    NSString* query_ = [ NSString stringWithFormat: insertFormat_, tableName_, headerFields_, values_ ];
-    
+    NSString* values_ = [ lineValues_ stringByAppendingString: defaultValues_ ?: @"" ];
+
+    NSString* query_;
+    {
+        static NSString* const insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
+        query_ = [ NSString stringWithFormat: insertFormat_
+                  , tableName_
+                  , headerFields_
+                  , values_ ];
+    }
+
     return [ [ self castedWrapper ] insert: query_
                                      error: errorPtr_ ];
 }
@@ -208,7 +214,7 @@
            error:( NSError** )errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
-    
+
     BOOL isCsvHasAnsiFormat_ = [ self.csvDateFormat isEqualToString: @"yyyy-MM-dd" ];
     if ( !isCsvHasAnsiFormat_ && [ self sqlSchemaHasDates ] )
     {
