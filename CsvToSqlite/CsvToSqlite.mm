@@ -154,7 +154,6 @@ using namespace ::Utils;
         return NO;
     }
 
-
     std::ifstream stream_;
     std::ifstream* pStream_ = &stream_;
     GuardCallbackBlock streamGuardBlock_ = ^
@@ -178,8 +177,6 @@ using namespace ::Utils;
         return NO;
     }
     self.csvSchema = csvSchema_;
-
-
 
     [ self openDatabaseWithError: error_ ];
     CHECK_ERROR__RET_BOOL( error_ );

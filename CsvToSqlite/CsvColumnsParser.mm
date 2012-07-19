@@ -12,12 +12,12 @@
 @implementation CsvColumnsParser
 {
 @private
-    char separator;
+    char _separator;
 }
 
-@synthesize separatorChar = separator;
-@dynamic separatorString;
+@synthesize separatorChar = _separator;
 @synthesize lineReader;
+@dynamic separatorString;
 
 -(id)initWithSeparatorChar:( char )separator_
                 lineReader:( id<LineReader> )lineReader_
@@ -26,7 +26,7 @@
 
     if ( self )
     {
-        self->separator = separator_;
+        self->_separator = separator_;
         self.lineReader = lineReader_;
     }
 
@@ -56,7 +56,7 @@
         NSString* rowString_ = [ [ NSString alloc ]initWithCString: row_.c_str()
                                                           encoding: NSUTF8StringEncoding ];
 
-        NSRange separatorRange_ = { static_cast<NSUInteger>( self->separator ),  1 };
+        NSRange separatorRange_ = { static_cast<NSUInteger>( self->_separator ),  1 };
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
         NSArray* tokens_ = [ rowString_ componentsSeparatedByCharactersInSet: separators_ ];
 
@@ -66,8 +66,8 @@
 
 -(NSString*)separatorString
 {
-    return [ [ NSString alloc ] initWithBytesNoCopy: &(self->separator)
-                                             length: sizeof( self->separator )
+    return [ [ NSString alloc ] initWithBytesNoCopy: &(self->_separator)
+                                             length: sizeof( self->_separator )
                                            encoding: NSUTF8StringEncoding
                                        freeWhenDone: NO ];
 }
