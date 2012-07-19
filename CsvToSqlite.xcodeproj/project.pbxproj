@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0154FF15B6E34B00FD864A /* UnixTest2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */; };
+		1B01550015B6E34B00FD864A /* UnixTest2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */; };
+		1B01550315B6E54900FD864A /* CsvImportErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B01550215B6E54900FD864A /* CsvImportErrorTest.m */; };
+		1B01550415B6E54900FD864A /* CsvImportErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B01550215B6E54900FD864A /* CsvImportErrorTest.m */; };
+		1B01578A15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
+		1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
+		1B379CD415B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
+		1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
+		1B379CD815B700CA002CB488 /* NSString+Sqlite3Escape.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */; };
+		1B379CD915B700CA002CB488 /* NSString+Sqlite3Escape.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */; };
+		1BC2F27415B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
+		1BC2F27515B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
 		7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
 		7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
 		7E195ABB153713440050C635 /* CsvToSqliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */; };
@@ -232,6 +244,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnixTest2.csv; sourceTree = "<group>"; };
+		1B01550115B6E54900FD864A /* CsvImportErrorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvImportErrorTest.h; sourceTree = "<group>"; };
+		1B01550215B6E54900FD864A /* CsvImportErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvImportErrorTest.m; sourceTree = "<group>"; };
+		1B01578915B6F58300FD864A /* UnixTest3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnixTest3.csv; sourceTree = "<group>"; };
+		1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidSymbols.csv; sourceTree = "<group>"; };
+		1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sqlite3Escape.h"; sourceTree = "<group>"; };
+		1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Sqlite3Escape.m"; sourceTree = "<group>"; };
+		1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidSymbolsAsIs.csv; sourceTree = "<group>"; };
 		7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvSchemaValidatorTest.h; sourceTree = "<group>"; };
 		7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaValidatorTest.m; sourceTree = "<group>"; };
 		7E195AB51537117B0050C635 /* CsvMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvMacros.h; sourceTree = "<group>"; };
@@ -362,8 +382,12 @@
 				7E99872E153D907400811BA8 /* Campaigns-small-win.csv */,
 				7EA3A22D15380E560058C603 /* campaigns.sqlite */,
 				7EA3A256153840DB0058C603 /* UnixTest.csv */,
+				1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */,
+				1B01578915B6F58300FD864A /* UnixTest3.csv */,
 				7EA3A259153841F30058C603 /* Unix-NoHeader.csv */,
 				7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */,
+				1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */,
+				1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -474,14 +498,16 @@
 				7E31DEDF153707280043B5BE /* CsvToSqliteTests.m */,
 				7EA3A23215380EE40058C603 /* CsvColumnsParserTest.h */,
 				7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */,
-				7E998718153D67D800811BA8 /* DbImportTest.h */,
-				7E998719153D67D800811BA8 /* DbImportTest.mm */,
 				7E96C70715406A0700E90751 /* CsvFailedImportTest.h */,
 				7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */,
 				7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */,
 				7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */,
 				7E54C148157F4CC6007D89F1 /* BuiltInApiTest.h */,
 				7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */,
+				1B01550115B6E54900FD864A /* CsvImportErrorTest.h */,
+				1B01550215B6E54900FD864A /* CsvImportErrorTest.m */,
+				7E998718153D67D800811BA8 /* DbImportTest.h */,
+				7E998719153D67D800811BA8 /* DbImportTest.mm */,
 			);
 			path = CsvToSqliteTests;
 			sourceTree = "<group>";
@@ -514,6 +540,8 @@
 				7E998710153D573700811BA8 /* FMDatabase+Wrapper.m */,
 				7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */,
 				7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */,
+				1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */,
+				1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -575,6 +603,7 @@
 				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 				7E2CB934153ED92900FEC16E /* MockDb.h in Headers */,
 				7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */,
+				1B379CD815B700CA002CB488 /* NSString+Sqlite3Escape.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +789,10 @@
 				7EE54325153EACBC00565408 /* 4.sqlite in Resources */,
 				7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */,
 				7E5EC4A71558118400E946C9 /* Damaged.csv in Resources */,
+				1B01550015B6E34B00FD864A /* UnixTest2.csv in Resources */,
+				1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */,
+				1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */,
+				1BC2F27515B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +810,10 @@
 				7EE54324153EACBC00565408 /* 4.sqlite in Resources */,
 				7E5EC4A315580CA200E946C9 /* OnlyHeader.csv in Resources */,
 				7E5EC4A61558118400E946C9 /* Damaged.csv in Resources */,
+				1B0154FF15B6E34B00FD864A /* UnixTest2.csv in Resources */,
+				1B01578A15B6F58300FD864A /* UnixTest3.csv in Resources */,
+				1B379CD415B6FF32002CB488 /* InvalidSymbols.csv in Resources */,
+				1BC2F27415B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,6 +859,7 @@
 				7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 				7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
 				7E54C14B157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */,
+				1B01550415B6E54900FD864A /* CsvImportErrorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,6 +883,7 @@
 				7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */,
 				7E2CB935153ED92900FEC16E /* MockDb.m in Sources */,
 				7E20830415986D80005A26EF /* CsvDefaultValues.m in Sources */,
+				1B379CD915B700CA002CB488 /* NSString+Sqlite3Escape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +897,7 @@
 				7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
 				7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
 				7E54C14A157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */,
+				1B01550315B6E54900FD864A /* CsvImportErrorTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
