@@ -6,17 +6,16 @@
 
 -(void)setUp
 {
-    schema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-                 @"DATETIME", @"Date"
-               , @"INTEGER" , @"Visits"
-               , @"INTEGER" , @"Value"                            
-               , @"VARCHAR" , @"FacetId1"
-               , @"VARCHAR" , @"FacetId2"
-               , @"VARCHAR" , @"FacetId3"                            
-               , nil ];
-    
-    
-    primaryKey_ = [ NSOrderedSet orderedSetWithObjects: 
+    schema_ = @{
+    @"Date"     : @"DATETIME",
+    @"Visits"   : @"INTEGER" ,
+    @"Value"    : @"INTEGER" ,
+    @"FacetId1" : @"VARCHAR" ,
+    @"FacetId2" : @"VARCHAR" ,
+    @"FacetId3" : @"VARCHAR"
+    };
+
+    primaryKey_ = [ NSOrderedSet orderedSetWithObjects:
                      @"Date"
                    , @"Visits"
                    , @"Value"                    
@@ -29,15 +28,15 @@
 -(void)testAnyNilSchemaLeadsToNO
 {
     BOOL result_ = NO;
-    
+
     {
         result_ = [ DBTableValidator csvSchema: nil
                                   withDefaults: nil
                             matchesTableSchema: schema_ ];
-    
+
         STAssertFalse( result_, @"false expected" );
     }
-    
+
     {
         result_ = [ DBTableValidator csvSchema: primaryKey_
                                   withDefaults: nil
@@ -76,21 +75,19 @@
 {
     BOOL result_ = YES;
 
-    NSDictionary* invalidSchema_ = [ NSDictionary dictionaryWithObjectsAndKeys:
-                                      @"a" , @"Date"
-                                    , @"b" , @"Visits"
-                                    , @"c" , @"Value"                            
-                                    , @"d" , @"FacetId1"
-                                    , @"e" , @"FacetId2"
-                                    , @"f" , @"FacetId3"                            
-                                    , nil ];
+    NSDictionary* invalidSchema_ = @{
+    @"Date"     : @"a",
+    @"Visits"   : @"b",
+    @"Value"    : @"c",
+    @"FacetId1" : @"d",
+    @"FacetId2" : @"e",
+    @"FacetId3" : @"f" };
 
     result_ = [ DBTableValidator csvSchema: primaryKey_
                               withDefaults: nil
                         matchesTableSchema: invalidSchema_ ];
 
     STAssertFalse( result_, @"false expected" );
-
 }
 
 @end

@@ -28,11 +28,14 @@ matchesTableSchema:( NSDictionary* )tableSchema_
     withDefaults:( CsvDefaultValues* )defaults_
 matchesTableSchema:( NSDictionary* )tableSchema_
 {
+    NSMutableSet* csvSchemaWithoutDefaults_ = [ NSMutableSet setWithSet: [ csvSchema_ set ] ];
+    [ csvSchemaWithoutDefaults_ minusSet: [ NSSet setWithArray: [ defaults_ defaults ] ] ];
+
     if ( ( nil == csvSchema_ ) || ( nil == tableSchema_ ) )
     {
         return NO;
     }
-    else if ( [ csvSchema_ count ] + [ defaults_.columns count ] != [ tableSchema_ count ] )
+    else if ( [ csvSchemaWithoutDefaults_ count ] != [ tableSchema_ count ] )
     {
         return NO;
     }

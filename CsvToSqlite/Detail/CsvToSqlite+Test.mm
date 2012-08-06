@@ -25,7 +25,6 @@
 @dynamic csvFormatter ;
 @dynamic ansiFormatter;
 
-
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
            databaseSchema:( NSDictionary* )schema_

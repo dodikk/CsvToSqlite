@@ -7,11 +7,7 @@
 
 @end
 
-
 @implementation CsvDefaultValues
-
-@synthesize mutableColumns ;
-@synthesize mutableDefaults;
 
 @dynamic columns ;
 @dynamic defaults;
@@ -43,6 +39,8 @@
 
     [ self.mutableColumns  addObject: column_       ];
     [ self.mutableDefaults addObject: defaultValue_ ];
+
+    self->_defaults.push_back( [ defaultValue_ cStringUsingEncoding: NSUTF8StringEncoding ] );
 }
 
 -(NSOrderedSet*)columns 
@@ -50,9 +48,10 @@
     return [ NSOrderedSet orderedSetWithOrderedSet: self.mutableColumns ];
 }
 
+//TODO remove
 -(NSArray*)defaults
 {
-    return [ NSArray arrayWithArray: self.mutableDefaults ];
+    return [ self.mutableDefaults copy ];
 }
 
 -(NSUInteger)count

@@ -1,16 +1,19 @@
 #import <Foundation/Foundation.h>
 #import <CsvToSqlite/CsvLineEndings.h>
 
+#include <CsvToSqlite/CSVParserCallbacks.h>
+
 @class CsvDefaultValues;
 
 @interface CsvToSqlite : NSObject
 
-@property ( nonatomic, strong, readonly  ) NSString*     databaseName  ;
-@property ( nonatomic, strong, readonly  ) NSString*     dataFileName  ;
-@property ( nonatomic, strong, readonly  ) NSDictionary* schema        ;
-@property ( nonatomic, strong, readonly  ) NSOrderedSet* primaryKey    ;
-@property ( nonatomic, strong, readwrite ) NSString*     csvDateFormat ;
-@property ( nonatomic, strong, readonly  ) CsvDefaultValues* defaultValues;
+@property ( nonatomic, readonly  ) NSString*     databaseName  ;
+@property ( nonatomic, readonly  ) NSString*     dataFileName  ;
+@property ( nonatomic, readonly  ) NSDictionary* schema        ;
+@property ( nonatomic, readonly  ) NSOrderedSet* primaryKey    ;
+@property ( nonatomic, readwrite ) NSString*     csvDateFormat ;
+@property ( nonatomic, readonly  ) CsvDefaultValues* defaultValues;
+@property ( nonatomic, copy      ) CSVOnCommentCallback onCommentCallback;
 
 
 -(id)dbWrapper;

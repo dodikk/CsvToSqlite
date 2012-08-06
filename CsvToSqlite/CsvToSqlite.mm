@@ -15,6 +15,8 @@
 #import "WindowsLineReader.h"
 #import "UnixLineReader.h"
 #import "FMDatabase.h"
+#import "CsvDefaultValues.h"
+#import "StringsChannel.h"
 
 #include <map>
 #include <fstream>
@@ -24,50 +26,31 @@ using namespace ::Utils;
 
 @interface CsvToSqlite()
 
-@property ( nonatomic, strong ) NSString* databaseName;
-@property ( nonatomic, strong ) NSString* dataFileName;
+@property ( nonatomic ) NSString* databaseName;
+@property ( nonatomic ) NSString* dataFileName;
 
-@property ( nonatomic, strong ) NSDictionary* schema    ;
-@property ( nonatomic, strong ) NSOrderedSet* primaryKey;
+@property ( nonatomic ) NSDictionary* schema    ;
+@property ( nonatomic ) NSOrderedSet* primaryKey;
 
-@property ( nonatomic, strong ) NSOrderedSet* csvSchema;
-@property ( nonatomic, strong ) CsvDefaultValues* defaultValues;
+@property ( nonatomic ) NSOrderedSet* csvSchema;
+@property ( nonatomic ) CsvDefaultValues* defaultValues;
 
-@property ( nonatomic, strong ) NSDateFormatter* csvFormatter ;
-@property ( nonatomic, strong ) NSDateFormatter* ansiFormatter;
+@property ( nonatomic ) NSDateFormatter* csvFormatter ;
+@property ( nonatomic ) NSDateFormatter* ansiFormatter;
 
-@property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
-@property ( nonatomic, strong ) id<LineReader>    lineReader   ;
-@property ( nonatomic, strong ) id<DbWrapper>     dbWrapper    ;
+@property ( nonatomic ) CsvColumnsParser* columnsParser;
+@property ( nonatomic ) id<LineReader>    lineReader   ;
+@property ( nonatomic ) id<DbWrapper>     dbWrapper    ;
 
 @end
 
-
 @implementation CsvToSqlite
-
-@synthesize databaseName ;
-@synthesize dataFileName ;
-@synthesize schema       ;
-@synthesize primaryKey   ;
-@synthesize csvSchema    ;
-@synthesize csvDateFormat;
-@synthesize defaultValues;
-
-@synthesize columnsParser;
-@synthesize lineReader   ;
-
-@synthesize dbWrapper;
-
-@synthesize csvFormatter ;
-@synthesize ansiFormatter;
-
 
 -(id)init
 {
    [ self doesNotRecognizeSelector: _cmd ];
    return nil;
 }
-
 
 -(id)initWithDatabaseName:( NSString* )databaseName_
              dataFileName:( NSString* )dataFileName_
@@ -132,6 +115,72 @@ using namespace ::Utils;
                          defaultValues: nil ];
 }
 
+-(void)finishAndWaitCondition:( NSCondition* )finishCondition_
+                stringChannel:( StringsChannel* )stringChannel_
+{
+    [ stringChannel_ putNoBlockString: "" ];
+
+    [ finishCondition_ lock ];
+    [ finishCondition_ wait ];
+    [ finishCondition_ unlock ];
+}
+
+-(BOOL)executeSqliteQueries:( StringsChannel* )stringChannel_
+                  tableName:( NSString* )tableName_
+                      error:( NSError** )error_
+{
+    NSParameterAssert( error_ != NULL );
+
+    [ self openDatabaseWithError: error_ ];
+    CHECK_ERROR__RET_BOOL( error_ );
+
+    GuardCallbackBlock closeDbBlock_ = ^
+    {
+        [ self closeDatabase ];
+    };
+    ObjcScopedGuard dbGuard_( closeDbBlock_ );
+    
+    id<DbWrapper> castedWrapper_ = [ self castedWrapper ];
+
+    [ self createTableNamed: tableName_
+                      error: error_ ];
+    CHECK_ERROR__RET_BOOL( error_ );
+    
+    [ self beginTransaction ];
+    
+    std::string&& queryStr_ = [ stringChannel_ getString ];
+    
+    while ( queryStr_.length() != 0 )
+    {
+        @autoreleasepool
+        {
+            NSString* query_ = [ [ NSString alloc ] initWithBytesNoCopy: (void*)queryStr_.c_str()
+                                                                 length: (NSUInteger)queryStr_.length()
+                                                               encoding: NSUTF8StringEncoding
+                                                           freeWhenDone: NO ];
+
+            [ castedWrapper_ insert: query_
+                              error: error_ ];
+
+            if ( *error_ )
+                break;
+
+            queryStr_ = [ stringChannel_ getString ];
+        }
+    }
+
+    if ( *error_ )
+    {
+        [ self rollbackTransaction ];
+        return NO;
+    }
+    else
+    {
+        [ self commitTransaction ];
+        return YES;
+    }
+}
+
 -(BOOL)storeDataInTable:( NSString* )tableName_
                   error:( NSError** )error_
 {
@@ -162,12 +211,10 @@ using namespace ::Utils;
     };
     ObjcScopedGuard streamGuard_( streamGuardBlock_ );
 
-
-
     [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ];
 
-
-    NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
+    NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_
+                                                                  comments: self.onCommentCallback ];
     BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
                                           withDefaults: self.defaultValues
                                     matchesTableSchema: self.schema ];
@@ -178,26 +225,92 @@ using namespace ::Utils;
     }
     self.csvSchema = csvSchema_;
 
-    [ self openDatabaseWithError: error_ ];
-    CHECK_ERROR__RET_BOOL( error_ );
-    GuardCallbackBlock closeDbBlock_ = ^
+    StoreLineFunction storeLine_;
+
+    //be carefull, length can be bigger
+    char buffer_[ 1024*4 ] = { 0 };
+
+    NSOrderedSet* defaultColumns_ = self.defaultValues.columns;
+    NSMutableOrderedSet* schemaColumns_ = [ NSMutableOrderedSet orderedSetWithArray: self.csvSchema.array ];
+    [ schemaColumns_ unionOrderedSet: defaultColumns_ ];
+    NSArray* headers_ = [ schemaColumns_ array ];
+    NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
+
+    NSUInteger requeredNumOfColumns_ = [ headers_ count ];
+
+    const char* headerFieldsStr_ = [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ];
+
+    StringsChannel* stringChannel_ = [ StringsChannel newStringsChannelWithSize: 100 ];
+
+    NSCondition* finishCondition_ = [ NSCondition new ];
+
+    if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
     {
-        [ self closeDatabase ];
-    };
-    ObjcScopedGuard dbGuard_( closeDbBlock_ );
+        char separator_ = self.columnsParser->_separator;
+        CsvDefaultValues* defaultValues_ = self.defaultValues;
+        NSOrderedSet* csvSchema_     = self.csvSchema;
+        NSDictionary* schema_        = self.schema;
 
-  
-  
-  
-    [ self createTableNamed: tableName_
-                      error: error_ ];
-    CHECK_ERROR__RET_BOOL( error_ );
-
+        storeLine_ = ^( const std::string& line_
+                       , NSString* tableName_
+                       , char* buffer_
+                       , const char* headerFieldsStr_
+                       , NSError** errorPtr_ )
+        {
+            fastStoreLine1( line_ 
+                           , tableName_
+                           , buffer_
+                           , headerFieldsStr_
+                           , requeredNumOfColumns_
+                           , defaultValues_
+                           , csvSchema_
+                           , schema_
+                           , separator_
+                           , stringChannel_
+                           , error_ );
+        };
+    }
+    else
+    {
+        storeLine_ = ^( const std::string& line_
+                       , NSString* tableName_
+                       , char* buffer_
+                       , const char* headerFieldsStr_
+                       , NSError** errorPtr_ )
+        {
+            [ self storeLine: line_ 
+                     inTable: tableName_
+                      buffer: buffer_
+                headerFields: headerFields_
+        requeredNumOfColumns: requeredNumOfColumns_
+               stringChannel: stringChannel_
+                       error: error_ ];
+        };
+    }
 
     std::string line_;
-    NSString* lineStr_ = nil;
-    
-    [ self beginTransaction ];
+
+    __block NSError* errorHolder_;
+
+    dispatch_queue_t queue_ = dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 );
+    dispatch_async( queue_, ^
+    {
+        @autoreleasepool
+        {
+            NSError* localError_;
+            [ self executeSqliteQueries: stringChannel_
+                              tableName: tableName_
+                                  error: &localError_ ];
+
+            if ( localError_ )
+                *error_ = localError_;
+        }
+
+        [ finishCondition_ lock ];
+        [ finishCondition_ signal ];
+        [ finishCondition_ unlock ];
+    } );
+
     while ( !stream_.eof() )
     {
         @autoreleasepool
@@ -211,37 +324,46 @@ using namespace ::Utils;
                 break;
             }
 
-            void* lineBegPtr_ = reinterpret_cast<void*>( const_cast<char*>( line_.c_str() ) );
-            lineStr_ = [ [ NSString alloc ] initWithBytesNoCopy: lineBegPtr_
-                                                         length: lineSize_
-                                                       encoding: NSUTF8StringEncoding
-                                                   freeWhenDone: NO ];
-        }
+            if ( line_[ 0 ] == '#' )
+            {
+                if ( self->_onCommentCallback )
+                    self->_onCommentCallback( line_ );
+            }
+            else
+            {
+                storeLine_( line_
+                           , tableName_
+                           , buffer_
+                           , headerFieldsStr_
+                           , error_ );
+            }
 
-        [ self storeLine: lineStr_ 
-                 inTable: tableName_
-                   error: error_];
+            if ( errorHolder_ || nil != *error_ )
+            {
+                [ self finishAndWaitCondition: finishCondition_
+                                stringChannel: stringChannel_ ];
 
-        if ( nil != *error_ )               
-        {
-            [ self rollbackTransaction ];
-
-            NSLog( @"%@", *error_ );        
-            return NO;                         
+                *error_ = *error_ ?: errorHolder_;
+                NSLog( @"%@", *error_ );
+                return NO;
+            }
         }
     }
-    [ self commitTransaction ];
 
-    return YES;
+    [ self finishAndWaitCondition: finishCondition_
+                    stringChannel: stringChannel_ ];
+
+    *error_ = errorHolder_;
+    if ( *error_ )
+        NSLog( @"%@", *error_ );
+
+    return errorHolder_ == nil;
 }
-
 
 -(void)setCsvDateFormat:(NSString *)csvDateFormat_
 {
-    self->csvDateFormat = csvDateFormat_;
+    self->_csvDateFormat = csvDateFormat_;
     self.csvFormatter.dateFormat = csvDateFormat_;
 }
-
-
 
 @end

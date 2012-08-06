@@ -4,7 +4,6 @@
 
 #import <CsvToSqlite/CsvToSqlite.h>
 #import <CsvToSqlite/SqliteTypes.h>
-#import <CsvToSqlite/CsvDefaultValues.h>
 #import <CsvToSqlite/Errors/CsvImportError.h>
 
 #endif

@@ -10,13 +10,7 @@
 @end
 
 @implementation CsvColumnsParser
-{
-@private
-    char _separator;
-}
 
-@synthesize separatorChar = _separator;
-@synthesize lineReader;
 @dynamic separatorString;
 
 -(id)initWithSeparatorChar:( char )separator_
@@ -40,8 +34,9 @@
 }
 
 -(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_
+                              comments:( CSVOnCommentCallback )onCommentCallback_
 {
-    if ( !stream_.is_open() || !stream_.good() )
+    if ( !stream_.is_open() || !stream_.good() || stream_.eof() )
     {
         NSLog( @"[!!!ERROR!!!] : CsvColumnsParser->parseColumnsFromStream - bad stream" );
         return nil;
@@ -51,14 +46,25 @@
     [ self.lineReader readLine: row_ 
                     fromStream: stream_ ];
 
+    while ( row_[ 0 ] == '#' && stream_.is_open() && stream_.good() && !stream_.eof() )
+    {
+        if ( onCommentCallback_ )
+            onCommentCallback_( row_ );
+        [ self.lineReader readLine: row_
+                        fromStream: stream_ ];
+    }
+
+    if ( !stream_.is_open() || !stream_.good() || stream_.eof() )
+    {
+        NSLog( @"[!!!ERROR!!!] : CsvColumnsParser->parseColumnsFromStream - bad stream" );
+        return nil;
+    }
+
     @autoreleasepool
     {
-        NSString* rowString_ = [ [ NSString alloc ]initWithCString: row_.c_str()
-                                                          encoding: NSUTF8StringEncoding ];
-
         NSRange separatorRange_ = { static_cast<NSUInteger>( self->_separator ),  1 };
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
-        NSArray* tokens_ = [ rowString_ componentsSeparatedByCharactersInSet: separators_ ];
+        NSArray* tokens_ = [ @( row_.c_str() ) componentsSeparatedByCharactersInSet: separators_ ];
 
         return [ NSOrderedSet orderedSetWithArray: tokens_ ];
     }

@@ -9,8 +9,6 @@
 
 @implementation MockDb
 
-@synthesize mQueriesLog;
-
 -(id)initWithPath:(NSString*)inPath_
 {
     return [ super init ];

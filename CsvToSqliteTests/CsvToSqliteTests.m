@@ -7,62 +7,56 @@
 
 @implementation CsvToSqliteTests
 
-@synthesize defaultSchema;
-
 -(void)setUp
 {
-   self.defaultSchema = [ NSDictionary dictionaryWithObjectsAndKeys:
-                         @"DATETIME", @"Date"
-                         , nil ];
+    self.defaultSchema = @{ @"Date" : @"DATETIME" };
 }
 
 -(void)testConverterRejectsInit
 {
-   STAssertThrows( [ CsvToSqlite new ], @"init should not be supported" );
+    STAssertThrows( [ CsvToSqlite new ], @"init should not be supported" );
 }
 
 -(void)testConverterRequiresDatabaseName
 {
-   CsvToSqlite* converter_ = nil;
-   NSDictionary* schema_ = self.defaultSchema;
+    CsvToSqlite* converter_ = nil;
+    NSDictionary* schema_ = self.defaultSchema;
+
+    {
+        converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: nil
+                                                     dataFileName: @"data file stub"
+                                                   databaseSchema: schema_
+                                                       primaryKey: nil
+                                                    defaultValues: nil ];
+        STAssertNil( converter_, @"nil expected - DatabaseName" );
+    }
+
+    {
+        converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
+                                                     dataFileName: nil
+                                                   databaseSchema: schema_
+                                                       primaryKey: nil
+                                                    defaultValues: nil];
+        STAssertNil( converter_, @"nil expected - DatabaseName" );
+    }
+
+    {
+        converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @""
+                                                     dataFileName: @"data file stub"
+                                                   databaseSchema: schema_
+                                                       primaryKey: nil
+                                                    defaultValues: nil];
+        STAssertNil( converter_, @"nil expected - DatabaseName" );
+    }
    
-   {
-      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: nil
-                                                   dataFileName: @"data file stub" 
-                                                 databaseSchema: schema_ 
-                                                     primaryKey: nil 
-                                                  defaultValues: nil ];
-      STAssertNil( converter_, @"nil expected - DatabaseName" );
-   }
-   
-   
-   {
-      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
-                                                   dataFileName: nil 
-                                                 databaseSchema: schema_ 
-                                                     primaryKey: nil 
-                                                  defaultValues: nil];
-      STAssertNil( converter_, @"nil expected - DatabaseName" );
-   }
-   
-   {
-      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @""
-                                                   dataFileName: @"data file stub" 
-                                                 databaseSchema: schema_ 
-                                                     primaryKey: nil 
-                                                  defaultValues: nil];
-      STAssertNil( converter_, @"nil expected - DatabaseName" );
-   }
-   
-   
-   {
-      converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
-                                                   dataFileName: @"" 
-                                                 databaseSchema: schema_ 
-                                                     primaryKey: nil 
-                                                  defaultValues: nil];
-      STAssertNil( converter_, @"nil expected - DatabaseName" );
-   }   
+    {
+        converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"db stub"
+                                                     dataFileName: @""
+                                                   databaseSchema: schema_
+                                                       primaryKey: nil
+                                                    defaultValues: nil];
+        STAssertNil( converter_, @"nil expected - DatabaseName" );
+    }
 }
 
 -(void)testConverterInitializedCorrectly

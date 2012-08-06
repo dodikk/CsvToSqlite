@@ -16,8 +16,7 @@
     NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"UnixTest" 
                                                                                 ofType: @"csv" ];
 
-    NSDictionary* schema_ = [ NSDictionary dictionaryWithObject: @"amba" 
-                                                         forKey: @"karamba" ];
+    NSDictionary* schema_ = @{ @"karamba" : @"amba" };
 
     CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"5.sqlite" 
                                                               dataFileName: csvPath_ 
@@ -49,8 +48,7 @@
     NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"UnixTest" 
                                                                                 ofType: @"csv" ];
 
-    NSDictionary* schema_ = [ NSDictionary dictionaryWithObject: @"amba" 
-                                                         forKey: @"karamba" ];
+    NSDictionary* schema_ = @{ @"karamba" : @"amba" };
 
     CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"6.sqlite" 
                                                               dataFileName: csvPath_ 

@@ -17,7 +17,15 @@ extern NSString* const SQL_VARCHAR ;
 @interface SqliteTypes : NSObject
 
 +(NSSet*)typesSet;
-+(BOOL)isSqlDateType:( NSString* )sqlType_;
-
 
 @end
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+BOOL isSqlDateType( NSString* sqlType_ );
+
+#ifdef __cplusplus
+} /* closing brace for extern "C" */
+#endif
