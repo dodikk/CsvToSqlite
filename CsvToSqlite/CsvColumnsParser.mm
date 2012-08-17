@@ -2,10 +2,14 @@
 
 #include <string>
 
+static BOOL isValidStream( const std::ifstream& stream_ )
+{
+    return stream_.is_open() && stream_.good() && !stream_.eof();
+}
 
 @interface CsvColumnsParser() 
 
-@property ( nonatomic, strong ) id<LineReader> lineReader;
+@property ( nonatomic ) id<LineReader> lineReader;
 
 @end
 
@@ -14,6 +18,7 @@
 @dynamic separatorString;
 
 -(id)initWithSeparatorChar:( char )separator_
+                   comment:( char )comment_
                 lineReader:( id<LineReader> )lineReader_
 {
     self = [ super init ];
@@ -21,7 +26,8 @@
     if ( self )
     {
         self->_separator = separator_;
-        self.lineReader = lineReader_;
+        self->_comment   = comment_;
+        self.lineReader  = lineReader_;
     }
 
     return self;
@@ -34,9 +40,8 @@
 }
 
 -(NSOrderedSet*)parseColumnsFromStream:( std::ifstream& )stream_
-                              comments:( CSVOnCommentCallback )onCommentCallback_
 {
-    if ( !stream_.is_open() || !stream_.good() || stream_.eof() )
+    if ( !isValidStream( stream_ ) )
     {
         NSLog( @"[!!!ERROR!!!] : CsvColumnsParser->parseColumnsFromStream - bad stream" );
         return nil;
@@ -46,18 +51,12 @@
     [ self.lineReader readLine: row_ 
                     fromStream: stream_ ];
 
-    while ( row_[ 0 ] == '#' && stream_.is_open() && stream_.good() && !stream_.eof() )
+    while ( row_[ 0 ] == self->_comment && isValidStream( stream_ ) )
     {
-        if ( onCommentCallback_ )
-            onCommentCallback_( row_ );
+        if ( self->_onCommentCallback )
+            self->_onCommentCallback( row_ );
         [ self.lineReader readLine: row_
                         fromStream: stream_ ];
-    }
-
-    if ( !stream_.is_open() || !stream_.good() || stream_.eof() )
-    {
-        NSLog( @"[!!!ERROR!!!] : CsvColumnsParser->parseColumnsFromStream - bad stream" );
-        return nil;
     }
 
     @autoreleasepool
@@ -66,7 +65,7 @@
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
         NSArray* tokens_ = [ @( row_.c_str() ) componentsSeparatedByCharactersInSet: separators_ ];
 
-        return [ NSOrderedSet orderedSetWithArray: tokens_ ];
+        return [ [ NSOrderedSet alloc ] initWithArray: tokens_ ];
     }
 }
 

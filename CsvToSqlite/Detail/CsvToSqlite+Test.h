@@ -13,6 +13,7 @@
                primaryKey:( NSOrderedSet* )primaryKey_
             defaultValues:( CsvDefaultValues* )defaults_
             separatorChar:( char )separator_
+              commentChar:( char )comment_
                lineReader:( id<LineReader> )reader_
            dbWrapperClass:( Class )dbWrapperClass_;
 

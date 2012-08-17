@@ -34,7 +34,6 @@
     return YES;
 }
 
-
 -(NSError*)lastError
 {
     return nil;
@@ -48,14 +47,14 @@
 -(BOOL)insert:( NSString* )sql_
         error:( NSError** )error_
 {
-    [ self.mQueriesLog addObject: sql_ ];
+    [ self.mQueriesLog addObject: [ sql_ copy ] ];
     return YES;
 }
 
 -(BOOL)createTable:( NSString* )sql_
              error:( NSError** )error_
 {
-    [ self.mQueriesLog addObject: sql_ ];
+    [ self.mQueriesLog addObject: [ sql_ copy ] ];
     return YES;
 }
 

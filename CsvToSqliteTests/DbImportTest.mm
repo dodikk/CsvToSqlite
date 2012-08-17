@@ -86,6 +86,7 @@
                                                                 primaryKey: nil
                                                              defaultValues: nil
                                                              separatorChar: ';'
+                                                               commentChar: '#'
                                                                 lineReader: [ UnixLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
     
@@ -111,7 +112,7 @@
         }
 #endif
 
-        query_ = qLog_ [ 0 ];
+        query_ = [ qLog_ objectAtIndex: 0 ];
 
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
@@ -142,21 +143,21 @@
     
     
     {
-        query_ = qLog_[ 1 ];
-        STAssertTrue( [ query_ isEqualToString: @"BEGIN TRANSACTION" ], @"missing 'create transaction'" );
+        query_ = [ qLog_ objectAtIndex: 1 ];
+        STAssertTrue( [ query_ isEqualToString: @"BEGIN TRANSACTION;" ], @"missing 'create transaction'" );
     }
     
     
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 2 ];
+        query_    = [ qLog_ objectAtIndex: 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }    
 
     {
-        query_ = qLog_[ 3 ];
-        STAssertTrue( [ query_ isEqualToString: @"COMMIT TRANSACTION" ], @"missing 'commit transaction'" );
+        query_ = [ qLog_ objectAtIndex: 3 ];
+        STAssertTrue( [ query_ isEqualToString: @"COMMIT TRANSACTION;" ], @"missing 'commit transaction'" );
     }
 }
 
@@ -188,7 +189,8 @@
                                                                 primaryKey: primaryKey_
                                                              defaultValues: defaults_
                                                              separatorChar: ';'
-                                                                lineReader: [ UnixLineReader new ] 
+                                                               commentChar: '#'
+                                                                lineReader: [ UnixLineReader new ]
                                                             dbWrapperClass: [ MockDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
@@ -254,6 +256,7 @@
                                                                 primaryKey: nil
                                                              defaultValues: nil
                                                              separatorChar: ';'
+                                                               commentChar: '#'
                                                                 lineReader: [ WindowsLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
@@ -279,7 +282,7 @@
         }
 #endif
         
-        query_    = qLog_[ 0 ];
+        query_    = [ qLog_ objectAtIndex: 0 ];
         
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
@@ -309,43 +312,42 @@
     }
     
     {
-        expected_ = @"BEGIN TRANSACTION";
-        query_    = qLog_[ 1 ];
+        expected_ = @"BEGIN TRANSACTION;";
+        query_    = [ qLog_ objectAtIndex: 1 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
     }
-    
-    
+
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 2 ];
+        query_    = [ qLog_ objectAtIndex: 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
-    
+
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-23', '32', '200', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 3 ];
+        query_    = [ qLog_ objectAtIndex: 3 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
     
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-24', '14', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 4 ];
+        query_    = [ qLog_ objectAtIndex: 4 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
-    
+
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-25', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 5 ];
+        query_    = [ qLog_ objectAtIndex: 5 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch - %@", query_ );
     }   
-    
+
     {
-        expected_ = @"COMMIT TRANSACTION";
-        query_    = qLog_[ 6 ];
+        expected_ = @"COMMIT TRANSACTION;";
+        query_    = [ qLog_ objectAtIndex: 6 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
     }
 }
@@ -367,6 +369,7 @@
                                                                 primaryKey: _primaryKey
                                                              defaultValues: nil
                                                              separatorChar: ';'
+                                                               commentChar: '#'
                                                                 lineReader: [ WindowsLineReader new ] 
                                                             dbWrapperClass: [ MockDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
@@ -391,7 +394,7 @@
         }
 #endif
         
-        query_    = qLog_[ 0 ];
+        query_    = [ qLog_ objectAtIndex: 0 ];
         
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
@@ -434,7 +437,7 @@
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey ];
     converter_.csvDateFormat = @"yyyyMMdd";
-    
+
     MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
@@ -468,7 +471,9 @@
                                                                 primaryKey: _primaryKey
                                                              defaultValues: nil
                                                            lineEndingStyle: CSV_LE_UNIX
-                                                       recordSeparatorChar: ';' ];    
+                                                       recordSeparatorChar: ';'
+                                                         recordCommentChar: '#'
+                               ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
     STAssertNotNil( converter_, @"DB initialization error" );
@@ -483,25 +488,25 @@
 -(void)testDamagedCsvPartiallyImportedWithError
 {
     //line11 is damaged
-    NSError*  error_    = nil;
-    
+    NSError* error_;
+
     NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
     NSString* csvPath_ = [ mainBundle_ pathForResource: @"Damaged" 
                                                 ofType: @"csv" ];
-    
-    
-    
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"Damaged.sqlite" 
+
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"Damaged.sqlite"
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey
                                                              defaultValues: nil
                                                            lineEndingStyle: CSV_LE_UNIX
-                                                       recordSeparatorChar: ';' ];    
+                                                       recordSeparatorChar: ';'
+                                                         recordCommentChar: '#'
+                               ];
     converter_.csvDateFormat = @"yyyyMMdd";
-    
+
     STAssertNotNil( converter_, @"DB initialization error" );
-    
+
     BOOL result_ = [ converter_ storeDataInTable: @"Campaigns"
                                            error: &error_ ];
 
@@ -530,7 +535,9 @@
                                                                 primaryKey: nil
                                                              defaultValues: nil
                                                            lineEndingStyle: CSV_LE_WIN
-                                                       recordSeparatorChar: ';' ];
+                                                       recordSeparatorChar: ';'
+                                                         recordCommentChar: '#'
+                               ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
     MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
@@ -541,6 +548,22 @@
                              error: &error_ ];   
 
     STAssertNil( error_, @"Unexpected error" );
+    
+    {
+        FMDatabase* db_ = [ FMDatabase databaseWithPath: @"1.sqlite" ];
+        [ db_ open ];
+        FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
+        [ rs_ next ];
+        NSString* facetId_ = [ rs_ stringForColumn: @"FacetId" ];
+        STAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
+
+        STAssertTrue( [ rs_ next ], @"should go to next" );
+
+        facetId_ = [ rs_ stringForColumn: @"FacetId" ];
+        STAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
+
+        [ db_ close ];
+    }
 }
 
 -(void)testImportDataWithScpecialSymbolsAsIs
@@ -561,7 +584,9 @@
                                                                 primaryKey: nil
                                                              defaultValues: nil
                                                            lineEndingStyle: CSV_LE_WIN
-                                                       recordSeparatorChar: ';' ];
+                                                       recordSeparatorChar: ';'
+                                                         recordCommentChar: '#'
+                               ];
     converter_.csvDateFormat = @"yyyy-MM-dd";
 
     MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
@@ -576,10 +601,16 @@
     {
         FMDatabase* db_ = [ FMDatabase databaseWithPath: @"1.sqlite" ];
         [ db_ open ];
-        FMResultSet* rs_ = [ db_ executeQuery:@"SELECT FacetId FROM Campaigns;" ];
+        FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
         [ rs_ next ];
         NSString* facetId_ = [ rs_ stringForColumn: @"FacetId" ];
         STAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
+
+        STAssertTrue( [ rs_ next ], @"should go to next" );
+
+        facetId_ = [ rs_ stringForColumn: @"FacetId" ];
+        STAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
+
         [ db_ close ];
     }
 }

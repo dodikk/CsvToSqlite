@@ -46,7 +46,7 @@
     [ self->_lock unlock ];
 }
 
--(void)putNoBlockString:( const std::string& )str_
+-(void)putUnboundedString:( const std::string& )str_
 {
     [ self->_lock lock ];
 
@@ -56,7 +56,7 @@
     [ self->_lock unlock ];
 }
 
--(std::string)getString
+-(std::string)popString
 {
     [ self->_lock lock ];
 
@@ -67,7 +67,7 @@
         result_ = *self->_data.begin();
         self->_data.pop_front();
 
-        if ( self->_data.size() < self->_size )//???
+        if ( self->_data.size() < self->_size )
             [ self->_lock signal ];
     }
     else
@@ -79,7 +79,7 @@
 
         result_ = *self->_data.begin();
         self->_data.pop_front();
-        if ( self->_data.size() < self->_size )//???
+        if ( self->_data.size() < self->_size )
             [ self->_lock signal ];
     }
 

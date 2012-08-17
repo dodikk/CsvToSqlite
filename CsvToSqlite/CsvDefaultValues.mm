@@ -2,8 +2,8 @@
 
 @interface CsvDefaultValues()
 
-@property ( nonatomic, strong ) NSMutableOrderedSet* mutableColumns ;
-@property ( nonatomic, strong ) NSMutableArray*      mutableDefaults;
+@property ( nonatomic ) NSMutableOrderedSet* mutableColumns ;
+@property ( nonatomic ) NSMutableArray*      mutableDefaults;
 
 @end
 
@@ -39,8 +39,6 @@
 
     [ self.mutableColumns  addObject: column_       ];
     [ self.mutableDefaults addObject: defaultValue_ ];
-
-    self->_defaults.push_back( [ defaultValue_ cStringUsingEncoding: NSUTF8StringEncoding ] );
 }
 
 -(NSOrderedSet*)columns 

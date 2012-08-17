@@ -19,11 +19,12 @@
 -(void)testColumnsParserRequiresSeparatorChar
 {
    char separator = ';';
-   
+
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator
+                                                                          comment: '#'
                                                                        lineReader: [ WindowsLineReader new ] ];
    STAssertNotNil( parser_, @"valid object expected" );
-   STAssertTrue( separator == parser_.separatorChar, @"Incorrect initialization" );
+   STAssertTrue( separator == parser_->_separator, @"Incorrect initialization" );
 }
 
 -(void)testParseColumnsReturnsCorrectValues
@@ -33,6 +34,7 @@
               withFileName: @"Campaigns" ];
 
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                          comment: '#'
                                                                        lineReader: [ WindowsLineReader new ]]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
@@ -51,7 +53,8 @@
 -(void)testParseColumnsReturnsNilForBadStream
 {
    std::ifstream stream_;   
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                          comment: '#'
                                                                        lineReader: [ WindowsLineReader new ] ]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
@@ -64,7 +67,8 @@
    [ StreamUtils csvStream: stream_ 
               withFileName: @"Empty" ];
    
-   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';' 
+   CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                          comment: '#'
                                                                        lineReader: [ WindowsLineReader new ] ]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
@@ -78,6 +82,7 @@
               withFileName: @"UnixTest" ];
    
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                          comment: '#'
                                                                        lineReader: [ UnixLineReader new ]]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
@@ -100,6 +105,7 @@
               withFileName: @"Unix-NoHeader" ];
    
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: ';'
+                                                                          comment: '#'
                                                                        lineReader: [ UnixLineReader new ] ]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    

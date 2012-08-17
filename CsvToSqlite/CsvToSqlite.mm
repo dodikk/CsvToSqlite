@@ -18,6 +18,8 @@
 #import "CsvDefaultValues.h"
 #import "StringsChannel.h"
 
+#import "CsvToSqlite+QueryLinesProducerFactory.h"
+
 #include <map>
 #include <fstream>
 #include <ObjcScopedGuard/ObjcScopedGuard.h>
@@ -25,6 +27,9 @@
 using namespace ::Utils;
 
 @interface CsvToSqlite()
+{
+    NSError* _outErrorHolderCrashWorkaround;
+}
 
 @property ( nonatomic ) NSString* databaseName;
 @property ( nonatomic ) NSString* dataFileName;
@@ -59,6 +64,7 @@ using namespace ::Utils;
             defaultValues:( CsvDefaultValues* )defaults_
           lineEndingStyle:( CsvLineEndings )lineEndingStyle_
       recordSeparatorChar:( char )separatorChar_
+        recordCommentChar:( char )commentChar_
 {
     static std::map< CsvLineEndings, Class > lineEndingsMap_;
     if ( lineEndingsMap_.empty() )
@@ -80,6 +86,7 @@ using namespace ::Utils;
                             primaryKey: primaryKey_
                          defaultValues: defaults_
                          separatorChar: separatorChar_
+                           commentChar: commentChar_
                             lineReader: [ readerClass_ new ]
                         dbWrapperClass: [ FMDatabase class ] ];
 }
@@ -97,9 +104,10 @@ using namespace ::Utils;
                                              primaryKey: primaryKey_
                                           defaultValues: defaults_
                                         lineEndingStyle: CSV_LE_WIN
-                                    recordSeparatorChar: ';' ];
+                                    recordSeparatorChar: ';'
+                                      recordCommentChar: '#' ];
     result_.csvDateFormat = @"yyyyMMdd";
-    
+
     return result_;
 }
 
@@ -115,17 +123,7 @@ using namespace ::Utils;
                          defaultValues: nil ];
 }
 
--(void)finishAndWaitCondition:( NSCondition* )finishCondition_
-                stringChannel:( StringsChannel* )stringChannel_
-{
-    [ stringChannel_ putNoBlockString: "" ];
-
-    [ finishCondition_ lock ];
-    [ finishCondition_ wait ];
-    [ finishCondition_ unlock ];
-}
-
--(BOOL)executeSqliteQueries:( StringsChannel* )stringChannel_
+-(BOOL)executeSqliteQueries:( StringsChannel* )queryChannel_
                   tableName:( NSString* )tableName_
                       error:( NSError** )error_
 {
@@ -139,18 +137,18 @@ using namespace ::Utils;
         [ self closeDatabase ];
     };
     ObjcScopedGuard dbGuard_( closeDbBlock_ );
-    
+
     id<DbWrapper> castedWrapper_ = [ self castedWrapper ];
 
     [ self createTableNamed: tableName_
                       error: error_ ];
     CHECK_ERROR__RET_BOOL( error_ );
-    
+
     [ self beginTransaction ];
-    
-    std::string&& queryStr_ = [ stringChannel_ getString ];
-    
-    while ( queryStr_.length() != 0 )
+
+    std::string queryStr_ = [ queryChannel_ popString ];
+
+    while ( !queryStr_.empty() )
     {
         @autoreleasepool
         {
@@ -165,7 +163,7 @@ using namespace ::Utils;
             if ( *error_ )
                 break;
 
-            queryStr_ = [ stringChannel_ getString ];
+            queryStr_ = [ queryChannel_ popString ];
         }
     }
 
@@ -192,7 +190,7 @@ using namespace ::Utils;
         NSAssert( NO, errorMessage_ );
         return NO;
     }
-    else if ( nil == tableName_ || @"" == tableName_ )
+    else if ( nil == tableName_ || [ @"" isEqualToString: tableName_ ] )
     {
         *error_ = [ CsvBadTableNameError new ];
         return NO;
@@ -213,8 +211,9 @@ using namespace ::Utils;
 
     [ StreamUtils csvStream: stream_ withFilePath: self.dataFileName ];
 
-    NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_
-                                                                  comments: self.onCommentCallback ];
+    self.columnsParser.onCommentCallback = self->_onCommentCallback;
+    NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
+
     BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
                                           withDefaults: self.defaultValues
                                     matchesTableSchema: self.schema ];
@@ -225,106 +224,53 @@ using namespace ::Utils;
     }
     self.csvSchema = csvSchema_;
 
-    StoreLineFunction storeLine_;
+    std::vector< char > buffer_( 1024*4, 0 );
 
-    //be carefull, length can be bigger
-    char buffer_[ 1024*4 ] = { 0 };
+    StringsChannel* queryChannel_ = [ StringsChannel newStringsChannelWithSize: 100 ];
 
-    NSOrderedSet* defaultColumns_ = self.defaultValues.columns;
-    NSMutableOrderedSet* schemaColumns_ = [ NSMutableOrderedSet orderedSetWithArray: self.csvSchema.array ];
-    [ schemaColumns_ unionOrderedSet: defaultColumns_ ];
-    NSArray* headers_ = [ schemaColumns_ array ];
-    NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
+    QueryLineProducer storeLine_ = [ self queryLinesProducerWithQueryChannel: queryChannel_ ];
 
-    NSUInteger requeredNumOfColumns_ = [ headers_ count ];
-
-    const char* headerFieldsStr_ = [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ];
-
-    StringsChannel* stringChannel_ = [ StringsChannel newStringsChannelWithSize: 100 ];
-
-    NSCondition* finishCondition_ = [ NSCondition new ];
-
-    if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
-    {
-        char separator_ = self.columnsParser->_separator;
-        CsvDefaultValues* defaultValues_ = self.defaultValues;
-        NSOrderedSet* csvSchema_     = self.csvSchema;
-        NSDictionary* schema_        = self.schema;
-
-        storeLine_ = ^( const std::string& line_
-                       , NSString* tableName_
-                       , char* buffer_
-                       , const char* headerFieldsStr_
-                       , NSError** errorPtr_ )
-        {
-            fastStoreLine1( line_ 
-                           , tableName_
-                           , buffer_
-                           , headerFieldsStr_
-                           , requeredNumOfColumns_
-                           , defaultValues_
-                           , csvSchema_
-                           , schema_
-                           , separator_
-                           , stringChannel_
-                           , error_ );
-        };
-    }
-    else
-    {
-        storeLine_ = ^( const std::string& line_
-                       , NSString* tableName_
-                       , char* buffer_
-                       , const char* headerFieldsStr_
-                       , NSError** errorPtr_ )
-        {
-            [ self storeLine: line_ 
-                     inTable: tableName_
-                      buffer: buffer_
-                headerFields: headerFields_
-        requeredNumOfColumns: requeredNumOfColumns_
-               stringChannel: stringChannel_
-                       error: error_ ];
-        };
-    }
-
-    std::string line_;
-
-    __block NSError* errorHolder_;
-
+    dispatch_group_t group_ = dispatch_group_create();
     dispatch_queue_t queue_ = dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 );
-    dispatch_async( queue_, ^
+    dispatch_group_async( group_, queue_, ^
     {
+        NSError* localError_;
         @autoreleasepool
         {
-            NSError* localError_;
-            [ self executeSqliteQueries: stringChannel_
+            [ self executeSqliteQueries: queryChannel_
                               tableName: tableName_
                                   error: &localError_ ];
 
             if ( localError_ )
                 *error_ = localError_;
         }
-
-        [ finishCondition_ lock ];
-        [ finishCondition_ signal ];
-        [ finishCondition_ unlock ];
     } );
+
+    GuardCallbackBlock relleaseGroupGuardBlock_ = ^
+    {
+        dispatch_release( group_ );
+    };
+    ObjcScopedGuard relleaseGroup_( relleaseGroupGuardBlock_ );
+
+    std::string line_;
 
     while ( !stream_.eof() )
     {
         @autoreleasepool
         {
+            BOOL isLineComment_ = ( line_[ 0 ] == self.columnsParser->_comment );
+
             [ self.lineReader readLine: line_ 
                             fromStream: stream_ ];
 
-            size_t lineSize_ = line_.size();
-            if ( 0 == lineSize_ )
+            if ( line_.empty() )
             {
+                // TODO : maybe we should skip empty lines and use CONTINUE
+                // At the moment we suppose CSV is not sparse for faster error reporting
                 break;
             }
 
-            if ( line_[ 0 ] == '#' )
+            if ( isLineComment_ )
             {
                 if ( self->_onCommentCallback )
                     self->_onCommentCallback( line_ );
@@ -334,30 +280,32 @@ using namespace ::Utils;
                 storeLine_( line_
                            , tableName_
                            , buffer_
-                           , headerFieldsStr_
                            , error_ );
             }
 
-            if ( errorHolder_ || nil != *error_ )
+            if ( nil != *error_ )
             {
-                [ self finishAndWaitCondition: finishCondition_
-                                stringChannel: stringChannel_ ];
+                NSLog( @"CsvToSqlite::storeDataInTable error: %@", *error_ );
 
-                *error_ = *error_ ?: errorHolder_;
-                NSLog( @"%@", *error_ );
+                [ queryChannel_ putUnboundedString: "" ];
+                dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
+
+                self->_outErrorHolderCrashWorkaround = *error_;
                 return NO;
             }
         }
     }
 
-    [ self finishAndWaitCondition: finishCondition_
-                    stringChannel: stringChannel_ ];
+    [ queryChannel_ putUnboundedString: "" ];
+    dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
 
-    *error_ = errorHolder_;
-    if ( *error_ )
-        NSLog( @"%@", *error_ );
+    if ( nil != *error_ )
+    {
+        NSLog( @"CsvToSqlite::storeDataInTable error: %@", *error_ );
+        return NO;
+    }
 
-    return errorHolder_ == nil;
+    return YES;
 }
 
 -(void)setCsvDateFormat:(NSString *)csvDateFormat_

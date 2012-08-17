@@ -17,19 +17,23 @@
 #include <string>
 #include <sstream>
 
-typedef std::string (^DateStringConverter)( const std::string &date_ );
+using namespace ::Utils;
+
+static const std::string STL_QUOTE( "'" );
+
+typedef void (^DateStringConverter)( const std::string &date_, std::string& result_ );
 
 static BOOL generalParseAndStoreLine( const std::string& line_
                                      , NSString* tableName_
                                      , DateStringConverter dateConverter_
-                                     , char* buffer_
+                                     , std::vector< char >& buffer_
                                      , const char* headerFields_
                                      , NSUInteger requeredNumOfColumns_
                                      , CsvDefaultValues* defaultValues_
                                      , NSOrderedSet* csvSchema_
                                      , NSDictionary* schema_
                                      , char separator_
-                                     , StringsChannel* stringChannel_
+                                     , StringsChannel* queryChannel_
                                      , NSError** errorPtr_ );
 
 static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
@@ -78,7 +82,7 @@ static std::vector<std::string> split(const std::string &s, char delim) {
     NSString* primaryKeyFormat_ = @", CONSTRAINT pkey PRIMARY KEY ( %@ )";
     NSString* pkeyColumns_ = [ self.primaryKey.array componentsJoinedByString: @", " ];
 
-    NSString* result_ = [ NSString stringWithFormat: primaryKeyFormat_, pkeyColumns_ ];
+    NSString* result_ = [ [ NSString alloc ] initWithFormat: primaryKeyFormat_, pkeyColumns_ ];
 
     return result_;
 }
@@ -122,33 +126,16 @@ static std::vector<std::string> split(const std::string &s, char delim) {
         NSString* pkeyClause_ = [ self primaryKeyConstraint ];
         columnsClause_ = [ columnsClause_ stringByAppendingString: pkeyClause_ ];
     }
-   
-    NSString* query_ = [ NSString stringWithFormat: createFormat_, tableName_, columnsClause_ ];
-   
 
-   
+    NSString* query_ = [ [ NSString alloc ] initWithFormat: createFormat_, tableName_, columnsClause_ ];
+
     return [ db_ createTable: query_ 
                        error: errorPtr_ ];
 }
 
-
--(BOOL)sqlSchemaHasDates
-{
-    __block BOOL result_ = NO;
-    [ self.schema.allValues enumerateObjectsUsingBlock: ^(NSString* schemaType_, NSUInteger idx_, BOOL *stop_) 
-    {
-        if ( isSqlDateType( schemaType_ ) )
-        {
-            result_ = YES;
-            *stop_  = YES;
-        }
-    } ];
-
-    return result_;
-}
-
--(BOOL)storeLineAsIs:( const std::string& )line_ 
-             inTable:(NSString *)tableName_ 
+-(BOOL)storeLineAsIs:( const std::string& )line_
+             inTable:(NSString *)tableName_
+       stringChannel:( StringsChannel* )queryChannel_
                error:(NSError *__autoreleasing *)errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
@@ -167,55 +154,15 @@ static std::vector<std::string> split(const std::string &s, char delim) {
     NSString* query_;
     {
         static NSString* const insertFormat_ = @"INSERT INTO '%@' ( %@ ) VALUES ( '%@' );";
-        query_ = [ NSString stringWithFormat: insertFormat_
+        query_ = [ [ NSString alloc ] initWithFormat: insertFormat_
                   , tableName_
                   , headerFields_
                   , values_ ];
     }
 
-    return [ [ self castedWrapper ] insert: query_
-                                     error: errorPtr_ ];
-}
+    [ queryChannel_ putString: [ query_ cStringUsingEncoding: NSUTF8StringEncoding ] ];
 
--(BOOL)storeLine:( const std::string& )line_
-         inTable:( NSString* )tableName_
-          buffer:( char* )buffer_
-    headerFields:( NSString* )headerFields_
-requeredNumOfColumns:( NSUInteger )requeredNumOfColumns_
-   stringChannel:( StringsChannel* )stringChannel_
-           error:( NSError** )errorPtr_
-{
-    NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
-
-    BOOL isCsvHasAnsiFormat_ = [ self.csvDateFormat isEqualToString: @"yyyy-MM-dd" ];
-    if ( !isCsvHasAnsiFormat_ && [ self sqlSchemaHasDates ] )
-    {
-        DateStringConverter dateConverter_ = ^std::string( const std::string & dateStr_ )
-        {
-            NSString* lineStr_ = @( dateStr_.c_str() );
-            NSDate* date_ = [ self.csvFormatter dateFromString: lineStr_ ];
-            NSString* result_ = [ self.ansiFormatter stringFromDate: date_ ];
-            return std::string( [ result_ cStringUsingEncoding: NSUTF8StringEncoding ] );
-        };
-        return generalParseAndStoreLine( line_ 
-                                        , tableName_
-                                        , dateConverter_
-                                        , buffer_
-                                        , [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ]
-                                        , requeredNumOfColumns_
-                                        , self.defaultValues
-                                        , self.csvSchema
-                                        , self.schema
-                                        , self.columnsParser->_separator
-                                        , stringChannel_
-                                        , errorPtr_ );
-    }
-    else 
-    {
-        return [ self storeLineAsIs: line_ 
-                            inTable: tableName_ 
-                              error: errorPtr_ ];
-    }
+    return YES;
 }
 
 -(void)closeDatabase
@@ -247,24 +194,25 @@ requeredNumOfColumns:( NSUInteger )requeredNumOfColumns_
 
 @end
 
-BOOL fastStoreLine1( const std::string& line_
-                    , NSString* tableName_
-                    , char* buffer_
-                    , const char* headerFields_
-                    , NSUInteger requeredNumOfColumns_
-                    , CsvDefaultValues* defaultValues_
-                    , NSOrderedSet* csvSchema_
-                    , NSDictionary* schema_
-                    , char separator_
-                    , StringsChannel* stringChannel_
-                    , NSError** errorPtr_ )
+BOOL fastQueryLinesProducer1( const std::string& line_
+                             , NSString* tableName_
+                             , std::vector< char >& buffer_
+                             , const char* headerFields_
+                             , NSUInteger requeredNumOfColumns_
+                             , CsvDefaultValues* defaultValues_
+                             , NSOrderedSet* csvSchema_
+                             , NSDictionary* schema_
+                             , char separator_
+                             , StringsChannel* queryChannel_
+                             , NSError** errorPtr_ )
 {
-    DateStringConverter dateConverter_ = ^std::string( const std::string & dateStr_ )
+    DateStringConverter dateConverter_ = ^void( const std::string& dateStr_, std::string& result_ )
     {
         auto year_  = dateStr_.substr( 0, 4 );
         auto month_ = dateStr_.substr( 4, 2 );
         auto day_   = dateStr_.substr( 6, 2 );
-        return year_ + "-" + month_ + "-" + day_;
+
+        result_ = year_ + "-" + month_ + "-" + day_;
     };
 
     return generalParseAndStoreLine( line_ 
@@ -277,21 +225,21 @@ BOOL fastStoreLine1( const std::string& line_
                                     , csvSchema_
                                     , schema_
                                     , separator_
-                                    , stringChannel_
+                                    , queryChannel_
                                     , errorPtr_ );
 }
 
 static BOOL generalParseAndStoreLine( const std::string& line_
                                      , NSString* tableName_
                                      , DateStringConverter dateConverter_
-                                     , char* buffer_
+                                     , std::vector< char >& buffer_
                                      , const char* headerFields_
                                      , NSUInteger requeredNumOfColumns_
                                      , CsvDefaultValues* defaultValues_
                                      , NSOrderedSet* csvSchema_
                                      , NSDictionary* schema_
                                      , char separator_
-                                     , StringsChannel* stringChannel_
+                                     , StringsChannel* queryChannel_
                                      , NSError** errorPtr_ )
 {
     assert( errorPtr_ != NULL );
@@ -314,15 +262,13 @@ static BOOL generalParseAndStoreLine( const std::string& line_
     NSString* sqlType_   = nil;
     NSUInteger csvCount_ = [ csvSchema_ count ];
 
-    for ( std::vector< std::string >::iterator it_ = lineRecords_.begin(); 
-         it_ != lineRecords_.end();
-         ++it_ )
+    for ( auto it_ = lineRecords_.begin(); it_ != lineRecords_.end(); ++it_ )
     {
         if ( i_ < csvCount_ )
         {
             tmpHeader_ = [ csvSchema_ objectAtIndex: i_ ];
         }
-        else 
+        else
         {
             tmpHeader_ = [ defaultColumns_ objectAtIndex: i_ - csvCount_ ];
         }
@@ -330,7 +276,7 @@ static BOOL generalParseAndStoreLine( const std::string& line_
 
         if ( isSqlDateType( sqlType_ ) )
         {
-            wrappedLineRecord_ = dateConverter_( *it_ );
+            dateConverter_( *it_, wrappedLineRecord_ );
         }
         else
         {
@@ -338,9 +284,14 @@ static BOOL generalParseAndStoreLine( const std::string& line_
         }
 
         char* cStrResultSQL_ = sqlite3_mprintf( "%q", wrappedLineRecord_.c_str() );
-        wrappedLine_.push_back( std::string( "'" ) + cStrResultSQL_ + "'" );
+        ObjcScopedGuard sqlitePrintfGuard_
+        (
+           ^void(){ sqlite3_free( cStrResultSQL_ ); }
+        );
+        wrappedLine_.push_back( STL_QUOTE + cStrResultSQL_ + STL_QUOTE );
         sqlite3_free( cStrResultSQL_ );
-
+        sqlitePrintfGuard_.Release();
+        
         ++i_;
     }
 
@@ -350,18 +301,76 @@ static BOOL generalParseAndStoreLine( const std::string& line_
         for( size_t i = 0; i < wrappedLine_.size(); ++i )
         {
             if( i != 0 )
+            {
                 ss << ", ";
+            }
             ss << wrappedLine_[i];
         }
         values_ = ss.str();
     }
 
-    sprintf ( buffer_, "INSERT OR IGNORE INTO '%s' ( %s ) VALUES ( %s );"
-             , [ tableName_ cStringUsingEncoding: NSUTF8StringEncoding ]
+    static const char* insertFormat_ = "INSERT OR IGNORE INTO '%s' ( %s ) VALUES ( %s );";
+    const char* tableNameCStr_ = [ tableName_ cStringUsingEncoding: NSUTF8StringEncoding ];
+
+    int requiredBufferSize_ = snprintf ( NULL, 0, insertFormat_
+                                       , tableNameCStr_
+                                       , headerFields_
+                                       , values_.c_str() );
+
+    if ( requiredBufferSize_ + 1 > buffer_.size() )
+    {
+        buffer_.resize( (size_t)requiredBufferSize_ + 1 );
+    }
+
+    sprintf ( &buffer_[ 0 ], insertFormat_
+             , tableNameCStr_
              , headerFields_
              , values_.c_str() );
 
-    [ stringChannel_ putString: buffer_ ];
+    [ queryChannel_ putString: &buffer_[ 0 ] ];
 
     return YES;
+}
+
+BOOL queryLinesProducer2( CsvToSqlite* csvToSqlite_
+                         , const std::string& line_
+                         , NSString* tableName_
+                         , StringsChannel* queryChannel_
+                         , NSError** errorPtr_ )
+{
+    return [ csvToSqlite_ storeLineAsIs: line_
+                                inTable: tableName_
+                          stringChannel: queryChannel_
+                                  error: errorPtr_ ];
+}
+
+BOOL generalQueryLinesProducer( CsvToSqlite* csvToSqlite_
+                               , const std::string& line_
+                               , NSString* tableName_
+                               , std::vector< char >& buffer_
+                               , StringsChannel* queryChannel_
+                               , NSString* headerFields_
+                               , NSUInteger requeredNumOfColumns_
+                               , NSError** errorPtr_ )
+{
+    DateStringConverter dateConverter_ = ^void( const std::string & dateStr_, std::string& result_ )
+    {
+        NSString* lineStr_ = @( dateStr_.c_str() );
+        NSDate* date_ = [ csvToSqlite_.csvFormatter dateFromString: lineStr_ ];
+        NSString* resultStr_ = [ csvToSqlite_.ansiFormatter stringFromDate: date_ ];
+
+        result_ = [ resultStr_ cStringUsingEncoding: NSUTF8StringEncoding ];
+    };
+    return generalParseAndStoreLine( line_
+                                    , tableName_
+                                    , dateConverter_
+                                    , buffer_
+                                    , [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ]
+                                    , requeredNumOfColumns_
+                                    , csvToSqlite_.defaultValues
+                                    , csvToSqlite_.csvSchema
+                                    , csvToSqlite_.schema
+                                    , csvToSqlite_.columnsParser->_separator
+                                    , queryChannel_
+                                    , errorPtr_ );
 }

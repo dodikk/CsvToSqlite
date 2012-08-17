@@ -4,13 +4,9 @@
 #include <string>
 
 @interface CsvDefaultValues : NSObject
-{
-@public
-    std::vector<std::string> _defaults;
-}
 
-@property ( nonatomic, strong, readonly ) NSOrderedSet* columns ;
-@property ( nonatomic, strong, readonly ) NSArray*      defaults;
+@property ( nonatomic, readonly ) NSOrderedSet* columns ;
+@property ( nonatomic, readonly ) NSArray*      defaults;
 
 -(void)addDefaultValue:( NSString* )defaultValue_
              forColumn:( NSString* )column_;

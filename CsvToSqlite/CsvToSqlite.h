@@ -35,7 +35,8 @@
                primaryKey:( NSOrderedSet* )primaryKey_
             defaultValues:( CsvDefaultValues* )defaults_
           lineEndingStyle:( CsvLineEndings )lineEndingStyle_
-      recordSeparatorChar:( char )separatorChar_;
+      recordSeparatorChar:( char )separatorChar_
+        recordCommentChar:( char )commentChar_;
 
 
 -(BOOL)storeDataInTable:( NSString* )tableName_

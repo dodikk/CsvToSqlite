@@ -2,4 +2,8 @@
 #ifdef __OBJC__
     #import <ESLocale/ESLocale.h>
     #import <Foundation/Foundation.h>
+
+    #ifdef __cplusplus
+        #include <ObjcScopedGuard/ObjcScopedGuard.h>
+    #endif
 #endif

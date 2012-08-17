@@ -48,6 +48,6 @@ BOOL isSqlDateType( NSString* sqlType_ )
 {
     BOOL hasDatetime_ = [ sqlType_ isEqualToString: SQL_DATETIME ];
     BOOL hasDate_     = [ sqlType_ isEqualToString: SQL_DATE     ];
-    
+
     return hasDatetime_ || hasDate_;
 }
