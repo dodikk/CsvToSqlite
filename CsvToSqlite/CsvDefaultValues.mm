@@ -46,7 +46,6 @@
     return [ NSOrderedSet orderedSetWithOrderedSet: self.mutableColumns ];
 }
 
-//TODO remove
 -(NSArray*)defaults
 {
     return [ self.mutableDefaults copy ];
@@ -56,9 +55,9 @@
 {
     NSUInteger valuesCount_ = [ self.mutableDefaults count ];
     NSUInteger columnCount_ = [ self.mutableColumns  count ];
-    
+
     NSParameterAssert( columnCount_ == valuesCount_ );
-    
+
     return valuesCount_;
 }
 

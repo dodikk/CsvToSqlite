@@ -10,6 +10,12 @@
 #import "CsvDefaultValues.h"
 #import "FMDatabase.h"
 
+@interface NSArray (DbImportTest)
+
+- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+
+@end
+
 @implementation DbImportTest
 
 -(void)setUp
@@ -112,7 +118,7 @@
         }
 #endif
 
-        query_ = [ qLog_ objectAtIndex: 0 ];
+        query_ = qLog_[ 0 ];
 
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
@@ -143,7 +149,7 @@
     
     
     {
-        query_ = [ qLog_ objectAtIndex: 1 ];
+        query_ = qLog_[ 1 ];
         STAssertTrue( [ query_ isEqualToString: @"BEGIN TRANSACTION;" ], @"missing 'create transaction'" );
     }
     
@@ -151,12 +157,12 @@
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = [ qLog_ objectAtIndex: 2 ];
+        query_    = qLog_[ 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }    
 
     {
-        query_ = [ qLog_ objectAtIndex: 3 ];
+        query_ = qLog_[ 3 ];
         STAssertTrue( [ query_ isEqualToString: @"COMMIT TRANSACTION;" ], @"missing 'commit transaction'" );
     }
 }
@@ -282,7 +288,7 @@
         }
 #endif
         
-        query_    = [ qLog_ objectAtIndex: 0 ];
+        query_ = qLog_[ 0 ];
         
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
@@ -313,41 +319,41 @@
     
     {
         expected_ = @"BEGIN TRANSACTION;";
-        query_    = [ qLog_ objectAtIndex: 1 ];
+        query_    = qLog_[ 1 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
     }
 
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = [ qLog_ objectAtIndex: 2 ];
+        query_    = qLog_[ 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
 
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-23', '32', '200', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = [ qLog_ objectAtIndex: 3 ];
+        query_    = qLog_[ 3 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
     
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-24', '14', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = [ qLog_ objectAtIndex: 4 ];
+        query_    = qLog_[ 4 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
 
     {
         expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
         @"VALUES ( '2008-12-25', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = [ qLog_ objectAtIndex: 5 ];
+        query_    = qLog_[ 5 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch - %@", query_ );
     }   
 
     {
         expected_ = @"COMMIT TRANSACTION;";
-        query_    = [ qLog_ objectAtIndex: 6 ];
+        query_    = qLog_[ 6 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
     }
 }
@@ -393,9 +399,9 @@
             @" [FacetId1] VARCHAR, [FacetId2] VARCHAR, [FacetId3] VARCHAR );" ;
         }
 #endif
-        
-        query_    = [ qLog_ objectAtIndex: 0 ];
-        
+
+        query_ = qLog_[ 0 ];
+
         NSString* prefix_ = @"CREATE TABLE [Campaigns] ( ";
         BOOL prefixOk_ = [ query_ hasPrefix: prefix_ ];
         substringRange_ = [ query_ rangeOfString: prefix_ ];
