@@ -1,5 +1,6 @@
 
 #ifdef __OBJC__
+    #import <ESDatabaseWrapper/ESDatabaseWrapper.h>
     #import <ESLocale/ESLocale.h>
     #import <Foundation/Foundation.h>
 

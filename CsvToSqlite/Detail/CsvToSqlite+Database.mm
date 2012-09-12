@@ -4,7 +4,6 @@
 #import "CsvSchemaMismatchError.h"
 
 #import "CsvColumnsParser.h"
-#import "SqliteTypes.h"
 #import "CsvDefaultValues.h"
 
 #import "CsvMacros.h"

@@ -6,7 +6,6 @@
 #import "CsvColumnsParser.h"
 #import "CsvDefaultValues.h"
 
-#import "SqliteTypes.h"
 
 @implementation CsvToSqlite (QueryLinesProducerFactory)
 

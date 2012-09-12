@@ -1,6 +1,6 @@
 #import "DbImportTest.h"
 
-#import <CsvToSqlite/Mocks/MockDb.h>
+#import <ESDatabaseWrapper/ESDatabaseWrapper.h>
 
 #import <CsvToSqlite/Detail/CsvToSqlite+Test.h>
 
@@ -94,11 +94,11 @@
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ UnixLineReader new ] 
-                                                            dbWrapperClass: [ MockDb class ] ];
+                                                            dbWrapperClass: [ MockWriteableDb class ] ];
     
     converter_.csvDateFormat = @"yyyyMMdd";
     
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
@@ -197,10 +197,10 @@
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ UnixLineReader new ]
-                                                            dbWrapperClass: [ MockDb class ] ];
+                                                            dbWrapperClass: [ MockWriteableDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     NSError* error_;
@@ -225,7 +225,7 @@
                                                                 primaryKey: nil ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
@@ -264,11 +264,11 @@
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ WindowsLineReader new ] 
-                                                            dbWrapperClass: [ MockDb class ] ];
+                                                            dbWrapperClass: [ MockWriteableDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
     
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
@@ -377,10 +377,10 @@
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ WindowsLineReader new ] 
-                                                            dbWrapperClass: [ MockDb class ] ];
+                                                            dbWrapperClass: [ MockWriteableDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
@@ -444,7 +444,7 @@
                                                                 primaryKey: _primaryKey ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     [ converter_  storeDataInTable: @"Campaigns" 
@@ -546,7 +546,7 @@
                                ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     NSError* error_;
@@ -595,7 +595,7 @@
                                ];
     converter_.csvDateFormat = @"yyyy-MM-dd";
 
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     NSError* error_;

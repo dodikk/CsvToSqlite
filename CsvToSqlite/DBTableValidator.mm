@@ -1,6 +1,5 @@
 #import "DBTableValidator.h"
 
-#import "SqliteTypes.h"
 #import "CsvDefaultValues.h"
 
 @implementation DBTableValidator

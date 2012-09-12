@@ -1,6 +1,6 @@
 #import "CsvFailedImportTest.h"
 
-#import "MockDb.h"
+#import <ESDatabaseWrapper/ESDatabaseWrapper.h>
 
 #import "CsvToSqlite+Test.h"
 
@@ -26,10 +26,10 @@
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ UnixLineReader new ] 
-                                                            dbWrapperClass: [ MockDb class ] ];
+                                                            dbWrapperClass: [ MockWriteableDb class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";    
     
-    MockDb* dbWrapper_ = ( MockDb* )converter_.dbWrapper ;
+    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
     STAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     BOOL result_ = [ converter_  storeDataInTable: @"Campaigns" 
