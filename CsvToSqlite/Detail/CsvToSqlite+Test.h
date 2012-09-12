@@ -2,7 +2,7 @@
 
 @class CsvDefaultValues;
 @class CsvColumnsParser;
-@protocol DbWrapper;
+@protocol ESWritableDbWrapper;
 @protocol LineReader;
 
 @interface CsvToSqlite (Test)
@@ -29,7 +29,7 @@
 
 @property ( nonatomic, strong ) CsvColumnsParser* columnsParser;
 @property ( nonatomic, strong ) id<LineReader>    lineReader   ;
-@property ( nonatomic, strong ) id<DbWrapper>     dbWrapper    ;
+@property ( nonatomic, strong ) id<ESWritableDbWrapper>     dbWrapper    ;
 
 @property ( nonatomic, strong ) NSDateFormatter* csvFormatter;
 @property ( nonatomic, strong ) NSDateFormatter* ansiFormatter;

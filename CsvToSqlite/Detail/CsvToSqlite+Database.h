@@ -1,5 +1,4 @@
 #import "CsvToSqlite.h"
-#import "DbWrapper.h"
 
 #include <string>
 #include <vector>
@@ -8,7 +7,7 @@
 
 @interface CsvToSqlite (Database)
 
--(id<DbWrapper>)castedWrapper;
+-(id<ESWritableDbWrapper>)castedWrapper;
 
 -(BOOL)openDatabaseWithError:( NSError** )errorPtr_;
 

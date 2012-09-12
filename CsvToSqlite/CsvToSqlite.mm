@@ -45,7 +45,7 @@ using namespace ::Utils;
 
 @property ( nonatomic ) CsvColumnsParser* columnsParser;
 @property ( nonatomic ) id<LineReader>    lineReader   ;
-@property ( nonatomic ) id<DbWrapper>     dbWrapper    ;
+@property ( nonatomic ) id<ESWritableDbWrapper>     dbWrapper    ;
 
 @end
 
@@ -138,7 +138,7 @@ using namespace ::Utils;
     };
     ObjcScopedGuard dbGuard_( closeDbBlock_ );
 
-    id<DbWrapper> castedWrapper_ = [ self castedWrapper ];
+    id<ESWritableDbWrapper> castedWrapper_ = [ self castedWrapper ];
 
     [ self createTableNamed: tableName_
                       error: error_ ];

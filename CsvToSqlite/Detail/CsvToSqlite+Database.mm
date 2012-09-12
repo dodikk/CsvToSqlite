@@ -55,16 +55,16 @@ static std::vector<std::string> split(const std::string &s, char delim) {
 
 @implementation CsvToSqlite (Database)
 
--(id<DbWrapper>)castedWrapper
+-(id<ESWritableDbWrapper>)castedWrapper
 {
-    return (id<DbWrapper>)[ self dbWrapper ];
+    return (id<ESWritableDbWrapper>)[ self dbWrapper ];
 }
 
 -(BOOL)openDatabaseWithError:( NSError** )errorPtr_
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );
 
-    id<DbWrapper> db_ = [ self castedWrapper ];
+    id<ESWritableDbWrapper> db_ = [ self castedWrapper ];
     BOOL result_ = [ db_ open ];
 
     if ( !result_ )
@@ -91,7 +91,7 @@ static std::vector<std::string> split(const std::string &s, char delim) {
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
 
-    id<DbWrapper> db_ = [ self castedWrapper ];
+    id<ESWritableDbWrapper> db_ = [ self castedWrapper ];
     if ( [ db_ tableExists: tableName_ ] )
     {
         return YES;
