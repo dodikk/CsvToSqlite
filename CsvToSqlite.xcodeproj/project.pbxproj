@@ -66,7 +66,6 @@
 		7E998708153D524000811BA8 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E998704153D51C600811BA8 /* libFMDB.a */; };
 		7E99870B153D52B500811BA8 /* CsvToSqlite+Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998709153D52B500811BA8 /* CsvToSqlite+Database.h */; };
 		7E99870C153D52B500811BA8 /* CsvToSqlite+Database.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99870A153D52B500811BA8 /* CsvToSqlite+Database.mm */; };
-		7E99870E153D546700811BA8 /* DbWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E99870D153D546700811BA8 /* DbWrapper.h */; };
 		7E99871A153D67D800811BA8 /* DbImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E998719153D67D800811BA8 /* DbImportTest.mm */; };
 		7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E998719153D67D800811BA8 /* DbImportTest.mm */; };
 		7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */; };
@@ -317,7 +316,6 @@
 		7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = ../fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
 		7E998709153D52B500811BA8 /* CsvToSqlite+Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite+Database.h"; sourceTree = "<group>"; };
 		7E99870A153D52B500811BA8 /* CsvToSqlite+Database.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CsvToSqlite+Database.mm"; sourceTree = "<group>"; };
-		7E99870D153D546700811BA8 /* DbWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbWrapper.h; sourceTree = "<group>"; };
 		7E998718153D67D800811BA8 /* DbImportTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DbImportTest.h; sourceTree = "<group>"; };
 		7E998719153D67D800811BA8 /* DbImportTest.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DbImportTest.mm; sourceTree = "<group>"; };
 		7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite+Test.h"; sourceTree = "<group>"; };
@@ -489,7 +487,6 @@
 				7EA3A2411538265F0058C603 /* StreamUtils.mm */,
 				7EA3A25C15386BE50058C603 /* DBTableValidator.h */,
 				7EA3A25D15386BE50058C603 /* DBTableValidator.mm */,
-				7E99870D153D546700811BA8 /* DbWrapper.h */,
 				7E998741153D9AB300811BA8 /* CsvLineEndings.h */,
 				7E20830115986D80005A26EF /* CsvDefaultValues.h */,
 				7E20830215986D80005A26EF /* CsvDefaultValues.mm */,
@@ -622,7 +619,6 @@
 				7EA3A262153877150058C603 /* CsvSchemaMismatchError.h in Headers */,
 				7EA3A2661538793F0058C603 /* CsvInitializationError.h in Headers */,
 				7E99870B153D52B500811BA8 /* CsvToSqlite+Database.h in Headers */,
-				7E99870E153D546700811BA8 /* DbWrapper.h in Headers */,
 				7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */,
 				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 				7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */,
