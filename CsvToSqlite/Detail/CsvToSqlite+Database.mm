@@ -141,7 +141,7 @@ static std::vector<std::string> split(const std::string &s, char delim) {
 
     NSString* defaultValues_ = [ self.defaultValues.defaults componentsJoinedByString: @"', '" ];
 
-    NSString* lineStr_ = [ @( line_.c_str() ) sqlite3Escape ];
+    NSString* lineStr_ = [ NSString sqlite3EscapeString: @( line_.c_str() ) ];
 
     NSString* lineValues_ = [ lineStr_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString
                                                               withString: @"', '" ];
