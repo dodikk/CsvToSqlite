@@ -15,8 +15,6 @@
 		1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
 		1B379CD415B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
 		1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
-		1B379CD815B700CA002CB488 /* NSString+Sqlite3Escape.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */; };
-		1B379CD915B700CA002CB488 /* NSString+Sqlite3Escape.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */; };
 		1BB55DAE15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB55DAC15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h */; };
 		1BB55DAF15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BB55DAD15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm */; };
 		1BB55DB115D1144B00224BB2 /* QueryLineProducer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */; };
@@ -270,8 +268,6 @@
 		1B01550215B6E54900FD864A /* CsvImportErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvImportErrorTest.m; sourceTree = "<group>"; };
 		1B01578915B6F58300FD864A /* UnixTest3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnixTest3.csv; sourceTree = "<group>"; };
 		1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidSymbols.csv; sourceTree = "<group>"; };
-		1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sqlite3Escape.h"; sourceTree = "<group>"; };
-		1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Sqlite3Escape.m"; sourceTree = "<group>"; };
 		1BB55DAC15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite+QueryLinesProducerFactory.h"; sourceTree = "<group>"; };
 		1BB55DAD15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CsvToSqlite+QueryLinesProducerFactory.mm"; sourceTree = "<group>"; };
 		1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryLineProducer.h; sourceTree = "<group>"; };
@@ -561,8 +557,6 @@
 				1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */,
 				7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */,
 				7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */,
-				1B379CD615B700CA002CB488 /* NSString+Sqlite3Escape.h */,
-				1B379CD715B700CA002CB488 /* NSString+Sqlite3Escape.m */,
 				65A184CF15C59424004759C0 /* StringsChannel.h */,
 				65A184D015C59424004759C0 /* StringsChannel.mm */,
 			);
@@ -622,7 +616,6 @@
 				7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */,
 				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 				7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */,
-				1B379CD815B700CA002CB488 /* NSString+Sqlite3Escape.h in Headers */,
 				65A184D115C59424004759C0 /* StringsChannel.h in Headers */,
 				1BB55DAE15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h in Headers */,
 				1BB55DB115D1144B00224BB2 /* QueryLineProducer.h in Headers */,
@@ -915,7 +908,6 @@
 				7E99870C153D52B500811BA8 /* CsvToSqlite+Database.mm in Sources */,
 				7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */,
 				7E20830415986D80005A26EF /* CsvDefaultValues.mm in Sources */,
-				1B379CD915B700CA002CB488 /* NSString+Sqlite3Escape.m in Sources */,
 				65A184D215C59424004759C0 /* StringsChannel.mm in Sources */,
 				1BB55DAF15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm in Sources */,
 			);

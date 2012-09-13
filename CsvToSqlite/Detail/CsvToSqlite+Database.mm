@@ -7,9 +7,6 @@
 #import "CsvDefaultValues.h"
 
 #import "CsvMacros.h"
-
-#import "NSString+Sqlite3Escape.h"
-
 #import "StringsChannel.h"
 
 #include <vector>
