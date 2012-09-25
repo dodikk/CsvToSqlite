@@ -17,28 +17,41 @@
 @end
 
 @implementation DbImportTest
+{
+@private
+    NSDictionary* _schema    ;
+    NSOrderedSet* _primaryKey;
+    NSString* _documents;
+}
 
--(void)setUp
+-(void)cleanupFS
 {
     NSFileManager* fm_ = [ NSFileManager new ];
     {
-        [ fm_ removeItemAtPath: @"1.sqlite" 
+        [ fm_ removeItemAtPath: @"/tmp/2.sqlite"
                          error: NULL ];
-
-        [ fm_ removeItemAtPath: @"2.sqlite" 
-                         error: NULL ]; 
         
-        [ fm_ removeItemAtPath: @"4.sqlite" 
-                         error: NULL ]; 
+        [ fm_ removeItemAtPath: @"/tmp/4.sqlite"
+                         error: NULL ];
         
-        [ fm_ removeItemAtPath: @"Damaged.sqlite" 
-                         error: NULL ];  
-
+        [ fm_ removeItemAtPath: @"/tmp/Damaged.sqlite"
+                         error: NULL ];
         
-        [ fm_ removeItemAtPath: @"OnlyHeader.sqlite" 
+        
+        [ fm_ removeItemAtPath: @"/tmp/OnlyHeader.sqlite"
                          error: NULL ];
     }
+    
+}
 
+-(void)setUp
+{
+    NSArray* pathItems_ = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    self->_documents = [ pathItems_ lastObject ];
+
+    
+    [ self cleanupFS ];
+    
     self->_schema = @{
     @"Date"       : @"DATETIME"
     , @"Visits"   : @"INTEGER"
@@ -58,21 +71,7 @@
 
 -(void)tearDown
 {
-    NSFileManager* fm_ = [ NSFileManager new ];
-    {
-        [ fm_ removeItemAtPath: @"2.sqlite" 
-                         error: NULL ]; 
-        
-        [ fm_ removeItemAtPath: @"4.sqlite" 
-                         error: NULL ];
-        
-        [ fm_ removeItemAtPath: @"Damaged.sqlite" 
-                         error: NULL ];  
-        
-        
-        [ fm_ removeItemAtPath: @"OnlyHeader.sqlite" 
-                         error: NULL ];        
-    }
+    [ self cleanupFS ];
 }
 
 -(void)testCampaignImportQueries
@@ -214,19 +213,18 @@
 {
     NSError*  error_    = nil;
     
-    
     NSBundle* mainBundle_ = [ NSBundle bundleForClass: [ self class ] ];
     NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                 ofType: @"csv" ];
     
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"2.sqlite" 
+    
+    NSString* dbPath_ = @"/tmp/2.sqlite";
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: dbPath_ 
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: _schema 
                                                                 primaryKey: nil ];
     converter_.csvDateFormat = @"yyyyMMdd";
-    
-    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    STAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
     
     
     [ converter_  storeDataInTable: @"Campaigns" 
@@ -234,14 +232,12 @@
     STAssertNil( error_, @"Unexpected error" );   
     
     
+    id<ESReadOnlyDbWrapper> dbWrapper_ = (id<ESReadOnlyDbWrapper>)converter_.dbWrapper;
+    [ dbWrapper_ open ];
+    NSInteger itemsCount_ = [ dbWrapper_ selectIntScalar: @"SELECT COUNT(*) FROM Campaigns" ];
+    [ dbWrapper_ close ];
     
-    NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"2" 
-                                                       ofType: @"sqlite" ];
-    
-    NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"2.sqlite" ];
-    NSData* expectedDb_ = [ NSData dataWithContentsOfFile: expectedDbPath_ ];
-    
-    STAssertTrue( [ receivedDb_ isEqual: expectedDb_ ], @"database mismatch" );
+    STAssertTrue( 4 == itemsCount_, @"database mismatch" );
 }
 
 -(void)testCampaignImportQueriesWin
@@ -438,14 +434,12 @@
     NSString* csvPath_ = [ mainBundle_ pathForResource: @"Campaigns-small-win" 
                                                 ofType: @"csv" ];
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"4.sqlite" 
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"/tmp/4.sqlite" 
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey ];
     converter_.csvDateFormat = @"yyyyMMdd";
-
-    MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    STAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
 
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];
@@ -455,12 +449,14 @@
                              error: &error_ ];   
     STAssertNil( error_, @"Unexpected error" );
 
-    NSString* expectedDbPath_ = [ mainBundle_ pathForResource: @"4" 
-                                                       ofType: @"sqlite" ];
-
-    NSData* receivedDb_ = [ NSData dataWithContentsOfFile: @"4.sqlite" ];
-    NSData* expectedDb_ = [ NSData dataWithContentsOfFile: expectedDbPath_ ];
-    STAssertTrue( [ receivedDb_ isEqual: expectedDb_ ], @"database mismatch" );
+    
+    [ converter_.dbWrapper open  ];
+    
+    id<ESReadOnlyDbWrapper> wrapper_ = (id<ESReadOnlyDbWrapper>)converter_.dbWrapper;
+    NSInteger count_ = [ wrapper_ selectIntScalar: @"SELECT COUNT(*) FROM Campaigns;" ];
+    [ converter_.dbWrapper close ];
+    
+    STAssertTrue( 4 == count_, @"count mismatch" );
 }
 
 -(void)testHeaderOnlyCsvImportedCorrectly
@@ -471,7 +467,7 @@
     NSString* csvPath_ = [ mainBundle_ pathForResource: @"OnlyHeader" 
                                                 ofType: @"csv" ];
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"OnlyHeader.sqlite" 
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"/tmp/OnlyHeader.sqlite" 
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey
@@ -500,7 +496,7 @@
     NSString* csvPath_ = [ mainBundle_ pathForResource: @"Damaged" 
                                                 ofType: @"csv" ];
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"Damaged.sqlite"
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"/tmp/Damaged.sqlite"
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey
@@ -535,7 +531,7 @@
     @"FacetId" : @"INTEGER"
     };
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"1.sqlite"
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"/tmp/1.sqlite"
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
@@ -556,7 +552,7 @@
     STAssertNil( error_, @"Unexpected error" );
     
     {
-        FMDatabase* db_ = [ FMDatabase databaseWithPath: @"1.sqlite" ];
+        FMDatabase* db_ = [ FMDatabase databaseWithPath: @"/tmp/1.sqlite" ];
         [ db_ open ];
         FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
         [ rs_ next ];
@@ -584,7 +580,7 @@
     @"FacetId" : @"INTEGER"
     };
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"1.sqlite"
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"/tmp/1.sqlite"
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: nil
@@ -605,7 +601,7 @@
     STAssertNil( error_, @"Unexpected error" );
 
     {
-        FMDatabase* db_ = [ FMDatabase databaseWithPath: @"1.sqlite" ];
+        FMDatabase* db_ = [ FMDatabase databaseWithPath: @"/tmp/1.sqlite" ];
         [ db_ open ];
         FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
         [ rs_ next ];
