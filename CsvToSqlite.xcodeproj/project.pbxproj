@@ -73,6 +73,24 @@
 		7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998741153D9AB300811BA8 /* CsvLineEndings.h */; };
 		7E998744153D9F0F00811BA8 /* 2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E998743153D9F0F00811BA8 /* 2.sqlite */; };
 		7E998745153D9F0F00811BA8 /* 2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E998743153D9F0F00811BA8 /* 2.sqlite */; };
+		7E9D9B801611B6CE0074876B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9D9B7F1611B6CE0074876B /* UIKit.framework */; };
+		7E9D9B811611B6CE0074876B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
+		7E9D9B831611B6CE0074876B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9D9B821611B6CE0074876B /* CoreGraphics.framework */; };
+		7E9D9B891611B6CE0074876B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E9D9B871611B6CE0074876B /* InfoPlist.strings */; };
+		7E9D9B8B1611B6CE0074876B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9B8A1611B6CE0074876B /* main.m */; };
+		7E9D9B911611B6CE0074876B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E9D9B901611B6CE0074876B /* Default.png */; };
+		7E9D9B931611B6CE0074876B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E9D9B921611B6CE0074876B /* Default@2x.png */; };
+		7E9D9B951611B6CE0074876B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E9D9B941611B6CE0074876B /* Default-568h@2x.png */; };
+		7E9D9BA31611B75A0074876B /* DbImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E998719153D67D800811BA8 /* DbImportTest.mm */; };
+		7E9D9BA51611B7AA0074876B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */; };
+		7E9D9BA61611B7B10074876B /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
+		7E9D9BA71611B7B10074876B /* libESDatabaseWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9250871600958A0071D2EC /* libESDatabaseWrapper.a */; };
+		7E9D9BA81611B7B10074876B /* libESLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED61720155BBDE000DE6328 /* libESLocale.a */; };
+		7E9D9BA91611B7B10074876B /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E998704153D51C600811BA8 /* libFMDB.a */; };
+		7E9D9BAA1611B7B10074876B /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
+		7E9D9BB51611B7ED0074876B /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
+		7E9D9BD51611B9F70074876B /* SenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9BD41611B9F70074876B /* SenTestCase.m */; };
+		7E9D9BD61611BB6E0074876B /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
 		7EA3A22E15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A22F15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A23015380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
@@ -218,6 +236,41 @@
 			remoteGlobalIDString = 7E8B6C4715388BD500435EDA;
 			remoteInfo = ObjcScopedGuard;
 		};
+		7E9D9BAB1611B7BC0074876B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E31DEBE153707280043B5BE;
+			remoteInfo = CsvToSqlite;
+		};
+		7E9D9BAD1611B7BC0074876B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = EE4290EE12B42F870088BD94;
+			remoteInfo = FMDB;
+		};
+		7E9D9BAF1611B7BC0074876B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7ED3E57615400C1E008268CF;
+			remoteInfo = ESLocale;
+		};
+		7E9D9BB11611B7BC0074876B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E9250821600958A0071D2EC /* ESDatabaseWrapper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E6A36BC160084F000F4CE84;
+			remoteInfo = ESDatabaseWrapper;
+		};
+		7E9D9BB31611B7BC0074876B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E8B6C4715388BD500435EDA;
+			remoteInfo = ObjcScopedGuard;
+		};
 		7ED6171F155BBDE000DE6328 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
@@ -319,6 +372,18 @@
 		7E99872E153D907400811BA8 /* Campaigns-small-win.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Campaigns-small-win.csv"; sourceTree = "<group>"; };
 		7E998741153D9AB300811BA8 /* CsvLineEndings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvLineEndings.h; sourceTree = "<group>"; };
 		7E998743153D9F0F00811BA8 /* 2.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = 2.sqlite; sourceTree = "<group>"; };
+		7E9D9B7D1611B6CE0074876B /* CsvProfiler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CsvProfiler.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E9D9B7F1611B6CE0074876B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7E9D9B821611B6CE0074876B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7E9D9B861611B6CE0074876B /* CsvProfiler-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CsvProfiler-Info.plist"; sourceTree = "<group>"; };
+		7E9D9B881611B6CE0074876B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E9D9B8A1611B6CE0074876B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7E9D9B8C1611B6CE0074876B /* CsvProfiler-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CsvProfiler-Prefix.pch"; sourceTree = "<group>"; };
+		7E9D9B901611B6CE0074876B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7E9D9B921611B6CE0074876B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7E9D9B941611B6CE0074876B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7E9D9BD31611B9F70074876B /* SenTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SenTestCase.h; sourceTree = "<group>"; };
+		7E9D9BD41611B9F70074876B /* SenTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SenTestCase.m; sourceTree = "<group>"; };
 		7EA3A22C15380E560058C603 /* Campaigns.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Campaigns.csv; sourceTree = "<group>"; };
 		7EA3A22D15380E560058C603 /* campaigns.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = campaigns.sqlite; sourceTree = "<group>"; };
 		7EA3A23215380EE40058C603 /* CsvColumnsParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvColumnsParserTest.h; sourceTree = "<group>"; };
@@ -388,6 +453,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E9D9B7A1611B6CE0074876B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E9D9BB51611B7ED0074876B /* libc++.dylib in Frameworks */,
+				7E9D9BA51611B7AA0074876B /* libsqlite3.dylib in Frameworks */,
+				7E9D9BA61611B7B10074876B /* libCsvToSqlite.a in Frameworks */,
+				7E9D9BA71611B7B10074876B /* libESDatabaseWrapper.a in Frameworks */,
+				7E9D9BA81611B7B10074876B /* libESLocale.a in Frameworks */,
+				7E9D9BA91611B7B10074876B /* libFMDB.a in Frameworks */,
+				7E9D9BAA1611B7B10074876B /* libObjcScopedGuard.a in Frameworks */,
+				7E9D9B801611B6CE0074876B /* UIKit.framework in Frameworks */,
+				7E9D9B811611B6CE0074876B /* Foundation.framework in Frameworks */,
+				7E9D9B831611B6CE0074876B /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -433,6 +515,7 @@
 				7E195ACD15372E6D0050C635 /* TestData */,
 				7E31DEC4153707280043B5BE /* CsvToSqlite */,
 				7E31DED8153707280043B5BE /* CsvToSqliteTests */,
+				7E9D9B841611B6CE0074876B /* CsvProfiler */,
 				7E31DEC1153707280043B5BE /* Frameworks */,
 				7E31DEC0153707280043B5BE /* Products */,
 				7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */,
@@ -446,6 +529,7 @@
 				7E31DEBF153707280043B5BE /* libCsvToSqlite.a */,
 				7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */,
 				7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */,
+				7E9D9B7D1611B6CE0074876B /* CsvProfiler.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -461,6 +545,8 @@
 				7EA3A23B153823BF0058C603 /* libc++.dylib */,
 				7E31DEC2153707280043B5BE /* Foundation.framework */,
 				7E31DED0153707280043B5BE /* SenTestingKit.framework */,
+				7E9D9B7F1611B6CE0074876B /* UIKit.framework */,
+				7E9D9B821611B6CE0074876B /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -570,6 +656,30 @@
 				7E998704153D51C600811BA8 /* libFMDB.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7E9D9B841611B6CE0074876B /* CsvProfiler */ = {
+			isa = PBXGroup;
+			children = (
+				7E9D9B851611B6CE0074876B /* Supporting Files */,
+				7E9D9BD31611B9F70074876B /* SenTestCase.h */,
+				7E9D9BD41611B9F70074876B /* SenTestCase.m */,
+			);
+			path = CsvProfiler;
+			sourceTree = "<group>";
+		};
+		7E9D9B851611B6CE0074876B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E9D9B861611B6CE0074876B /* CsvProfiler-Info.plist */,
+				7E9D9B871611B6CE0074876B /* InfoPlist.strings */,
+				7E9D9B8A1611B6CE0074876B /* main.m */,
+				7E9D9B8C1611B6CE0074876B /* CsvProfiler-Prefix.pch */,
+				7E9D9B901611B6CE0074876B /* Default.png */,
+				7E9D9B921611B6CE0074876B /* Default@2x.png */,
+				7E9D9B941611B6CE0074876B /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7EA3A24B15383B050058C603 /* LineReaders */ = {
@@ -691,6 +801,28 @@
 			productReference = 7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		7E9D9B7C1611B6CE0074876B /* CsvProfiler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E9D9B9F1611B6CE0074876B /* Build configuration list for PBXNativeTarget "CsvProfiler" */;
+			buildPhases = (
+				7E9D9B791611B6CE0074876B /* Sources */,
+				7E9D9B7A1611B6CE0074876B /* Frameworks */,
+				7E9D9B7B1611B6CE0074876B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E9D9BAC1611B7BC0074876B /* PBXTargetDependency */,
+				7E9D9BAE1611B7BC0074876B /* PBXTargetDependency */,
+				7E9D9BB01611B7BC0074876B /* PBXTargetDependency */,
+				7E9D9BB21611B7BC0074876B /* PBXTargetDependency */,
+				7E9D9BB41611B7BC0074876B /* PBXTargetDependency */,
+			);
+			name = CsvProfiler;
+			productName = CsvProfiler;
+			productReference = 7E9D9B7D1611B6CE0074876B /* CsvProfiler.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -732,6 +864,7 @@
 				7E31DEBE153707280043B5BE /* CsvToSqlite */,
 				7E31DECE153707280043B5BE /* CsvToSqliteTests */,
 				7E195AB7153713440050C635 /* CsvToSqliteTests-CI */,
+				7E9D9B7C1611B6CE0074876B /* CsvProfiler */,
 			);
 		};
 /* End PBXProject section */
@@ -845,6 +978,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E9D9B7B1611B6CE0074876B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E9D9B891611B6CE0074876B /* InfoPlist.strings in Resources */,
+				7E9D9BD61611BB6E0074876B /* Campaigns-small-win.csv in Resources */,
+				7E9D9B911611B6CE0074876B /* Default.png in Resources */,
+				7E9D9B931611B6CE0074876B /* Default@2x.png in Resources */,
+				7E9D9B951611B6CE0074876B /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -927,6 +1072,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7E9D9B791611B6CE0074876B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E9D9B8B1611B6CE0074876B /* main.m in Sources */,
+				7E9D9BA31611B75A0074876B /* DbImportTest.mm in Sources */,
+				7E9D9BD51611B9F70074876B /* SenTestCase.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -980,6 +1135,31 @@
 			name = ObjcScopedGuard;
 			targetProxy = 7E998726153D6D4600811BA8 /* PBXContainerItemProxy */;
 		};
+		7E9D9BAC1611B7BC0074876B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E31DEBE153707280043B5BE /* CsvToSqlite */;
+			targetProxy = 7E9D9BAB1611B7BC0074876B /* PBXContainerItemProxy */;
+		};
+		7E9D9BAE1611B7BC0074876B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FMDB;
+			targetProxy = 7E9D9BAD1611B7BC0074876B /* PBXContainerItemProxy */;
+		};
+		7E9D9BB01611B7BC0074876B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESLocale;
+			targetProxy = 7E9D9BAF1611B7BC0074876B /* PBXContainerItemProxy */;
+		};
+		7E9D9BB21611B7BC0074876B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESDatabaseWrapper;
+			targetProxy = 7E9D9BB11611B7BC0074876B /* PBXContainerItemProxy */;
+		};
+		7E9D9BB41611B7BC0074876B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ObjcScopedGuard;
+			targetProxy = 7E9D9BB31611B7BC0074876B /* PBXContainerItemProxy */;
+		};
 		7ED6173D155BBE5200DE6328 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ESLocale;
@@ -1002,6 +1182,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				7E31DEDC153707280043B5BE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7E9D9B871611B6CE0074876B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E9D9B881611B6CE0074876B /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1289,6 +1477,81 @@
 			};
 			name = Release;
 		};
+		7E9D9BA01611B6CE0074876B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvProfiler/CsvProfiler-Prefix.pch";
+				INFOPLIST_FILE = "CsvProfiler/CsvProfiler-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7E9D9BA11611B6CE0074876B /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvProfiler/CsvProfiler-Prefix.pch";
+				INFOPLIST_FILE = "CsvProfiler/CsvProfiler-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Coverage;
+		};
+		7E9D9BA21611B6CE0074876B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvProfiler/CsvProfiler-Prefix.pch";
+				INFOPLIST_FILE = "CsvProfiler/CsvProfiler-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1328,6 +1591,16 @@
 				7E31DEE7153707280043B5BE /* Debug */,
 				7E195AE5153734570050C635 /* Coverage */,
 				7E31DEE8153707280043B5BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E9D9B9F1611B6CE0074876B /* Build configuration list for PBXNativeTarget "CsvProfiler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E9D9BA01611B6CE0074876B /* Debug */,
+				7E9D9BA11611B6CE0074876B /* Coverage */,
+				7E9D9BA21611B6CE0074876B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
