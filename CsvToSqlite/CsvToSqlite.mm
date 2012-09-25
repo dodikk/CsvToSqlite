@@ -242,7 +242,10 @@ using namespace ::Utils;
                                   error: &localError_ ];
 
             if ( localError_ )
+            {
                 *error_ = localError_;
+                self->_outErrorHolderCrashWorkaround = *error_;                
+            }
         }
     } );
 
@@ -285,12 +288,12 @@ using namespace ::Utils;
 
             if ( nil != *error_ )
             {
+                self->_outErrorHolderCrashWorkaround = *error_;
                 NSLog( @"CsvToSqlite::storeDataInTable error: %@", *error_ );
 
                 [ queryChannel_ putUnboundedString: "" ];
                 dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
 
-                self->_outErrorHolderCrashWorkaround = *error_;
                 return NO;
             }
         }
