@@ -66,13 +66,6 @@
     {
         if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
         {
-            // adk - for some reason it works faster than a custom one
-            return generalQueryLinesProducer_;
-        }
-        
-        /*
-        if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
-        {
             //cache access to required properties
             NSOrderedSet* csvSchema_ = self.csvSchema;
             NSDictionary* schema_    = self.schema;
@@ -100,7 +93,7 @@
                                                , queryChannel_
                                                , errorPtr_ );
             };
-        }            */
+        }
         else if ( [ @"yyyy-MM-dd" isEqualToString: self.csvDateFormat ] )
         {
             return asIsLinesProducer_;
