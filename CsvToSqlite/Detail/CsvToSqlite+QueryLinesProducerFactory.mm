@@ -49,56 +49,67 @@
                                          , errorPtr_ );
     };
 
+    QueryLineProducer asIsLinesProducer_ = ^BOOL( const std::string& line_
+                                                         , NSString* tableName_
+                                                         , std::vector< char >& buffer_
+                                                         , NSError** errorPtr_ )
+    {
+        return queryLinesProducer2( self
+                                   , line_
+                                   , tableName_
+                                   , queryChannel_
+                                   , errorPtr_ );
+    };
+    
+    
     if ( [ self sqlSchemaHasDates ] )
     {
+        if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
+        {
+            // adk - for some reason it works faster than a custom one
+            return generalQueryLinesProducer_;
+        }
+        
+        /*
+        if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
+        {
+            //cache access to required properties
+            NSOrderedSet* csvSchema_ = self.csvSchema;
+            NSDictionary* schema_    = self.schema;
+            char separator_          = self.columnsParser->_separator;
+            CsvDefaultValues* defaultValues_ = self.defaultValues;
+            const char* headerFieldsStr_ = [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ];
+            
+            return ^BOOL( const std::string& line_
+                         , NSString* tableName_
+                         , std::vector< char >& buffer_
+                         , NSError** errorPtr_ )
+            {
+                //use headerFields_ value to own headerFieldsStr_ ptr in block
+                const char* localHeaderFieldsStr_ = headerFields_ ? headerFieldsStr_ : "";
+                
+                return fastQueryLinesProducer1( line_
+                                               , tableName_
+                                               , buffer_
+                                               , localHeaderFieldsStr_
+                                               , requeredNumOfColumns_
+                                               , defaultValues_
+                                               , csvSchema_
+                                               , schema_
+                                               , separator_
+                                               , queryChannel_
+                                               , errorPtr_ );
+            };
+        }            */
+        else if ( [ @"yyyy-MM-dd" isEqualToString: self.csvDateFormat ] )
+        {
+            return asIsLinesProducer_;
+        }
+
         return generalQueryLinesProducer_;
     }
-    else if ( [ @"yyyyMMdd" isEqualToString: self.csvDateFormat ] )
-    {
-        //cache access to required properties
-        NSOrderedSet* csvSchema_ = self.csvSchema;
-        NSDictionary* schema_    = self.schema;
-        char separator_          = self.columnsParser->_separator;
-        CsvDefaultValues* defaultValues_ = self.defaultValues;
-        const char* headerFieldsStr_ = [ headerFields_ cStringUsingEncoding: NSUTF8StringEncoding ];
 
-        return ^BOOL( const std::string& line_
-                     , NSString* tableName_
-                     , std::vector< char >& buffer_
-                     , NSError** errorPtr_ )
-        {
-            //use headerFields_ value to own headerFieldsStr_ ptr in block
-            const char* localHeaderFieldsStr_ = headerFields_ ? headerFieldsStr_ : "";
-
-            return fastQueryLinesProducer1( line_
-                                           , tableName_
-                                           , buffer_
-                                           , localHeaderFieldsStr_
-                                           , requeredNumOfColumns_
-                                           , defaultValues_
-                                           , csvSchema_
-                                           , schema_
-                                           , separator_
-                                           , queryChannel_
-                                           , errorPtr_ );
-        };
-    }
-    else if ( [ @"yyyy-MM-dd" isEqualToString: self.csvDateFormat ] )
-    {
-        return ^BOOL( const std::string& line_
-                     , NSString* tableName_
-                     , std::vector< char >& buffer_
-                     , NSError** errorPtr_ )
-        {
-            return queryLinesProducer2( self
-                                       , line_
-                                       , tableName_
-                                       , queryChannel_
-                                       , errorPtr_ );
-        };
-    }
-
-    return generalQueryLinesProducer_;
+    return asIsLinesProducer_;
 }
 
 @end
