@@ -47,6 +47,9 @@ using namespace ::Utils;
 @property ( nonatomic ) id<LineReader>    lineReader   ;
 @property ( nonatomic ) id<ESWritableDbWrapper>     dbWrapper    ;
 
+@property ( nonatomic ) NSString* headerFieldsForInsert;
+@property ( nonatomic ) NSString* defaultValuesForInsert;
+
 @end
 
 @implementation CsvToSqlite
@@ -66,13 +69,20 @@ using namespace ::Utils;
       recordSeparatorChar:( char )separatorChar_
         recordCommentChar:( char )commentChar_
 {
+    static dispatch_once_t onceToken_;
     static std::map< CsvLineEndings, Class > lineEndingsMap_;
-    if ( lineEndingsMap_.empty() )
+    
+    dispatch_once( &onceToken_, ^
     {
-        lineEndingsMap_[ CSV_LE_WIN  ] = [ WindowsLineReader class ];
-        lineEndingsMap_[ CSV_LE_UNIX ] = [ UnixLineReader    class ];
-    }
-
+    
+        if ( lineEndingsMap_.empty() )
+        {
+            lineEndingsMap_[ CSV_LE_WIN  ] = [ WindowsLineReader class ];
+            lineEndingsMap_[ CSV_LE_UNIX ] = [ UnixLineReader    class ];
+        }
+  
+    });
+                  
     Class readerClass_ = lineEndingsMap_[ lineEndingStyle_ ];
     if ( nil == readerClass_ )
     {
@@ -315,6 +325,40 @@ using namespace ::Utils;
 {
     self->_csvDateFormat = csvDateFormat_;
     self.csvFormatter.dateFormat = csvDateFormat_;
+}
+
+-(NSString*)defaultValuesForInsert
+{
+    if ( nil == self->_defaultValuesForInsert )
+    {
+        self->_defaultValuesForInsert = [ self computeDefaultValuesForInsert ];
+    }
+    
+    return self->_defaultValuesForInsert;
+}
+
+-(NSString*)headerFieldsForInsert
+{
+    if ( nil == self->_headerFieldsForInsert )
+    {
+        self->_headerFieldsForInsert = [ self computeHeaderFieldsForInsert ];
+    }
+    
+    return self->_headerFieldsForInsert;
+}
+
+-(void)setSchema:(NSDictionary *)schema_
+{
+    self->_schema = schema_;
+    self->_headerFieldsForInsert = nil;
+}
+
+-(void)setDefaultValues:(CsvDefaultValues *)defaultValues_
+{
+    self->_defaultValues = defaultValues_;
+
+    self->_headerFieldsForInsert = nil;
+    self->_defaultValuesForInsert = nil;
 }
 
 @end

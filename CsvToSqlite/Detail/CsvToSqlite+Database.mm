@@ -52,6 +52,10 @@ static std::vector<std::string> split(const std::string &s, char delim) {
 
 @implementation CsvToSqlite (Database)
 
+@dynamic headerFieldsForInsert;
+@dynamic defaultValuesForInsert;
+
+
 -(id<ESWritableDbWrapper>)castedWrapper
 {
     return (id<ESWritableDbWrapper>)[ self dbWrapper ];
@@ -129,6 +133,20 @@ static std::vector<std::string> split(const std::string &s, char delim) {
                        error: errorPtr_ ];
 }
 
+-(NSString*)computeHeaderFieldsForInsert
+{
+    NSArray* headers_ = [ self.csvSchema.array arrayByAddingObjectsFromArray: self.defaultValues.columns.array ];
+    NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
+    
+    return headerFields_;
+}
+
+-(NSString*)computeDefaultValuesForInsert
+{
+    NSString* defaultValues_ = [ self.defaultValues.defaults componentsJoinedByString: @"', '" ];
+    return defaultValues_;
+}
+
 -(BOOL)storeLineAsIs:( const std::string& )line_
              inTable:(NSString *)tableName_
        stringChannel:( StringsChannel* )queryChannel_
@@ -136,11 +154,10 @@ static std::vector<std::string> split(const std::string &s, char delim) {
 {
     NSAssert( errorPtr_, @"CsvToSqlite->nil error forbidden" );  
 
-    NSArray* headers_ = [ self.csvSchema.array arrayByAddingObjectsFromArray: self.defaultValues.columns.array ];   
-    NSString* headerFields_ = [ headers_ componentsJoinedByString: @", " ];
+    NSString* headerFields_ = self.headerFieldsForInsert;
+    NSString* defaultValues_ = self.defaultValuesForInsert;
 
-    NSString* defaultValues_ = [ self.defaultValues.defaults componentsJoinedByString: @"', '" ];
-
+    
     NSString* lineStr_ = [ NSString sqlite3EscapeString: @( line_.c_str() ) ];
 
     NSString* lineValues_ = [ lineStr_ stringByReplacingOccurrencesOfString: self.columnsParser.separatorString

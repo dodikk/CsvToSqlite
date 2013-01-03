@@ -20,6 +20,13 @@
 
 -(void)closeDatabase;
 
+@property ( nonatomic ) NSString* headerFieldsForInsert;
+@property ( nonatomic ) NSString* defaultValuesForInsert;
+
+
+-(NSString*)computeHeaderFieldsForInsert;
+-(NSString*)computeDefaultValuesForInsert;
+
 @end
 
 //use for format @"yyyyMMdd"
