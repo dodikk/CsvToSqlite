@@ -142,11 +142,13 @@ using namespace ::Utils;
     [ self openDatabaseWithError: error_ ];
     CHECK_ERROR__RET_BOOL( error_ );
 
+    __weak CsvToSqlite* weakSelf_ = self;
     GuardCallbackBlock closeDbBlock_ = ^
     {
-        [ self closeDatabase ];
+        [ weakSelf_ closeDatabase ];
     };
     ObjcScopedGuard dbGuard_( closeDbBlock_ );
+    
 
     id<ESWritableDbWrapper> castedWrapper_ = [ self castedWrapper ];
 
@@ -154,16 +156,27 @@ using namespace ::Utils;
                       error: error_ ];
     CHECK_ERROR__RET_BOOL( error_ );
 
+    
+
+    GuardCallbackBlock rollbackTransactionBlock_ = ^
+    {
+        [ weakSelf_ rollbackTransaction ];
+    };
+    ObjcScopedGuard transactionGuard_( rollbackTransactionBlock_ );
     [ self beginTransaction ];
-
+    
+    
     std::string queryStr_ = [ queryChannel_ popString ];
-
     while ( !queryStr_.empty() )
     {
         @autoreleasepool
         {
-            NSString* query_ = [ [ NSString alloc ] initWithBytesNoCopy: (void*)queryStr_.c_str()
-                                                                 length: (NSUInteger)queryStr_.length()
+            char* rawQueryStr_ = const_cast<char*>( queryStr_.c_str() );
+            void* vpQueryStr_  = reinterpret_cast<void*>( rawQueryStr_ );
+            NSUInteger castedLength_ = static_cast<NSUInteger>( queryStr_.length() );
+
+            NSString* query_ = [ [ NSString alloc ] initWithBytesNoCopy: vpQueryStr_
+                                                                 length: castedLength_
                                                                encoding: NSUTF8StringEncoding
                                                            freeWhenDone: NO ];
 
@@ -171,22 +184,19 @@ using namespace ::Utils;
                               error: error_ ];
 
             if ( *error_ )
-                break;
+            {
+                return NO;
+            }
 
             queryStr_ = [ queryChannel_ popString ];
         }
     }
 
-    if ( *error_ )
-    {
-        [ self rollbackTransaction ];
-        return NO;
-    }
-    else
-    {
-        [ self commitTransaction ];
-        return YES;
-    }
+
+    [ self commitTransaction ];
+    transactionGuard_.Release();
+
+    return YES;
 }
 
 -(BOOL)storeDataInTable:( NSString* )tableName_
