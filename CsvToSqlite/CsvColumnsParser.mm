@@ -61,6 +61,11 @@ static BOOL isValidStream( const std::ifstream& stream_ )
 
     @autoreleasepool
     {
+        if ( row_.empty() )
+        {
+            return nil;
+        }
+        
         NSRange separatorRange_ = { static_cast<NSUInteger>( self->_separator ),  1 };
         NSCharacterSet* separators_ = [ NSCharacterSet characterSetWithRange: separatorRange_ ];
         NSArray* tokens_ = [ @( row_.c_str() ) componentsSeparatedByCharactersInSet: separators_ ];
