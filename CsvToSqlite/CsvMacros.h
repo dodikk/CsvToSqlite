@@ -21,6 +21,12 @@
       return NO;                           \
    }
 
+#define CHECK_ERROR__RET_NIL( ERROR_PTR ) \
+    if ( nil != *ERROR_PTR )              \
+    {                                     \
+        NSLog( @"%@", *ERROR_PTR );       \
+        return nil;                       \
+    }
 
 #define CHECK_ERROR__RET( ERROR_PTR ) \
    if ( nil != *ERROR_PTR )           \
