@@ -234,6 +234,13 @@ using namespace ::Utils;
     self.columnsParser.onCommentCallback = self->_onCommentCallback;
     NSOrderedSet* csvSchema_ = [ self.columnsParser parseColumnsFromStream: stream_ ];
 
+    BOOL isEmptySchema_ = ( 0 == [ csvSchema_ count ] );
+    if ( isEmptySchema_ )
+    {
+        // @adk - Empty tables have no schema and are considered as successful import
+        return YES;
+    }
+    
     BOOL isValidSchema_ = [ DBTableValidator csvSchema: csvSchema_
                                           withDefaults: self.defaultValues
                                     matchesTableSchema: self.schema ];
