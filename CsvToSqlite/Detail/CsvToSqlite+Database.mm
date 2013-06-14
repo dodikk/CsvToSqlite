@@ -313,12 +313,22 @@ static BOOL generalParseAndStoreLine( const std::string& line_
             wrappedLineRecord_ = *it_;
         }
 
-        char* cStrResultSQL_ = sqlite3_mprintf( "%q", wrappedLineRecord_.c_str() );
+        char* cStrResultSQL_ = ::sqlite3_mprintf( "%q", wrappedLineRecord_.c_str() );
         ObjcScopedGuard sqlitePrintfGuard_
         (
-           ^void(){ sqlite3_free( cStrResultSQL_ ); }
+            ^void(){ ::sqlite3_free( cStrResultSQL_ ); }
         );
-        wrappedLine_.push_back( STL_QUOTE + cStrResultSQL_ + STL_QUOTE );
+        
+        
+        //        wrappedLine_.push_back( STL_QUOTE + cStrResultSQL_ + STL_QUOTE );
+        {
+            // @adk - performance optimization
+            static const size_t TWO_QUOTES_LENGTH = 2;
+            size_t cStrResultSQLSize_ = ::strlen( cStrResultSQL_ );
+            std::string quotedResultSQL_( cStrResultSQLSize_ + TWO_QUOTES_LENGTH, '\'' );
+            std::copy(cStrResultSQL_, cStrResultSQL_ + cStrResultSQLSize_, quotedResultSQL_.begin() + 1 );
+            wrappedLine_.push_back( quotedResultSQL_ );
+        }
         sqlite3_free( cStrResultSQL_ );
         sqlitePrintfGuard_.Release();
         
@@ -342,7 +352,7 @@ static BOOL generalParseAndStoreLine( const std::string& line_
     static const char* insertFormat_ = "INSERT OR IGNORE INTO '%s' ( %s ) VALUES ( %s );";
     const char* tableNameCStr_ = [ tableName_ cStringUsingEncoding: NSUTF8StringEncoding ];
 
-    int requiredBufferSize_ = snprintf ( NULL, 0, insertFormat_
+    int requiredBufferSize_ = ::snprintf ( NULL, 0, insertFormat_
                                        , tableNameCStr_
                                        , headerFields_
                                        , values_.c_str() );
@@ -352,7 +362,7 @@ static BOOL generalParseAndStoreLine( const std::string& line_
         buffer_.resize( (size_t)requiredBufferSize_ + 1 );
     }
 
-    sprintf ( &buffer_[ 0 ], insertFormat_
+    ::sprintf ( &buffer_[ 0 ], insertFormat_
              , tableNameCStr_
              , headerFields_
              , values_.c_str() );
