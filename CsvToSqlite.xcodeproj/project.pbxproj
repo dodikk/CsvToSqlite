@@ -15,13 +15,13 @@
 		1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
 		1B379CD415B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
 		1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
-		1BB55DAE15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB55DAC15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h */; };
-		1BB55DAF15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1BB55DAD15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm */; };
 		1BB55DB115D1144B00224BB2 /* QueryLineProducer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */; };
 		1BC2F27415B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
 		1BC2F27515B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
 		65A184D115C59424004759C0 /* StringsChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A184CF15C59424004759C0 /* StringsChannel.h */; };
 		65A184D215C59424004759C0 /* StringsChannel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65A184D015C59424004759C0 /* StringsChannel.mm */; };
+		782095C317956E7C00A50813 /* StringProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 782095C117956E7C00A50813 /* StringProcessor.h */; };
+		782095C417956E7C00A50813 /* StringProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 782095C217956E7C00A50813 /* StringProcessor.mm */; };
 		7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
 		7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
 		7E195ABB153713440050C635 /* CsvToSqliteTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.mm */; };
@@ -321,13 +321,13 @@
 		1B01550215B6E54900FD864A /* CsvImportErrorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvImportErrorTest.m; sourceTree = "<group>"; };
 		1B01578915B6F58300FD864A /* UnixTest3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UnixTest3.csv; sourceTree = "<group>"; };
 		1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidSymbols.csv; sourceTree = "<group>"; };
-		1BB55DAC15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite+QueryLinesProducerFactory.h"; sourceTree = "<group>"; };
-		1BB55DAD15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "CsvToSqlite+QueryLinesProducerFactory.mm"; sourceTree = "<group>"; };
 		1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QueryLineProducer.h; sourceTree = "<group>"; };
 		1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InvalidSymbolsAsIs.csv; sourceTree = "<group>"; };
 		1BE7FBA615CFA4AF00264AC2 /* CSVParserCallbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVParserCallbacks.h; sourceTree = "<group>"; };
 		65A184CF15C59424004759C0 /* StringsChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringsChannel.h; sourceTree = "<group>"; };
 		65A184D015C59424004759C0 /* StringsChannel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringsChannel.mm; sourceTree = "<group>"; };
+		782095C117956E7C00A50813 /* StringProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringProcessor.h; sourceTree = "<group>"; };
+		782095C217956E7C00A50813 /* StringProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringProcessor.mm; sourceTree = "<group>"; };
 		7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvSchemaValidatorTest.h; sourceTree = "<group>"; };
 		7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaValidatorTest.m; sourceTree = "<group>"; };
 		7E195AB51537117B0050C635 /* CsvMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvMacros.h; sourceTree = "<group>"; };
@@ -638,13 +638,13 @@
 			children = (
 				7E998709153D52B500811BA8 /* CsvToSqlite+Database.h */,
 				7E99870A153D52B500811BA8 /* CsvToSqlite+Database.mm */,
-				1BB55DAC15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h */,
-				1BB55DAD15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm */,
 				1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */,
 				7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */,
 				7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */,
 				65A184CF15C59424004759C0 /* StringsChannel.h */,
 				65A184D015C59424004759C0 /* StringsChannel.mm */,
+				782095C117956E7C00A50813 /* StringProcessor.h */,
+				782095C217956E7C00A50813 /* StringProcessor.mm */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -727,8 +727,8 @@
 				7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */,
 				7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */,
 				65A184D115C59424004759C0 /* StringsChannel.h in Headers */,
-				1BB55DAE15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.h in Headers */,
 				1BB55DB115D1144B00224BB2 /* QueryLineProducer.h in Headers */,
+				782095C317956E7C00A50813 /* StringProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,7 +1054,7 @@
 				7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */,
 				7E20830415986D80005A26EF /* CsvDefaultValues.mm in Sources */,
 				65A184D215C59424004759C0 /* StringsChannel.mm in Sources */,
-				1BB55DAF15D1132F00224BB2 /* CsvToSqlite+QueryLinesProducerFactory.mm in Sources */,
+				782095C417956E7C00A50813 /* StringProcessor.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

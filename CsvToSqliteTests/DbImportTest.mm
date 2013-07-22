@@ -154,8 +154,7 @@
     
     
     {
-        expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-        @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+        expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 )  SELECT '2008-12-22','24','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000';";
         query_    = qLog_[ 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }    
@@ -273,7 +272,7 @@
     STAssertNil( error_, @"Unexpected error" );
     
     NSArray* qLog_ = [ dbWrapper_ queriesLog ]; 
-    STAssertTrue( 7 == [ qLog_ count ], @"Queries count mismatch" );
+    STAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
     
     {
 #if 0
@@ -320,39 +319,18 @@
     }
 
     {
-        expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-        @"VALUES ( '2008-12-22', '24', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+        expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 )  SELECT '2008-12-22','24','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-23','32','200','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-24','14','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-25','11','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000';";
         query_    = qLog_[ 2 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
 
     {
-        expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-        @"VALUES ( '2008-12-23', '32', '200', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
+        expected_ = @"COMMIT TRANSACTION;";
         query_    = qLog_[ 3 ];
         STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
     
-    {
-        expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-        @"VALUES ( '2008-12-24', '14', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 4 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
-
-    {
-        expected_ = @"INSERT OR IGNORE INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 ) "
-        @"VALUES ( '2008-12-25', '11', '0', '10000000-0000-0000-0000-000000000000', '16000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000' );";
-        query_    = qLog_[ 5 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch - %@", query_ );
-    }   
-
-    {
-        expected_ = @"COMMIT TRANSACTION;";
-        query_    = qLog_[ 6 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
-    }
-}
 
 -(void)testPrimaryKeyQueries
 {
@@ -385,7 +363,7 @@
     STAssertNil( error_, @"Unexpected error" );
     
     NSArray* qLog_ = [ dbWrapper_ queriesLog ]; 
-    STAssertTrue( 7 == [ qLog_ count ], @"Queries count mismatch" );
+    STAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
     
     {
 #if 0

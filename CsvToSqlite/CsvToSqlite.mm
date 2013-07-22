@@ -18,9 +18,10 @@
 #import "CsvDefaultValues.h"
 #import "StringsChannel.h"
 
-#import "CsvToSqlite+QueryLinesProducerFactory.h"
+#import "StringProcessor.h"
 
 #include <map>
+#include <sstream>
 #include <fstream>
 #include <ObjcScopedGuard/ObjcScopedGuard.h>
 
@@ -51,6 +52,8 @@ using namespace ::Utils;
 @property ( nonatomic ) NSString* defaultValuesForInsert;
 
 @end
+
+static int maxImportCountForOneRecord = 500;
 
 @implementation CsvToSqlite
 
@@ -255,8 +258,6 @@ using namespace ::Utils;
 
     StringsChannel* queryChannel_ = [ StringsChannel newStringsChannelWithSize: 100 ];
 
-    QueryLineProducer storeLine_ = [ self queryLinesProducerWithQueryChannel: queryChannel_ ];
-
     dispatch_group_t group_ = dispatch_group_create();
     dispatch_queue_t queue_ = dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 );
     dispatch_group_async( group_, queue_, ^
@@ -284,8 +285,22 @@ using namespace ::Utils;
 
     std::string line_;
 
+    int currentLineNum = 0;
+    std::string testline_;
+    const char* headerFields_ = [[ self headerFieldsValue ] UTF8String];
+    NSUInteger headersCount = [ self.csvSchema.array count ];
+    
+    std::string selectStringForAppending = " SELECT ";
+    
+    //static const char* insertFormat_ = " INSERT INTO '%s' ( %s ) VALUES %s;";
     while ( !stream_.eof() )
     {
+        ++currentLineNum;
+        if (currentLineNum == 2)
+        {
+            selectStringForAppending = " UNION SELECT ";
+        }
+        
         @autoreleasepool
         {
             BOOL isLineComment_ = ( line_[ 0 ] == self.columnsParser->_comment );
@@ -307,25 +322,55 @@ using namespace ::Utils;
             }
             else
             {
-                storeLine_( line_
-                           , tableName_
-                           , buffer_
-                           , error_ );
+                std::string valuesline_ = fastConvertToSqlParams( self,
+                                                                 line_,
+                                                                 headersCount,
+                                                                 error_ );
+             
+                if ( nil != *error_ )
+                {
+                    self->_outErrorHolderCrashWorkaround = *error_;
+                    NSLog( @"CsvToSqlite::storeDataInTable error: %@", *error_ );
+                    
+                    [ queryChannel_ putUnboundedString: "" ];
+                    dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
+                    
+                    return NO;
+                }
+                
+                
+                testline_.append( selectStringForAppending );
+                testline_.append( valuesline_ );
+                
+                if ( maxImportCountForOneRecord == currentLineNum )
+                {
+                    currentLineNum = 0;
+                    generalParseAndStoreLine( testline_,
+                                             tableName_,
+                                             buffer_,
+                                             headerFields_,
+                                             queryChannel_,
+                                             error_ );
+                    
+                    selectStringForAppending = " SELECT ";
+                    testline_.clear();
+                }
             }
-
-            if ( nil != *error_ )
-            {
-                self->_outErrorHolderCrashWorkaround = *error_;
-                NSLog( @"CsvToSqlite::storeDataInTable error: %@", *error_ );
-
-                [ queryChannel_ putUnboundedString: "" ];
-                dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
-
-                return NO;
-            }
+            
         }
     }
 
+    if ( !testline_.empty() )
+    {
+        generalParseAndStoreLine( testline_,
+                                 tableName_,
+                                 buffer_,
+                                 headerFields_,
+                                 queryChannel_,
+                                 error_ );
+        
+    }
+    
     [ queryChannel_ putUnboundedString: "" ];
     dispatch_group_wait( group_, DISPATCH_TIME_FOREVER );
 
@@ -376,6 +421,15 @@ using namespace ::Utils;
 
     self->_headerFieldsForInsert = nil;
     self->_defaultValuesForInsert = nil;
+}
+
+-(NSString *)headerFieldsValue
+{
+    NSOrderedSet* defaultColumns_ = self.defaultValues.columns;
+    NSMutableOrderedSet* schemaColumns_ = [ [ NSMutableOrderedSet alloc ] initWithArray: self.csvSchema.array ];
+    [ schemaColumns_ unionOrderedSet: defaultColumns_ ];
+    NSArray* headers_       = [ schemaColumns_ array ];
+    return [ headers_ componentsJoinedByString: @", " ];
 }
 
 @end
