@@ -9,9 +9,7 @@
 #import "CsvMacros.h"
 #import "StringsChannel.h"
 
-#include <vector>
-#include <string>
-#include <sstream>
+typedef std::vector<std::string> string_vt;
 
 using namespace ::Utils;
 
@@ -19,7 +17,7 @@ static const std::string STL_QUOTE( "'" );
 
 typedef void (^DateStringConverter)( const std::string &date_, std::string& result_ );
 
-static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
+static string_vt &split(const std::string &s, char delim, string_vt &elems) {
     std::stringstream ss(s);
     std::string item;
     while(std::getline(ss, item, delim)) {
@@ -32,8 +30,8 @@ static std::vector<std::string> &split(const std::string &s, char delim, std::ve
     return elems;
 }
 
-static std::vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
+static string_vt split(const std::string &s, char delim) {
+    string_vt elems;
     return split(s, delim, elems);
 }
 
