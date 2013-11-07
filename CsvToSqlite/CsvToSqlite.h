@@ -2,7 +2,7 @@
 #import <CsvToSqlite/CsvLineEndings.h>
 
 #include <CsvToSqlite/CSVParserCallbacks.h>
-#import <CsvToSqlite/Detail/StringProcessor.h>
+
 @class CsvDefaultValues;
 
 @interface CsvToSqlite : NSObject
