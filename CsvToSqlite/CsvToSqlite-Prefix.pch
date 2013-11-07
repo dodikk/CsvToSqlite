@@ -5,6 +5,9 @@
     #import <Foundation/Foundation.h>
 
     #ifdef __cplusplus
+        #include <map>
+        #include <sstream>
+        #include <fstream>
         #include <ObjcScopedGuard/ObjcScopedGuard.h>
     #endif
 #endif
