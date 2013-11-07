@@ -6,10 +6,9 @@
 #import "CsvColumnsParser.h"
 #import "CsvSchemaMismatchError.h"
 
-#include <vector>
-#include <string>
-#include <sstream>
 #include <iterator>
+
+typedef std::vector<std::string> string_vt;
 
 using namespace ::Utils;
 
@@ -24,7 +23,7 @@ static std::string generalConvertToSqlParams(const std::string &sourceString,
                                              NSDictionary* schema_,
                                              char separator_);
 
-static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
+static string_vt &split(const std::string &s, char delim, string_vt &elems) {
     std::stringstream ss(s);
     std::string item;
     while(std::getline(ss, item, delim)) {
@@ -37,8 +36,8 @@ static std::vector<std::string> &split(const std::string &s, char delim, std::ve
     return elems;
 }
 
-static std::vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
+static string_vt split(const std::string &s, char delim) {
+    string_vt elems;
     return split(s, delim, elems);
 }
 
@@ -112,7 +111,7 @@ static std::string generalConvertToSqlParams(const std::string &sourceString,
 {    
     NSOrderedSet* defaultColumns_ = defaultValues_.columns;
     
-    std::vector<std::string> lineRecords_ = split( sourceString, separator_ );
+    string_vt lineRecords_ = split( sourceString, separator_ );
     
     if ( lineRecords_.size() != requeredNumOfColumns_ )
     {
@@ -121,12 +120,14 @@ static std::string generalConvertToSqlParams(const std::string &sourceString,
     }
         
     std::string wrappedLineRecord_;
-    std::vector<std::string> wrappedLine_;
+    string_vt wrappedLine_;
     
     NSUInteger i_        = 0;
     NSString* tmpHeader_ = nil;
     NSString* sqlType_   = nil;
     NSUInteger csvCount_ = [ csvSchema_ count ];
+    
+    static const size_t TWO_QUOTES_LENGTH = 2;
     
     for ( auto it_ = lineRecords_.begin(); it_ != lineRecords_.end(); ++it_ )
     {
@@ -157,32 +158,44 @@ static std::string generalConvertToSqlParams(const std::string &sourceString,
         
         {
             // @adk - performance optimization
-            static const size_t TWO_QUOTES_LENGTH = 2;
+            
             size_t cStrResultSQLSize_ = ::strlen( cStrResultSQL_ );
             std::string quotedResultSQL_( cStrResultSQLSize_ + TWO_QUOTES_LENGTH, '\'' );
             std::copy(cStrResultSQL_, cStrResultSQL_ + cStrResultSQLSize_, quotedResultSQL_.begin() + 1 );
             wrappedLine_.push_back( quotedResultSQL_ );
         }
-        sqlite3_free( cStrResultSQL_ );
+        ::sqlite3_free( cStrResultSQL_ );
         sqlitePrintfGuard_.Release();
         
         ++i_;
     }
     
     std::string ss;
-        
-    const char* const delim = ",";
 
-    //ss << "(";
-    for( size_t i = 0; i < wrappedLine_.size(); ++i )
+    const char* const delim = ",";
+    unsigned long stringLength = 0;
+    
+    for (std::vector<std::string>::iterator it = wrappedLine_.begin() ; it != wrappedLine_.end(); ++it)
     {
-        if( i != 0 )
+        stringLength += sizeof(char);
+        std::string word = *it;
+        stringLength += word.size();
+    }
+    if ( stringLength > 0 )
+        stringLength -= sizeof(char);
+    
+    ss.reserve( stringLength );
+
+    for (std::vector<std::string>::iterator it = wrappedLine_.begin() ; it != wrappedLine_.end(); ++it)
+    {
+        if( it != wrappedLine_.begin() )
         {
             ss.append( delim );
         }
-        ss.append( wrappedLine_[i] );
+        std::string word = *it;
+        ss.append( word );
     }
-   // ss << ")";
+ 
 
     return ss;
 }
