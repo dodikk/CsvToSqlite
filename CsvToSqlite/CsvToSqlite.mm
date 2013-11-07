@@ -20,11 +20,6 @@
 
 #import "StringProcessor.h"
 
-#include <map>
-#include <sstream>
-#include <fstream>
-#include <ObjcScopedGuard/ObjcScopedGuard.h>
-
 using namespace ::Utils;
 
 @interface CsvToSqlite()
@@ -53,7 +48,7 @@ using namespace ::Utils;
 
 @end
 
-static int maxImportCountForOneRecord = 500;
+static const int MAX_IMPORT_COUNT_FOR_ONE_REQUEST = 500;
 
 @implementation CsvToSqlite
 
@@ -279,24 +274,29 @@ static int maxImportCountForOneRecord = 500;
 
     GuardCallbackBlock relleaseGroupGuardBlock_ = ^
     {
+        
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
         dispatch_release( group_ );
+#endif
+        
     };
     ObjcScopedGuard relleaseGroup_( relleaseGroupGuardBlock_ );
 
     std::string line_;
 
     int currentLineNum = 0;
+    int SINCE_UNION_NEEDED_INDEX = 2;
+    
     std::string testline_;
     const char* headerFields_ = [[ self headerFieldsValue ] UTF8String];
     NSUInteger headersCount = [ self.csvSchema.array count ];
     
     std::string selectStringForAppending = " SELECT ";
     
-    //static const char* insertFormat_ = " INSERT INTO '%s' ( %s ) VALUES %s;";
     while ( !stream_.eof() )
     {
         ++currentLineNum;
-        if (currentLineNum == 2)
+        if ( currentLineNum == SINCE_UNION_NEEDED_INDEX )
         {
             selectStringForAppending = " UNION SELECT ";
         }
@@ -342,7 +342,7 @@ static int maxImportCountForOneRecord = 500;
                 testline_.append( selectStringForAppending );
                 testline_.append( valuesline_ );
                 
-                if ( maxImportCountForOneRecord == currentLineNum )
+                if ( MAX_IMPORT_COUNT_FOR_ONE_REQUEST == currentLineNum )
                 {
                     currentLineNum = 0;
                     generalParseAndStoreLine( testline_,
