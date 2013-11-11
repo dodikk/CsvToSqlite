@@ -38,7 +38,8 @@
                                                                        lineReader: [ WindowsLineReader new ]]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
-   STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
+//   stream_.seekg( std::ios::beg );
+   STAssertTrue( stream_.tellg() != 0, @"stream should have moved on" );
    stream_.close();
    
    STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
