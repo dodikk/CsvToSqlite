@@ -98,15 +98,15 @@
     converter_.csvDateFormat = @"yyyyMMdd";
     
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
     
     NSArray* qLog_ = [ dbWrapper_ queriesLog ]; 
-    STAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
+    XCTAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
     
     {
 #if 0
@@ -124,44 +124,44 @@
         substringRange_ = [ query_ rangeOfString: prefix_ ];
         
         
-        STAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
-        STAssertTrue( [ query_ hasSuffix: @");" ], @"CREATE TABLE bad end" );
+        XCTAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
+        XCTAssertTrue( [ query_ hasSuffix: @");" ], @"CREATE TABLE bad end" );
         
         substringRange_ = [ query_ rangeOfString: @"[Date] DATE" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Visits] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Value] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId1] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId2] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId3] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
     }
     
     
     {
         query_ = qLog_[ 1 ];
-        STAssertTrue( [ query_ isEqualToString: @"BEGIN TRANSACTION;" ], @"missing 'create transaction'" );
+        XCTAssertTrue( [ query_ isEqualToString: @"BEGIN TRANSACTION;" ], @"missing 'create transaction'" );
     }
     
     
     {
         expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 )  SELECT '2008-12-22','24','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000';";
         query_    = qLog_[ 2 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
+        XCTAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }    
 
     {
         query_ = qLog_[ 3 ];
-        STAssertTrue( [ query_ isEqualToString: @"COMMIT TRANSACTION;" ], @"missing 'commit transaction'" );
+        XCTAssertTrue( [ query_ isEqualToString: @"COMMIT TRANSACTION;" ], @"missing 'commit transaction'" );
     }
 }
 
@@ -199,13 +199,13 @@
     converter_.csvDateFormat = @"yyyyMMdd";
 
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     NSError* error_;
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
     
-    STAssertNotNil( error_, @"Unexpected error" );
+    XCTAssertNotNil( error_, @"Unexpected error" );
 }
 
 -(void)testCampaignImportRealDbWin
@@ -223,12 +223,12 @@
                                                             databaseSchema: _schema 
                                                                 primaryKey: nil ];
     converter_.csvDateFormat = @"yyyyMMdd";
-    STAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
+    XCTAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
     
     
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];
-    STAssertNil( error_, @"Unexpected error" );   
+    XCTAssertNil( error_, @"Unexpected error" );   
     
     
     id<ESReadOnlyDbWrapper> dbWrapper_ = (id<ESReadOnlyDbWrapper>)converter_.dbWrapper;
@@ -236,7 +236,7 @@
     NSInteger itemsCount_ = [ dbWrapper_ selectIntScalar: @"SELECT COUNT(*) FROM Campaigns" ];
     [ dbWrapper_ close ];
     
-    STAssertTrue( 4 == itemsCount_, @"database mismatch" );
+    XCTAssertTrue( 4 == itemsCount_, @"database mismatch" );
 }
 
 -(void)testCampaignImportQueriesWin
@@ -264,15 +264,15 @@
     
     
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
     
     NSArray* qLog_ = [ dbWrapper_ queriesLog ]; 
-    STAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
+    XCTAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
     
     {
 #if 0
@@ -290,44 +290,44 @@
         substringRange_ = [ query_ rangeOfString: prefix_ ];
         
         
-        STAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
-        STAssertTrue( [ query_ hasSuffix: @");" ], @"CREATE TABLE bad end" );
+        XCTAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
+        XCTAssertTrue( [ query_ hasSuffix: @");" ], @"CREATE TABLE bad end" );
         
         substringRange_ = [ query_ rangeOfString: @"[Date] DATE" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Visits] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Value] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId1] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId2] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId3] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
     }
     
     {
         expected_ = @"BEGIN TRANSACTION;";
         query_    = qLog_[ 1 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
+        XCTAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );        
     }
 
     {
         expected_ = @"INSERT INTO 'Campaigns' ( Date, Visits, Value, FacetId1, FacetId2, FacetId3 )  SELECT '2008-12-22','24','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-23','32','200','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-24','14','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000' UNION SELECT '2008-12-25','11','0','10000000-0000-0000-0000-000000000000','16000000-0000-0000-0000-000000000000','00000000-0000-0000-0000-000000000000';";
         query_    = qLog_[ 2 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
+        XCTAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
 
     {
         expected_ = @"COMMIT TRANSACTION;";
         query_    = qLog_[ 3 ];
-        STAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
+        XCTAssertTrue( [ query_ isEqualToString: expected_ ], @"INSERT INTO mismatch" );
     }
     
     }
@@ -355,15 +355,15 @@
     converter_.csvDateFormat = @"yyyyMMdd";
     
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
     
     
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
     
     NSArray* qLog_ = [ dbWrapper_ queriesLog ]; 
-    STAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
+    XCTAssertTrue( 4 == [ qLog_ count ], @"Queries count mismatch" );
     
     {
 #if 0
@@ -381,26 +381,26 @@
         substringRange_ = [ query_ rangeOfString: prefix_ ];
         
         
-        STAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
-        STAssertTrue( [ query_ hasSuffix: @", CONSTRAINT pkey PRIMARY KEY ( Date, FacetId1, FacetId2, FacetId3 ) );" ], @"CREATE TABLE bad end" );
+        XCTAssertTrue( prefixOk_, @"CREATE TABLE bad start" );
+        XCTAssertTrue( [ query_ hasSuffix: @", CONSTRAINT pkey PRIMARY KEY ( Date, FacetId1, FacetId2, FacetId3 ) );" ], @"CREATE TABLE bad end" );
         
         substringRange_ = [ query_ rangeOfString: @"[Date] DATE" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Visits] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[Value] INTEGER" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId1] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId2] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing" );
         
         substringRange_ = [ query_ rangeOfString: @"[FacetId3] VARCHAR" ];
-        STAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing - %@", query_ );
+        XCTAssertFalse( NSEqualRanges( substringRange_, emptyRange_ ) , @"date missing - %@", query_ );
     }
 }
 
@@ -417,15 +417,15 @@
                                                             databaseSchema: _schema 
                                                                 primaryKey: _primaryKey ];
     converter_.csvDateFormat = @"yyyyMMdd";
-    STAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
+    XCTAssertNotNil( converter_.dbWrapper, @"DB initialization error ");
 
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
 
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
 
     
     [ converter_.dbWrapper open  ];
@@ -434,7 +434,7 @@
     NSInteger count_ = [ wrapper_ selectIntScalar: @"SELECT COUNT(*) FROM Campaigns;" ];
     [ converter_.dbWrapper close ];
     
-    STAssertTrue( 4 == count_, @"count mismatch" );
+    XCTAssertTrue( 4 == count_, @"count mismatch" );
 }
 
 -(void)testHeaderOnlyCsvImportedCorrectly
@@ -456,13 +456,13 @@
                                ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
-    STAssertNotNil( converter_, @"DB initialization error" );
+    XCTAssertNotNil( converter_, @"DB initialization error" );
     
     BOOL result_ = [ converter_ storeDataInTable: @"Campaigns"
                                            error: &error_ ];
     
-    STAssertTrue( result_, @"Unexpected import error" );
-    STAssertNil ( error_ , @"Unexpected import error" );
+    XCTAssertTrue( result_, @"Unexpected import error" );
+    XCTAssertNil ( error_ , @"Unexpected import error" );
 }
 
 -(void)testDamagedCsvPartiallyImportedWithError
@@ -485,16 +485,16 @@
                                ];
     converter_.csvDateFormat = @"yyyyMMdd";
 
-    STAssertNotNil( converter_, @"DB initialization error" );
+    XCTAssertNotNil( converter_, @"DB initialization error" );
 
     BOOL result_ = [ converter_ storeDataInTable: @"Campaigns"
                                            error: &error_ ];
 
-    STAssertFalse ( result_, @"Import error expected" );
-    STAssertNotNil( error_ , @"Import error expected" );
+    XCTAssertFalse ( result_, @"Import error expected" );
+    XCTAssertNotNil( error_ , @"Import error expected" );
 
-    STAssertTrue( [ error_.domain isEqualToString: @"org.EmbeddedSources.CSV.import" ], @"error domain mismatch" );
-    STAssertTrue( error_.code == 2, @"error code mismatch" );
+    XCTAssertTrue( [ error_.domain isEqualToString: @"org.EmbeddedSources.CSV.import" ], @"error domain mismatch" );
+    XCTAssertTrue( error_.code == 2, @"error code mismatch" );
 }
 
 -(void)testImportDataWithScpecialSymbols
@@ -521,13 +521,13 @@
     converter_.csvDateFormat = @"yyyyMMdd";
 
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     NSError* error_;
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
 
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
     
     {
         FMDatabase* db_ = [ FMDatabase databaseWithPath: @"/tmp/1.sqlite" ];
@@ -535,12 +535,12 @@
         FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
         [ rs_ next ];
         NSString* facetId_ = [ rs_ stringForColumn: @"FacetId" ];
-        STAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
+        XCTAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
 
-        STAssertTrue( [ rs_ next ], @"should go to next" );
+        XCTAssertTrue( [ rs_ next ], @"should go to next" );
 
         facetId_ = [ rs_ stringForColumn: @"FacetId" ];
-        STAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
+        XCTAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
 
         [ db_ close ];
     }
@@ -570,13 +570,13 @@
     converter_.csvDateFormat = @"yyyy-MM-dd";
 
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     NSError* error_;
     [ converter_  storeDataInTable: @"Campaigns" 
                              error: &error_ ];   
 
-    STAssertNil( error_, @"Unexpected error" );
+    XCTAssertNil( error_, @"Unexpected error" );
 
     {
         FMDatabase* db_ = [ FMDatabase databaseWithPath: @"/tmp/1.sqlite" ];
@@ -584,12 +584,12 @@
         FMResultSet* rs_ = [ db_ executeQuery: @"SELECT FacetId FROM Campaigns;" ];
         [ rs_ next ];
         NSString* facetId_ = [ rs_ stringForColumn: @"FacetId" ];
-        STAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
+        XCTAssertEqualObjects( facetId_, @"gartner\'s market scope for web content management", @"facetIdMismatch" );
 
-        STAssertTrue( [ rs_ next ], @"should go to next" );
+        XCTAssertTrue( [ rs_ next ], @"should go to next" );
 
         facetId_ = [ rs_ stringForColumn: @"FacetId" ];
-        STAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
+        XCTAssertEqualObjects( facetId_, @"\"predictive personalization\"", @"facetIdMismatch" );
 
         [ db_ close ];
     }

@@ -1,6 +1,6 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface CsvToSqliteTests : SenTestCase
+@interface CsvToSqliteTests : XCTestCase
 
 @property ( nonatomic, strong ) NSDictionary* defaultSchema;
 

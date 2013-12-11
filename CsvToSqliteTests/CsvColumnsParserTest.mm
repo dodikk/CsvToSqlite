@@ -13,7 +13,7 @@
 
 -(void)testColumnsParserAllowsInit
 {
-   STAssertThrows( [ CsvColumnsParser new ], @"unexpected @init support" );
+   XCTAssertThrows( [ CsvColumnsParser new ], @"unexpected @init support" );
 }
 
 -(void)testColumnsParserRequiresSeparatorChar
@@ -23,8 +23,8 @@
    CsvColumnsParser* parser_ = [ [ CsvColumnsParser alloc ] initWithSeparatorChar: separator
                                                                           comment: '#'
                                                                        lineReader: [ WindowsLineReader new ] ];
-   STAssertNotNil( parser_, @"valid object expected" );
-   STAssertTrue( separator == parser_->_separator, @"Incorrect initialization" );
+   XCTAssertNotNil( parser_, @"valid object expected" );
+   XCTAssertTrue( separator == parser_->_separator, @"Incorrect initialization" );
 }
 
 -(void)testParseColumnsReturnsCorrectValues
@@ -39,16 +39,16 @@
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
 //   stream_.seekg( std::ios::beg );
-   STAssertTrue( stream_.tellg() != 0, @"stream should have moved on" );
+   XCTAssertTrue( stream_.tellg() != 0, @"stream should have moved on" );
    stream_.close();
    
-   STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Visits"   ], @"Visits   mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch - %@", result_ );
+   XCTAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Visits"   ], @"Visits   mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch - %@", result_ );
 }
 
 -(void)testParseColumnsReturnsNilForBadStream
@@ -59,7 +59,7 @@
                                                                        lineReader: [ WindowsLineReader new ] ]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
-   STAssertNil( result_, @"nil expected for invalid stream input" );
+   XCTAssertNil( result_, @"nil expected for invalid stream input" );
 }
 
 -(void)testParseColumnsReturnsNilForEmptyFile
@@ -73,7 +73,7 @@
                                                                        lineReader: [ WindowsLineReader new ] ]; 
    NSOrderedSet* result_ = [ parser_ parseColumnsFromStream: stream_ ];
    
-   STAssertNil( result_, @"nil expected for invalid stream input" );
+   XCTAssertNil( result_, @"nil expected for invalid stream input" );
 }
 
 -(void)testParseColumnsSupportsUnix
@@ -90,13 +90,13 @@
 //   STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
    stream_.close();
    
-   STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Visits"   ], @"Visits   mismatch" );
-   STAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch" );
+   XCTAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Date"     ], @"Date     mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Visits"   ], @"Visits   mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"Value"    ], @"Value    mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId1" ], @"FacetId1 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId2" ], @"FacetId2 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"FacetId3" ], @"FacetId3 mismatch" );
 }
 
 -(void)testParserDoesNotDetectColumns
@@ -113,13 +113,13 @@
 //   STAssertTrue( stream_.seekg( std::ios::beg ) != 0, @"stream should have moved on" );
    stream_.close();
    
-   STAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
-   STAssertTrue( [ result_ containsObject: @"20081222"     ], @"Date     mismatch" );
-   STAssertTrue( [ result_ containsObject: @"24"   ], @"Visits   mismatch" );
-   STAssertTrue( [ result_ containsObject: @"0"    ], @"Value    mismatch" );
-   STAssertTrue( [ result_ containsObject: @"10000000-0000-0000-0000-000000000000" ], @"FacetId1 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"16000000-0000-0000-0000-000000000000" ], @"FacetId2 mismatch" );
-   STAssertTrue( [ result_ containsObject: @"00000000-0000-0000-0000-000000000000" ], @"FacetId3 mismatch" );
+   XCTAssertTrue( [ result_ count ] == 6, @"Headers count mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"20081222"     ], @"Date     mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"24"   ], @"Visits   mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"0"    ], @"Value    mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"10000000-0000-0000-0000-000000000000" ], @"FacetId1 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"16000000-0000-0000-0000-000000000000" ], @"FacetId2 mismatch" );
+   XCTAssertTrue( [ result_ containsObject: @"00000000-0000-0000-0000-000000000000" ], @"FacetId3 mismatch" );
 }
 
 @end

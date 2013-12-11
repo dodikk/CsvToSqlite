@@ -10,14 +10,14 @@
 -(void)testNoThrowDescriptionOfCsvImportError
 {
     NSError* error_ = [ [ CsvImportError alloc ] initWithErrorCode: 10 ];
-    STAssertNoThrow( [ error_ description ], @"CsvImportError description throw exception" );
+    XCTAssertNoThrow( [ error_ description ], @"CsvImportError description throw exception" );
 }
 
 -(void)testThrowExceptionWhenInitWithoutCode
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-value"
-    STAssertThrows( [ [ CsvImportError alloc ] init ], @"CsvImportError description throw exception" );
+    XCTAssertThrows( [ [ CsvImportError alloc ] init ], @"CsvImportError description throw exception" );
 #pragma clang diagnostic pop
 }
 
@@ -25,7 +25,7 @@
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-value"
-    STAssertNoThrow( [ [ CsvBadTableNameError alloc ] init ], @"CsvImportError description throw exception" );
+    XCTAssertNoThrow( [ [ CsvBadTableNameError alloc ] init ], @"CsvImportError description throw exception" );
 #pragma clang diagnostic pop
 }
 
@@ -33,7 +33,7 @@
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-value"
-    STAssertNoThrow( [ [ CsvSchemaMismatchError alloc ] init ], @"CsvImportError description throw exception" );
+    XCTAssertNoThrow( [ [ CsvSchemaMismatchError alloc ] init ], @"CsvImportError description throw exception" );
 #pragma clang diagnostic pop
 }
 
@@ -41,7 +41,7 @@
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wunused-value"
-    STAssertNoThrow( [ [ CsvInitializationError alloc ] init ], @"CsvImportError description throw exception" );
+    XCTAssertNoThrow( [ [ CsvInitializationError alloc ] init ], @"CsvImportError description throw exception" );
 #pragma clang diagnostic pop
 }
 

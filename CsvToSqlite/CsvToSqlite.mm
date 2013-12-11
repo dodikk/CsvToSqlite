@@ -84,7 +84,8 @@ static const int MAX_IMPORT_COUNT_FOR_ONE_REQUEST = 500;
     Class readerClass_ = lineEndingsMap_[ lineEndingStyle_ ];
     if ( nil == readerClass_ )
     {
-        NSLog( @"Unsupported line endings style : %d", lineEndingStyle_ );
+        NSString* strUnsupportedLineEnding = [ @(lineEndingStyle_) descriptionWithLocale: nil ];
+        NSLog( @"Unsupported line endings style : %@", strUnsupportedLineEnding );
         return nil;
     }
 

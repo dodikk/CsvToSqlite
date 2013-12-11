@@ -1,6 +1,6 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface CsvSchemaValidatorTest : SenTestCase
+@interface CsvSchemaValidatorTest : XCTestCase
 {
 @private
     NSDictionary* schema_    ;

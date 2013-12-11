@@ -34,7 +34,7 @@
                                   withDefaults: nil
                             matchesTableSchema: schema_ ];
 
-        STAssertFalse( result_, @"false expected" );
+        XCTAssertFalse( result_, @"false expected" );
     }
 
     {
@@ -42,7 +42,7 @@
                                   withDefaults: nil
                             matchesTableSchema: nil ];
         
-        STAssertFalse( result_, @"false expected" );
+        XCTAssertFalse( result_, @"false expected" );
     }
 
 
@@ -51,7 +51,7 @@
                                   withDefaults: nil
                             matchesTableSchema: schema_ ];
         
-        STAssertTrue( result_, @"true expected" );
+        XCTAssertTrue( result_, @"true expected" );
     }
     
     {
@@ -66,7 +66,7 @@
                                   withDefaults: nil
                             matchesTableSchema: schema_ ];
         
-        STAssertFalse( result_, @"incomplete schema should not pass" );
+        XCTAssertFalse( result_, @"incomplete schema should not pass" );
         
     }
 }
@@ -87,7 +87,7 @@
                               withDefaults: nil
                         matchesTableSchema: invalidSchema_ ];
 
-    STAssertFalse( result_, @"false expected" );
+    XCTAssertFalse( result_, @"false expected" );
 }
 
 @end

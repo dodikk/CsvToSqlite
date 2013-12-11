@@ -30,18 +30,18 @@
     converter_.csvDateFormat = @"yyyyMMdd";    
     
     MockWriteableDb* dbWrapper_ = ( MockWriteableDb* )converter_.dbWrapper ;
-    STAssertNotNil( dbWrapper_, @"DB initialization error ");
+    XCTAssertNotNil( dbWrapper_, @"DB initialization error ");
 
     BOOL result_ = [ converter_  storeDataInTable: @"Campaigns" 
                                             error: &error_ ];   
-    STAssertFalse( result_, @"Unexpected success" );
+    XCTAssertFalse( result_, @"Unexpected success" );
 
-    STAssertNotNil( error_, @"Unexpected error" );
+    XCTAssertNotNil( error_, @"Unexpected error" );
 
-    STAssertTrue( [ error_.domain isEqualToString: @"org.EmbeddedSources.CSV.import" ], @"error domain mismatch" );
-    STAssertTrue( error_.code == 2, @"error code mismatch" );
+    XCTAssertTrue( [ error_.domain isEqualToString: @"org.EmbeddedSources.CSV.import" ], @"error domain mismatch" );
+    XCTAssertTrue( error_.code == 2, @"error code mismatch" );
 
-    STAssertTrue( [ [ dbWrapper_ queriesLog ] count ] == 0, @"Unexpected query occured" );
+    XCTAssertTrue( [ [ dbWrapper_ queriesLog ] count ] == 0, @"Unexpected query occured" );
 }
 
 -(void)testMacLineEndingsNotSupported
@@ -62,7 +62,7 @@
                                ];
     converter_.csvDateFormat = @"yyyyMMdd";    
 
-    STAssertNil( converter_, @"Not supported line endings : nil expected" );
+    XCTAssertNil( converter_, @"Not supported line endings : nil expected" );
 }
 
 @end

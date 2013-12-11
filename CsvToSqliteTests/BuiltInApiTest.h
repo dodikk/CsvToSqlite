@@ -1,4 +1,4 @@
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface BuiltInApiTest : SenTestCase
+@interface BuiltInApiTest : XCTestCase
 @end

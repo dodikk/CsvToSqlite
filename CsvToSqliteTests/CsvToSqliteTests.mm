@@ -14,7 +14,7 @@
 
 -(void)testConverterRejectsInit
 {
-    STAssertThrows( [ CsvToSqlite new ], @"init should not be supported" );
+    XCTAssertThrows( [ CsvToSqlite new ], @"init should not be supported" );
 }
 
 -(void)testConverterRequiresDatabaseName
@@ -28,7 +28,7 @@
                                                    databaseSchema: schema_
                                                        primaryKey: nil
                                                     defaultValues: nil ];
-        STAssertNil( converter_, @"nil expected - DatabaseName" );
+        XCTAssertNil( converter_, @"nil expected - DatabaseName" );
     }
 
     {
@@ -37,7 +37,7 @@
                                                    databaseSchema: schema_
                                                        primaryKey: nil
                                                     defaultValues: nil];
-        STAssertNil( converter_, @"nil expected - DatabaseName" );
+        XCTAssertNil( converter_, @"nil expected - DatabaseName" );
     }
 
     {
@@ -46,7 +46,7 @@
                                                    databaseSchema: schema_
                                                        primaryKey: nil
                                                     defaultValues: nil];
-        STAssertNil( converter_, @"nil expected - DatabaseName" );
+        XCTAssertNil( converter_, @"nil expected - DatabaseName" );
     }
    
     {
@@ -55,7 +55,7 @@
                                                    databaseSchema: schema_
                                                        primaryKey: nil
                                                     defaultValues: nil];
-        STAssertNil( converter_, @"nil expected - DatabaseName" );
+        XCTAssertNil( converter_, @"nil expected - DatabaseName" );
     }
 }
 
@@ -78,8 +78,8 @@
                                                      primaryKey: nil 
                                                   defaultValues: nil ];
       
-      STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
-      STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
+      XCTAssertEqual( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
+      XCTAssertEqual( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
    }
    
    {
@@ -92,8 +92,8 @@
                                                      primaryKey: nil
                                                   defaultValues: nil];
       
-      STAssertEquals( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
-      STAssertEquals( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
+      XCTAssertEqual( dbFile_  , converter_.databaseName, @"databaseName mismatch" );
+      XCTAssertEqual( dataFile_, converter_.dataFileName, @"dataFileName mismatch" );
    }
 }
 
@@ -107,7 +107,7 @@
                                                  databaseSchema: nil 
                                                      primaryKey: nil 
                                                   defaultValues: nil];
-      STAssertNil( converter_, @"nil expected - DatabaseName" );
+      XCTAssertNil( converter_, @"nil expected - DatabaseName" );
    } 
    
    {
@@ -115,7 +115,7 @@
                                                    dataFileName: @"file stub" 
                                                  databaseSchema: self.defaultSchema 
                                                      primaryKey: nil ];
-      STAssertNotNil( converter_, @"nil expected - DatabaseName" );
+      XCTAssertNotNil( converter_, @"nil expected - DatabaseName" );
    }   
 }
 
@@ -128,7 +128,7 @@
                                               databaseSchema: self.defaultSchema
                                                   primaryKey: nil ];
    
-   STAssertThrows( [ converter_ storeDataInTable: @"Values" 
+   XCTAssertThrows( [ converter_ storeDataInTable: @"Values" 
                                            error: NULL ], @"NSAssert expected" );
 }
 
@@ -147,18 +147,18 @@
       result_ = [ converter_ storeDataInTable: nil 
                                         error: &error_ ];
       
-      STAssertFalse( result_, @"Unexpected success" );
-      STAssertEquals( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
-      STAssertEquals( error_.code, 1, @"error code mismatch" );
+      XCTAssertFalse( result_, @"Unexpected success" );
+      XCTAssertEqual( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
+      XCTAssertEqual( error_.code, 1, @"error code mismatch" );
    }
    
    {
       result_ = [ converter_ storeDataInTable: @"" 
                                         error: &error_ ];
       
-      STAssertFalse( result_, @"Unexpected success" );
-      STAssertEquals( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
-      STAssertEquals( error_.code, 1, @"error code mismatch" );
+      XCTAssertFalse( result_, @"Unexpected success" );
+      XCTAssertEqual( error_.domain, @"org.EmbeddedSources.CSV.import", @"error domain mismatcg" );
+      XCTAssertEqual( error_.code, 1, @"error code mismatch" );
    }   
 }
 
@@ -177,10 +177,10 @@
     BOOL result_ = [ converter_ storeDataInTable: @"Values" 
                                            error: &error_ ];
         
-    STAssertFalse ( result_, @"error expected" );
-    STAssertNotNil( error_ , @"error expected" );
+    XCTAssertFalse ( result_, @"error expected" );
+    XCTAssertNotNil( error_ , @"error expected" );
     
-    STAssertTrue( [ error_ isMemberOfClass: [ CsvInitializationError class ] ], @"error class mismatch" );
+    XCTAssertTrue( [ error_ isMemberOfClass: [ CsvInitializationError class ] ], @"error class mismatch" );
 }
 
 @end

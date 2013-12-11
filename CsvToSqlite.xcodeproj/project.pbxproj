@@ -8,71 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		1B0154FF15B6E34B00FD864A /* UnixTest2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */; };
-		1B01550015B6E34B00FD864A /* UnixTest2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B0154FE15B6E1EE00FD864A /* UnixTest2.csv */; };
 		1B01550315B6E54900FD864A /* CsvImportErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B01550215B6E54900FD864A /* CsvImportErrorTest.m */; };
-		1B01550415B6E54900FD864A /* CsvImportErrorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B01550215B6E54900FD864A /* CsvImportErrorTest.m */; };
 		1B01578A15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
-		1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B01578915B6F58300FD864A /* UnixTest3.csv */; };
 		1B379CD415B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
-		1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1B379CD315B6FF32002CB488 /* InvalidSymbols.csv */; };
 		1BB55DB115D1144B00224BB2 /* QueryLineProducer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BB55DB015D1144B00224BB2 /* QueryLineProducer.h */; };
 		1BC2F27415B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
-		1BC2F27515B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */ = {isa = PBXBuildFile; fileRef = 1BC2F27315B8113300765A25 /* InvalidSymbolsAsIs.csv */; };
 		65A184D115C59424004759C0 /* StringsChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 65A184CF15C59424004759C0 /* StringsChannel.h */; };
 		65A184D215C59424004759C0 /* StringsChannel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65A184D015C59424004759C0 /* StringsChannel.mm */; };
 		782095C317956E7C00A50813 /* StringProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 782095C117956E7C00A50813 /* StringProcessor.h */; };
 		782095C417956E7C00A50813 /* StringProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 782095C217956E7C00A50813 /* StringProcessor.mm */; };
 		7E0E067C15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
-		7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */; };
-		7E195ABB153713440050C635 /* CsvToSqliteTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.mm */; };
-		7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
-		7E195ABF153713440050C635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
-		7E195AC2153713440050C635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E195AD71537301E0050C635 /* CsvImportError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AD51537301E0050C635 /* CsvImportError.h */; };
 		7E195AD81537301E0050C635 /* CsvImportError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195AD61537301E0050C635 /* CsvImportError.m */; };
 		7E195ADB153730C90050C635 /* CsvBadTableNameError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AD9153730C90050C635 /* CsvBadTableNameError.h */; };
 		7E195ADC153730C90050C635 /* CsvBadTableNameError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ADA153730C90050C635 /* CsvBadTableNameError.m */; };
 		7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E20830115986D80005A26EF /* CsvDefaultValues.h */; };
 		7E20830415986D80005A26EF /* CsvDefaultValues.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E20830215986D80005A26EF /* CsvDefaultValues.mm */; };
-		7E2CB972153F00F000FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
 		7E2CB973153F00FD00FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
 		7E2CB974153F010B00FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
 		7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DEC9153707280043B5BE /* CsvToSqlite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEC8153707280043B5BE /* CsvToSqlite.mm */; };
-		7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DED0153707280043B5BE /* SenTestingKit.framework */; };
 		7E31DED4153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E31DED7153707280043B5BE /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
 		7E31DEDD153707280043B5BE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E31DEDB153707280043B5BE /* InfoPlist.strings */; };
 		7E31DEE0153707280043B5BE /* CsvToSqliteTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEDF153707280043B5BE /* CsvToSqliteTests.mm */; };
 		7E31DEEA15370BB00043B5BE /* CsvToSqlite-Framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEE915370BB00043B5BE /* CsvToSqlite-Framework.h */; };
 		7E54C14A157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */; };
-		7E54C14B157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E54C149157F4CC6007D89F1 /* BuiltInApiTest.m */; };
 		7E5EC4A315580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
-		7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A215580CA200E946C9 /* OnlyHeader.csv */; };
 		7E5EC4A61558118400E946C9 /* Damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Damaged.csv */; };
-		7E5EC4A71558118400E946C9 /* Damaged.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E5EC4A51558118400E946C9 /* Damaged.csv */; };
 		7E9250A51600965F0071D2EC /* libESDatabaseWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9250871600958A0071D2EC /* libESDatabaseWrapper.a */; };
-		7E9250A8160096670071D2EC /* libESDatabaseWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9250871600958A0071D2EC /* libESDatabaseWrapper.a */; };
 		7E96C70915406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
-		7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E96C70815406A0700E90751 /* CsvFailedImportTest.mm */; };
 		7E9986F1153D4E9800811BA8 /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
-		7E9986F2153D4E9D00811BA8 /* libObjcScopedGuard.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */; };
-		7E9986F4153D4EC200811BA8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */; };
 		7E9986F5153D4EC800811BA8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */; };
 		7E9986F6153D4EED00811BA8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */; };
 		7E998707153D523A00811BA8 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E998704153D51C600811BA8 /* libFMDB.a */; };
-		7E998708153D524000811BA8 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E998704153D51C600811BA8 /* libFMDB.a */; };
 		7E99870B153D52B500811BA8 /* CsvToSqlite+Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998709153D52B500811BA8 /* CsvToSqlite+Database.h */; };
 		7E99870C153D52B500811BA8 /* CsvToSqlite+Database.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99870A153D52B500811BA8 /* CsvToSqlite+Database.mm */; };
 		7E99871A153D67D800811BA8 /* DbImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E998719153D67D800811BA8 /* DbImportTest.mm */; };
-		7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E998719153D67D800811BA8 /* DbImportTest.mm */; };
 		7E99871E153D69D900811BA8 /* CsvToSqlite+Test.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E99871C153D69D900811BA8 /* CsvToSqlite+Test.h */; };
 		7E99871F153D69D900811BA8 /* CsvToSqlite+Test.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */; };
 		7E99872F153D907400811BA8 /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
-		7E998730153D907400811BA8 /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
 		7E998742153D9AB300811BA8 /* CsvLineEndings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998741153D9AB300811BA8 /* CsvLineEndings.h */; };
 		7E998744153D9F0F00811BA8 /* 2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E998743153D9F0F00811BA8 /* 2.sqlite */; };
-		7E998745153D9F0F00811BA8 /* 2.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7E998743153D9F0F00811BA8 /* 2.sqlite */; };
 		7E9D9B801611B6CE0074876B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9D9B7F1611B6CE0074876B /* UIKit.framework */; };
 		7E9D9B811611B6CE0074876B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
 		7E9D9B831611B6CE0074876B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9D9B821611B6CE0074876B /* CoreGraphics.framework */; };
@@ -92,14 +69,10 @@
 		7E9D9BD51611B9F70074876B /* SenTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9BD41611B9F70074876B /* SenTestCase.m */; };
 		7E9D9BD61611BB6E0074876B /* Campaigns-small-win.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7E99872E153D907400811BA8 /* Campaigns-small-win.csv */; };
 		7EA3A22E15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
-		7EA3A22F15380E560058C603 /* Campaigns.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22C15380E560058C603 /* Campaigns.csv */; };
 		7EA3A23015380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
-		7EA3A23115380E560058C603 /* campaigns.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A22D15380E560058C603 /* campaigns.sqlite */; };
 		7EA3A23415380EE40058C603 /* CsvColumnsParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */; };
-		7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23315380EE40058C603 /* CsvColumnsParserTest.mm */; };
 		7EA3A23815380F750058C603 /* CsvColumnsParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A23615380F750058C603 /* CsvColumnsParser.h */; };
 		7EA3A23915380F750058C603 /* CsvColumnsParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23715380F750058C603 /* CsvColumnsParser.mm */; };
-		7EA3A23A1538105E0058C603 /* libCsvToSqlite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEBF153707280043B5BE /* libCsvToSqlite.a */; };
 		7EA3A2421538265F0058C603 /* StreamUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2401538265F0058C603 /* StreamUtils.h */; };
 		7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2411538265F0058C603 /* StreamUtils.mm */; };
 		7EA3A24D15383B050058C603 /* LineReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A24C15383B050058C603 /* LineReader.h */; };
@@ -108,29 +81,19 @@
 		7EA3A25415383D440058C603 /* UnixLineReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A25215383D440058C603 /* UnixLineReader.h */; };
 		7EA3A25515383D440058C603 /* UnixLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A25315383D440058C603 /* UnixLineReader.mm */; };
 		7EA3A257153841800058C603 /* UnixTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A256153840DB0058C603 /* UnixTest.csv */; };
-		7EA3A258153841800058C603 /* UnixTest.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A256153840DB0058C603 /* UnixTest.csv */; };
 		7EA3A25A153841F30058C603 /* Unix-NoHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A259153841F30058C603 /* Unix-NoHeader.csv */; };
-		7EA3A25B153841F30058C603 /* Unix-NoHeader.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7EA3A259153841F30058C603 /* Unix-NoHeader.csv */; };
 		7EA3A25E15386BE50058C603 /* DBTableValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A25C15386BE50058C603 /* DBTableValidator.h */; };
 		7EA3A25F15386BE50058C603 /* DBTableValidator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A25D15386BE50058C603 /* DBTableValidator.mm */; };
 		7EA3A262153877150058C603 /* CsvSchemaMismatchError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A260153877150058C603 /* CsvSchemaMismatchError.h */; };
 		7EA3A263153877150058C603 /* CsvSchemaMismatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */; };
 		7EA3A2661538793F0058C603 /* CsvInitializationError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2641538793F0058C603 /* CsvInitializationError.h */; };
 		7EA3A2671538793F0058C603 /* CsvInitializationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2651538793F0058C603 /* CsvInitializationError.m */; };
-		7ED61742155BBE6400DE6328 /* libESLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED61720155BBDE000DE6328 /* libESLocale.a */; };
+		7EAF015218571A1500F66D6B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAF015118571A1500F66D6B /* XCTest.framework */; };
 		7ED61743155BBE6800DE6328 /* libESLocale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED61720155BBDE000DE6328 /* libESLocale.a */; };
 		7EE54324153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
-		7EE54325153EACBC00565408 /* 4.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 7EE54323153EACBC00565408 /* 4.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7E195AB9153713440050C635 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E31DEBE153707280043B5BE;
-			remoteInfo = CsvToSqlite;
-		};
 		7E31DED5153707280043B5BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
@@ -146,13 +109,6 @@
 			remoteInfo = ESDatabaseWrapper;
 		};
 		7E9250A31600965A0071D2EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E9250821600958A0071D2EC /* ESDatabaseWrapper.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E6A36BC160084F000F4CE84;
-			remoteInfo = ESDatabaseWrapper;
-		};
-		7E9250A6160096630071D2EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E9250821600958A0071D2EC /* ESDatabaseWrapper.xcodeproj */;
 			proxyType = 1;
@@ -222,20 +178,6 @@
 			remoteGlobalIDString = 7E8B6C4715388BD500435EDA;
 			remoteInfo = ObjcScopedGuard;
 		};
-		7E998724153D6D4400811BA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = EE4290EE12B42F870088BD94;
-			remoteInfo = FMDB;
-		};
-		7E998726153D6D4600811BA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7E8B6C4715388BD500435EDA;
-			remoteInfo = ObjcScopedGuard;
-		};
 		7E9D9BAB1611B7BC0074876B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
@@ -285,13 +227,6 @@
 			remoteGlobalIDString = 7ED3E58715400C1E008268CF;
 			remoteInfo = ESLocaleTests;
 		};
-		7ED61723155BBDE000DE6328 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7ED3E5B515400C8E008268CF;
-			remoteInfo = "ESLocaleTests-CI";
-		};
 		7ED6173C155BBE5200DE6328 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
@@ -300,13 +235,6 @@
 			remoteInfo = ESLocale;
 		};
 		7ED6173E155BBE5700DE6328 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7ED3E57615400C1E008268CF;
-			remoteInfo = ESLocale;
-		};
-		7ED61740155BBE5D00DE6328 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */;
 			proxyType = 1;
@@ -331,7 +259,6 @@
 		7E0E067A15413F9B00650D6C /* CsvSchemaValidatorTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvSchemaValidatorTest.h; sourceTree = "<group>"; };
 		7E0E067B15413F9B00650D6C /* CsvSchemaValidatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaValidatorTest.m; sourceTree = "<group>"; };
 		7E195AB51537117B0050C635 /* CsvMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvMacros.h; sourceTree = "<group>"; };
-		7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CsvToSqliteTests copy.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "CsvToSqliteTests copy-Info.plist"; path = "/Users/dodikk/projects/work/CsvToSqlite/CsvToSqliteTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		7E195AD51537301E0050C635 /* CsvImportError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvImportError.h; sourceTree = "<group>"; };
 		7E195AD61537301E0050C635 /* CsvImportError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvImportError.m; sourceTree = "<group>"; };
@@ -346,8 +273,7 @@
 		7E31DEC6153707280043B5BE /* CsvToSqlite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CsvToSqlite-Prefix.pch"; sourceTree = "<group>"; };
 		7E31DEC7153707280043B5BE /* CsvToSqlite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqlite.h; sourceTree = "<group>"; };
 		7E31DEC8153707280043B5BE /* CsvToSqlite.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvToSqlite.mm; sourceTree = "<group>"; };
-		7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CsvToSqliteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E31DED0153707280043B5BE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		7E31DECF153707280043B5BE /* CsvToSqliteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CsvToSqliteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DEDA153707280043B5BE /* CsvToSqliteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CsvToSqliteTests-Info.plist"; sourceTree = "<group>"; };
 		7E31DEDC153707280043B5BE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7E31DEDE153707280043B5BE /* CsvToSqliteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CsvToSqliteTests.h; sourceTree = "<group>"; };
@@ -406,27 +332,12 @@
 		7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvSchemaMismatchError.m; sourceTree = "<group>"; };
 		7EA3A2641538793F0058C603 /* CsvInitializationError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvInitializationError.h; sourceTree = "<group>"; };
 		7EA3A2651538793F0058C603 /* CsvInitializationError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvInitializationError.m; sourceTree = "<group>"; };
+		7EAF015118571A1500F66D6B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESLocale.xcodeproj; path = ../ESLocale/ESLocale.xcodeproj; sourceTree = "<group>"; };
 		7EE54323153EACBC00565408 /* 4.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = 4.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7E195ABC153713440050C635 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E9250A8160096670071D2EC /* libESDatabaseWrapper.a in Frameworks */,
-				7ED61742155BBE6400DE6328 /* libESLocale.a in Frameworks */,
-				7E998708153D524000811BA8 /* libFMDB.a in Frameworks */,
-				7EA3A23A1538105E0058C603 /* libCsvToSqlite.a in Frameworks */,
-				7E9986F2153D4E9D00811BA8 /* libObjcScopedGuard.a in Frameworks */,
-				7E9986F4153D4EC200811BA8 /* libsqlite3.dylib in Frameworks */,
-				7E2CB972153F00F000FEC16E /* libc++.dylib in Frameworks */,
-				7E195ABD153713440050C635 /* SenTestingKit.framework in Frameworks */,
-				7E195ABF153713440050C635 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E31DEBC153707280043B5BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -441,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EAF015218571A1500F66D6B /* XCTest.framework in Frameworks */,
 				7E9250A51600965F0071D2EC /* libESDatabaseWrapper.a in Frameworks */,
 				7ED61743155BBE6800DE6328 /* libESLocale.a in Frameworks */,
 				7E998707153D523A00811BA8 /* libFMDB.a in Frameworks */,
@@ -448,7 +360,6 @@
 				7E9986F1153D4E9800811BA8 /* libObjcScopedGuard.a in Frameworks */,
 				7E2CB973153F00FD00FEC16E /* libc++.dylib in Frameworks */,
 				7E9986F5153D4EC800811BA8 /* libsqlite3.dylib in Frameworks */,
-				7E31DED1153707280043B5BE /* SenTestingKit.framework in Frameworks */,
 				7E31DED4153707280043B5BE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,8 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				7E31DEBF153707280043B5BE /* libCsvToSqlite.a */,
-				7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */,
-				7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */,
+				7E31DECF153707280043B5BE /* CsvToSqliteTests.xctest */,
 				7E9D9B7D1611B6CE0074876B /* CsvProfiler.app */,
 			);
 			name = Products;
@@ -537,6 +447,7 @@
 		7E31DEC1153707280043B5BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EAF015118571A1500F66D6B /* XCTest.framework */,
 				7E9250821600958A0071D2EC /* ESDatabaseWrapper.xcodeproj */,
 				7ED61719155BBDE000DE6328 /* ESLocale.xcodeproj */,
 				7E9986F8153D51C500811BA8 /* fmdb.xcodeproj */,
@@ -544,7 +455,6 @@
 				7E9986F3153D4EC200811BA8 /* libsqlite3.dylib */,
 				7EA3A23B153823BF0058C603 /* libc++.dylib */,
 				7E31DEC2153707280043B5BE /* Foundation.framework */,
-				7E31DED0153707280043B5BE /* SenTestingKit.framework */,
 				7E9D9B7F1611B6CE0074876B /* UIKit.framework */,
 				7E9D9B821611B6CE0074876B /* CoreGraphics.framework */,
 			);
@@ -698,8 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				7ED61720155BBDE000DE6328 /* libESLocale.a */,
-				7ED61722155BBDE000DE6328 /* ESLocaleTests.octest */,
-				7ED61724155BBDE000DE6328 /* ESLocaleTests copy.octest */,
+				7ED61722155BBDE000DE6328 /* ESLocaleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -735,29 +644,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7E195AB7153713440050C635 /* CsvToSqliteTests-CI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7E195AC4153713440050C635 /* Build configuration list for PBXNativeTarget "CsvToSqliteTests-CI" */;
-			buildPhases = (
-				7E195ABA153713440050C635 /* Sources */,
-				7E195ABC153713440050C635 /* Frameworks */,
-				7E195AC1153713440050C635 /* Resources */,
-				7E195AC3153713440050C635 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7E9250A7160096630071D2EC /* PBXTargetDependency */,
-				7ED61741155BBE5D00DE6328 /* PBXTargetDependency */,
-				7E998727153D6D4600811BA8 /* PBXTargetDependency */,
-				7E998725153D6D4400811BA8 /* PBXTargetDependency */,
-				7E195AB8153713440050C635 /* PBXTargetDependency */,
-			);
-			name = "CsvToSqliteTests-CI";
-			productName = CsvToSqliteTests;
-			productReference = 7E195AC7153713440050C635 /* CsvToSqliteTests copy.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 		7E31DEBE153707280043B5BE /* CsvToSqlite */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E31DEE3153707280043B5BE /* Build configuration list for PBXNativeTarget "CsvToSqlite" */;
@@ -798,8 +684,8 @@
 			);
 			name = CsvToSqliteTests;
 			productName = CsvToSqliteTests;
-			productReference = 7E31DECF153707280043B5BE /* CsvToSqliteTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 7E31DECF153707280043B5BE /* CsvToSqliteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		7E9D9B7C1611B6CE0074876B /* CsvProfiler */ = {
 			isa = PBXNativeTarget;
@@ -863,7 +749,6 @@
 			targets = (
 				7E31DEBE153707280043B5BE /* CsvToSqlite */,
 				7E31DECE153707280043B5BE /* CsvToSqliteTests */,
-				7E195AB7153713440050C635 /* CsvToSqliteTests-CI */,
 				7E9D9B7C1611B6CE0074876B /* CsvProfiler */,
 			);
 		};
@@ -919,44 +804,16 @@
 			remoteRef = 7ED6171F155BBDE000DE6328 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7ED61722155BBDE000DE6328 /* ESLocaleTests.octest */ = {
+		7ED61722155BBDE000DE6328 /* ESLocaleTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ESLocaleTests.octest;
+			path = ESLocaleTests.xctest;
 			remoteRef = 7ED61721155BBDE000DE6328 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7ED61724155BBDE000DE6328 /* ESLocaleTests copy.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ESLocaleTests copy.octest";
-			remoteRef = 7ED61723155BBDE000DE6328 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7E195AC1153713440050C635 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E195AC2153713440050C635 /* InfoPlist.strings in Resources */,
-				7EA3A22F15380E560058C603 /* Campaigns.csv in Resources */,
-				7EA3A23115380E560058C603 /* campaigns.sqlite in Resources */,
-				7EA3A258153841800058C603 /* UnixTest.csv in Resources */,
-				7EA3A25B153841F30058C603 /* Unix-NoHeader.csv in Resources */,
-				7E998730153D907400811BA8 /* Campaigns-small-win.csv in Resources */,
-				7E998745153D9F0F00811BA8 /* 2.sqlite in Resources */,
-				7EE54325153EACBC00565408 /* 4.sqlite in Resources */,
-				7E5EC4A415580CA200E946C9 /* OnlyHeader.csv in Resources */,
-				7E5EC4A71558118400E946C9 /* Damaged.csv in Resources */,
-				1B01550015B6E34B00FD864A /* UnixTest2.csv in Resources */,
-				1B01578B15B6F58300FD864A /* UnixTest3.csv in Resources */,
-				1B379CD515B6FF32002CB488 /* InvalidSymbols.csv in Resources */,
-				1BC2F27515B8113300765A25 /* InvalidSymbolsAsIs.csv in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E31DECC153707280043B5BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -993,19 +850,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7E195AC3153713440050C635 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		7E31DECD153707280043B5BE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1022,20 +866,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7E195ABA153713440050C635 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7E195ABB153713440050C635 /* CsvToSqliteTests.mm in Sources */,
-				7EA3A23515380EE40058C603 /* CsvColumnsParserTest.mm in Sources */,
-				7E99871B153D67D800811BA8 /* DbImportTest.mm in Sources */,
-				7E96C70A15406A0700E90751 /* CsvFailedImportTest.mm in Sources */,
-				7E0E067D15413F9B00650D6C /* CsvSchemaValidatorTest.m in Sources */,
-				7E54C14B157F4CC6007D89F1 /* BuiltInApiTest.m in Sources */,
-				1B01550415B6E54900FD864A /* CsvImportErrorTest.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7E31DEBB153707280043B5BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1085,11 +915,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7E195AB8153713440050C635 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7E31DEBE153707280043B5BE /* CsvToSqlite */;
-			targetProxy = 7E195AB9153713440050C635 /* PBXContainerItemProxy */;
-		};
 		7E31DED6153707280043B5BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7E31DEBE153707280043B5BE /* CsvToSqlite */;
@@ -1099,11 +924,6 @@
 			isa = PBXTargetDependency;
 			name = ESDatabaseWrapper;
 			targetProxy = 7E9250A31600965A0071D2EC /* PBXContainerItemProxy */;
-		};
-		7E9250A7160096630071D2EC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ESDatabaseWrapper;
-			targetProxy = 7E9250A6160096630071D2EC /* PBXContainerItemProxy */;
 		};
 		7E9986EF153D457D00811BA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1124,16 +944,6 @@
 			isa = PBXTargetDependency;
 			name = ObjcScopedGuard;
 			targetProxy = 7E998722153D6D3F00811BA8 /* PBXContainerItemProxy */;
-		};
-		7E998725153D6D4400811BA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FMDB;
-			targetProxy = 7E998724153D6D4400811BA8 /* PBXContainerItemProxy */;
-		};
-		7E998727153D6D4600811BA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ObjcScopedGuard;
-			targetProxy = 7E998726153D6D4600811BA8 /* PBXContainerItemProxy */;
 		};
 		7E9D9BAC1611B7BC0074876B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1170,11 +980,6 @@
 			name = ESLocale;
 			targetProxy = 7ED6173E155BBE5700DE6328 /* PBXContainerItemProxy */;
 		};
-		7ED61741155BBE5D00DE6328 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ESLocale;
-			targetProxy = 7ED61740155BBE5D00DE6328 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1197,38 +1002,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7E195AC5153713440050C635 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
-				PRODUCT_NAME = "CsvToSqliteTests copy";
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		7E195AC6153713440050C635 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
-				PRODUCT_NAME = "CsvToSqliteTests copy";
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 		7E195AE3153734570050C635 /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1299,30 +1072,13 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = NO;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Coverage;
-		};
-		7E195AE6153734570050C635 /* Coverage */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
-				INFOPLIST_FILE = "CsvToSqliteTests copy-Info.plist";
-				PRODUCT_NAME = "CsvToSqliteTests copy";
-				TEST_AFTER_BUILD = YES;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Coverage;
 		};
@@ -1447,14 +1203,13 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = NO;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1463,14 +1218,13 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
 				INFOPLIST_FILE = "CsvToSqliteTests/CsvToSqliteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_AFTER_BUILD = NO;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -1552,16 +1306,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7E195AC4153713440050C635 /* Build configuration list for PBXNativeTarget "CsvToSqliteTests-CI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7E195AC5153713440050C635 /* Debug */,
-				7E195AE6153734570050C635 /* Coverage */,
-				7E195AC6153713440050C635 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7E31DEB9153707280043B5BE /* Build configuration list for PBXProject "CsvToSqlite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
