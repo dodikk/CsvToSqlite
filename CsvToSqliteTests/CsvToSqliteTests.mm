@@ -172,7 +172,10 @@
                                                databaseSchema: self.defaultSchema
                                                    primaryKey: nil ];
     
-    objc_msgSend( converter_, @selector( setColumnsParser: ), nil );
+    typedef void (*SetColumnParserMsgSendFunction)( id, SEL, id );
+    static const SetColumnParserMsgSendFunction setColumnsParser = (SetColumnParserMsgSendFunction)objc_msgSend;
+    
+    setColumnsParser( converter_, @selector( setColumnsParser: ), nil );
     
     BOOL result_ = [ converter_ storeDataInTable: @"Values" 
                                            error: &error_ ];
