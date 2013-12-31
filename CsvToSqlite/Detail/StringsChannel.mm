@@ -1,6 +1,5 @@
 #import "StringsChannel.h"
 
-#include <list>
 
 @implementation StringsChannel
 {
