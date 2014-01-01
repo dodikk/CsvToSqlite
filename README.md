@@ -58,7 +58,7 @@ Here is an example of CSV importer usage :
                                                              separatorChar: ';'
                                                                commentChar: '#'
                                                                 lineReader: [ UnixLineReader new ]
-                                                            dbWrapperClass: [ MockWriteableDb class ] ];
+                                                            dbWrapperClass: [ FMDatabase class ] ];
     converter_.csvDateFormat = @"yyyyMMdd";
     
  NSError* error_;
