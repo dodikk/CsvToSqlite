@@ -32,6 +32,8 @@ Here is an example of CSV importer usage :
 {
     NSString* csvPath_ = [ [ NSBundle bundleForClass: [ self class ] ] pathForResource: @"UnixTest3" 
                                                                                 ofType: @"csv" ];
+                                                                                
+    NSString* fullDatabasePath = @"1.sqlite";
 
     NSDictionary* schema_ = @{
     @"Date"    : @"DATETIME",
@@ -50,7 +52,7 @@ Here is an example of CSV importer usage :
     [ defaults_ addDefaultValue: @"10"
                       forColumn: @"TypeId" ];
 
-    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: @"1.sqlite" 
+    CsvToSqlite* converter_ = [ [ CsvToSqlite alloc ] initWithDatabaseName: fullDatabasePath
                                                               dataFileName: csvPath_ 
                                                             databaseSchema: schema_ 
                                                                 primaryKey: primaryKey_
