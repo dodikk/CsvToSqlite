@@ -70,6 +70,26 @@ Here is an example rom our unit tests
 
 
 ### Performance Tips and Tricks
+Columns parsing is the largest bottleneck for this implementation of the CSV importer. For some datasets this step may be skipped.
+
+In order to implement this, the original CSV line
+```sql
+Date      , Id, Visits
+2014-01-01, 10, 100500
+```
+
+is converted to the query below:
+```sql
+INSERT INTO [TrafficStats]       - SQL Insert statement added
+( Date, Id, Visits )             - Brackets added
+VALUES                           - SQL keyword added
+( '2014-01-01', '10', '100500' ) - Brackets and quotes added
+```
+
+
+1. The dataset does not contain any dates.
+2. The dataset contains dates in ANSI format (**yyyy-MM-dd**) or any other format supported : by SQLite <http://www.sqlite.org/lang_datefunc.html>.
+3. The dataset contains dates in the ```yyyyMMdd``` format
 
 
 
