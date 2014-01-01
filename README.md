@@ -25,7 +25,7 @@ We do not support quoted values.
 
 ### Geting Started
 
-Here is an example rom our unit tests 
+Here is an example of CSV importer usage :
 
 ```objective-c
 -(void)testImportWithInvalidDefauls
