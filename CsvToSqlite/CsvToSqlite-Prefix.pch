@@ -4,10 +4,15 @@
     #import <ESLocale/ESLocale.h>
     #import <Foundation/Foundation.h>
 
-    #ifdef __cplusplus
-        #include <map>
-        #include <sstream>
-        #include <fstream>
+   #ifdef __cplusplus
         #include <ObjcScopedGuard/ObjcScopedGuard.h>
     #endif
+#endif
+
+
+#ifdef __cplusplus
+   #include <list>
+   #include <map>
+   #include <sstream>
+   #include <fstream>
 #endif

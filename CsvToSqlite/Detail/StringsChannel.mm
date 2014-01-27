@@ -1,6 +1,5 @@
 #import "StringsChannel.h"
 
-#include <list>
 
 @implementation StringsChannel
 {
@@ -28,7 +27,8 @@
 
 +(id)newStringsChannelWithSize:( NSUInteger )size_
 {
-    return [ [ self alloc ] initWithSize: size_ ];
+   // Cocoapods project fails with [[ self alloc ] initWithSize:]
+   return [ [ StringsChannel alloc ] initWithSize: size_ ];
 }
 
 -(void)putString:( const std::string& )str_
