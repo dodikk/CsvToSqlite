@@ -94,6 +94,38 @@ VALUES                           - SQL keyword added
 3. The dataset contains dates in the ```yyyyMMdd``` format
 
 
+### Benchmarks
+We have measured the benchmarks for iPad2 which was the oldest and slowest model I could test against. We have measured the entire process of importing including 
+* database scheme creation
+* CSV data parsing
+* Inserting parsed data to the database
+
+
+The numbers in the tables below are an average of 10 launches. Feel free doing any further research using the [dodikk/CsvToSqlite-Profiling](https://github.com/dodikk/CsvToSqlite-Profiling) repository.
+
+
+#### 60K Lines Dataset Benchmarks
+
+|Date Format|Format Comment         |Time          |
+|-----------|-----------------------|--------------|
+|yyyy-MM-dd | ANSI format           | 11 sec       |
+|yyyyMMdd   | "Compact" ANSI        | 17 sec       |
+|other      | Using NSDateFormatter | 28 sec       |
+
+
+
+#### 100K Lines Dataset Benchmarks
+
+|Date Format|Format Comment         |Time          |
+|-----------|-----------------------|--------------|
+|yyyy-MM-dd | ANSI format           | 20 sec       |
+|yyyyMMdd   | "Compact" ANSI        | 32 sec       |
+|other      | Using NSDateFormatter | 40 sec       |
+
+
+
+
+
 
 
 ### Dependencies : 
