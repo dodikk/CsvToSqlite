@@ -110,3 +110,6 @@ The recommended approach is using sub-projects. However, **cocoapods** users are
 ```
 Make the library rfc4180 compliant. Start using davedelong / CHCSVParser for better CSV handling
 ```
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dodikk/csvtosqlite/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
