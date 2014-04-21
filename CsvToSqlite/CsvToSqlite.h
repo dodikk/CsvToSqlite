@@ -82,16 +82,19 @@
  A legacy initializer.
  
  @param databaseName_ Full path to the SQLite database for writing. For example,
+ 
  ```
  NSString* databaseName_ = @"/tmp/1.sqlite";
  ```
  
  @param dataFileName_ Full path to the CSV file to import from. For example, 
+ 
  ```
  NSString* dataFileName_ = [ [ NSBundle mainBundle ] pathForResource: @"1" ofType: @"csv" ];
  ```
  
  @param schema_ A dictionary of column names and their types. Column names must match those in the CSV file.
+ 
  ```
  NSDictionary* schema_ = @{
  @"Date"    : @"DATETIME",
@@ -103,6 +106,7 @@
  ```
  
  @param primaryKey_ An ordered set of columns for the SQL primary key constraint.
+ 
  ```
  NSOrderedSet* primaryKey_ = [ NSOrderedSet orderedSetWithObjects: @"Date", @"Id", @"TypeId", nil ];
  ```
@@ -118,16 +122,19 @@
  A legacy initializer.
  
  @param databaseName_ Full path to the SQLite database for writing. For example,
+ 
  ```
  NSString* databaseName_ = @"/tmp/1.sqlite";
  ```
  
  @param dataFileName_ Full path to the CSV file to import from. For example,
+ 
  ```
  NSString* dataFileName_ = [ [ NSBundle mainBundle ] pathForResource: @"1" ofType: @"csv" ];
  ```
  
  @param schema_ A dictionary of column names and their types. Column names must match those in the CSV file.
+ 
  ```
  NSDictionary* schema_ = @{
  @"Date"    : @"DATETIME",
@@ -139,6 +146,7 @@
  ```
  
  @param primaryKey_ An ordered set of columns for the SQL primary key constraint.
+ 
  ```
  NSOrderedSet* primaryKey_ = [ NSOrderedSet orderedSetWithObjects: @"Date", @"Id", @"TypeId", nil ];
  ```
@@ -159,16 +167,19 @@
  
  
  @param databaseName_ Full path to the SQLite database for writing. For example,
+ 
  ```
  NSString* databaseName_ = @"/tmp/1.sqlite";
  ```
  
  @param dataFileName_ Full path to the CSV file to import from. For example,
+ 
  ```
  NSString* dataFileName_ = [ [ NSBundle mainBundle ] pathForResource: @"1" ofType: @"csv" ];
  ```
  
  @param schema_ A dictionary of column names and their types. Column names must match those in the CSV file.
+ 
  ```
  NSDictionary* schema_ = @{
  @"Date"    : @"DATETIME",
@@ -180,6 +191,7 @@
  ```
  
  @param primaryKey_ An ordered set of columns for the SQL primary key constraint.
+ 
  ```
  NSOrderedSet* primaryKey_ = [ NSOrderedSet orderedSetWithObjects: @"Date", @"Id", @"TypeId", nil ];
  ```
@@ -197,6 +209,7 @@
  @param separatorChar_ Record separator. Usually it is a comma ","
 
  @param commentChar_ Some applications use a non-standard CSV extension to store additional data such as timestamps.
+ 
  ```
  #LastModified=06/10/2013 11:37:05
  ```
