@@ -29,7 +29,10 @@ cd "$DEPLOYMENT_DIR"
 		--project-company "dodikk"                      \
 		--company-id org.dodikk                         \
         --no-repeat-first-par                           \
-        --exclude $SDK_LIBRARIES_ROOT/Detail            \
+        --ignore $SDK_LIBRARIES_ROOT/Detail             \
+        --ignore $SDK_LIBRARIES_ROOT/CsvColumnsParser.h \
+        --ignore $SDK_LIBRARIES_ROOT/DBTableValidator.h \
+        --ignore $SDK_LIBRARIES_ROOT/StreamUtils.h      \
  		--output .                                      \
 		"$SDK_LIBRARIES_ROOT"                           \
         | tee appledoc-log.txt
