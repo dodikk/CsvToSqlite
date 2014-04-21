@@ -41,9 +41,13 @@ typedef NS_ENUM( NSInteger, CsvImportErrors)
 
 
 /**
- A preferred initializer.
+ A preferred initializer. Initializes an NSError object with one of the CsvImportErrors values.
  
- Initializes an NSError object with one of the CsvImportErrors values.
+ 
+ @param errorCode_ One of the constants defined in CsvImportErrors enum.
+ Warning : Undefined behaviour for other values.
+ 
+ @return A properly initialized object.
  */
 -(id)initWithErrorCode:( NSInteger )errorCode_;
 
