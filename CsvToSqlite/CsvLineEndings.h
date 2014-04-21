@@ -10,7 +10,7 @@
  */
 
 #ifdef __OBJC__
-typedef NS_ENUM( NSInteger, CsvLineEndingsEnum )
+typedef NS_ENUM( NSInteger, CsvLineEndings )
 #else
 enum CsvLineEndingsEnum
 #endif // __OBJC__
