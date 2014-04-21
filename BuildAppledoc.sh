@@ -30,6 +30,8 @@ cd "$DEPLOYMENT_DIR"
 		--company-id org.dodikk                         \
         --no-repeat-first-par                           \
         --ignore $SDK_LIBRARIES_ROOT/Detail             \
+        --ignore $SDK_LIBRARIES_ROOT/LineReaders        \
+        --ignore $SDK_LIBRARIES_ROOT/CsvMacros.h        \
         --ignore $SDK_LIBRARIES_ROOT/CsvColumnsParser.h \
         --ignore $SDK_LIBRARIES_ROOT/DBTableValidator.h \
         --ignore $SDK_LIBRARIES_ROOT/StreamUtils.h      \
