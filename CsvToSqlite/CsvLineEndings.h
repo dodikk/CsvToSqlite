@@ -1,10 +1,19 @@
 #ifndef CsvToSqlite_CsvLineEndings_h
 #define CsvToSqlite_CsvLineEndings_h
 
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
+
 /**
  Line ending style enumeration.
  */
+
+#ifdef __OBJC__
+typedef NS_ENUM( NSInteger, CsvLineEndingsEnum )
+#else
 enum CsvLineEndingsEnum
+#endif // __OBJC__
 {
     /**
      CR LF - Windows style.
@@ -22,7 +31,9 @@ enum CsvLineEndingsEnum
      */
    CSV_LE_MAC_LEGACY = 0x0D  ,
 };
+
+#ifndef __OBJC__
 typedef NSInteger CsvLineEndings;
+#endif // __OBJC__
 
-
-#endif
+#endif // CsvToSqlite_CsvLineEndings_h
