@@ -1,8 +1,5 @@
 #import <Foundation/Foundation.h>
 
-#include <vector>
-#include <string>
-
 @interface CsvDefaultValues : NSObject
 
 @property ( nonatomic, readonly ) NSOrderedSet* columns ;
