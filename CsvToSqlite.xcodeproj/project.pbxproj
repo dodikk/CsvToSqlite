@@ -24,6 +24,33 @@
 		7E195ADC153730C90050C635 /* CsvBadTableNameError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ADA153730C90050C635 /* CsvBadTableNameError.m */; };
 		7E20830315986D80005A26EF /* CsvDefaultValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E20830115986D80005A26EF /* CsvDefaultValues.h */; };
 		7E20830415986D80005A26EF /* CsvDefaultValues.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E20830215986D80005A26EF /* CsvDefaultValues.mm */; };
+		7E2299C9190A338B000496B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
+		7E2299CF190A338B000496B5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E2299CD190A338B000496B5 /* InfoPlist.strings */; };
+		7E2299DE190A33B5000496B5 /* CsvImportError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195AD61537301E0050C635 /* CsvImportError.m */; };
+		7E2299DF190A33B5000496B5 /* CsvBadTableNameError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E195ADA153730C90050C635 /* CsvBadTableNameError.m */; };
+		7E2299E0190A33B5000496B5 /* CsvSchemaMismatchError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A261153877150058C603 /* CsvSchemaMismatchError.m */; };
+		7E2299E1190A33B5000496B5 /* CsvInitializationError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2651538793F0058C603 /* CsvInitializationError.m */; };
+		7E2299E2190A33B5000496B5 /* CsvToSqlite+Database.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99870A153D52B500811BA8 /* CsvToSqlite+Database.mm */; };
+		7E2299E3190A33B5000496B5 /* CsvToSqlite+Test.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E99871D153D69D900811BA8 /* CsvToSqlite+Test.mm */; };
+		7E2299E4190A33B5000496B5 /* StringsChannel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65A184D015C59424004759C0 /* StringsChannel.mm */; };
+		7E2299E5190A33B5000496B5 /* StringProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 782095C217956E7C00A50813 /* StringProcessor.mm */; };
+		7E2299E6190A33B5000496B5 /* WindowsLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A24F15383B610058C603 /* WindowsLineReader.mm */; };
+		7E2299E7190A33B5000496B5 /* UnixLineReader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A25315383D440058C603 /* UnixLineReader.mm */; };
+		7E2299E8190A33B5000496B5 /* CsvToSqlite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E31DEC8153707280043B5BE /* CsvToSqlite.mm */; };
+		7E2299E9190A33B5000496B5 /* CsvColumnsParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A23715380F750058C603 /* CsvColumnsParser.mm */; };
+		7E2299EA190A33B5000496B5 /* StreamUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A2411538265F0058C603 /* StreamUtils.mm */; };
+		7E2299EB190A33B5000496B5 /* DBTableValidator.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3A25D15386BE50058C603 /* DBTableValidator.mm */; };
+		7E2299EC190A33B5000496B5 /* CsvDefaultValues.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E20830215986D80005A26EF /* CsvDefaultValues.mm */; };
+		7E2299ED190A33FF000496B5 /* CsvImportError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AD51537301E0050C635 /* CsvImportError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299EE190A33FF000496B5 /* CsvBadTableNameError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E195AD9153730C90050C635 /* CsvBadTableNameError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299EF190A33FF000496B5 /* CsvSchemaMismatchError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A260153877150058C603 /* CsvSchemaMismatchError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F0190A33FF000496B5 /* CsvInitializationError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EA3A2641538793F0058C603 /* CsvInitializationError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F1190A33FF000496B5 /* CsvToSqlite.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E31DEC7153707280043B5BE /* CsvToSqlite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F2190A33FF000496B5 /* CSVParserCallbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BE7FBA615CFA4AF00264AC2 /* CSVParserCallbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F3190A33FF000496B5 /* CsvLineEndings.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E998741153D9AB300811BA8 /* CsvLineEndings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F4190A33FF000496B5 /* CsvDefaultValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E20830115986D80005A26EF /* CsvDefaultValues.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7E2299F8190A3629000496B5 /* LineParserFunctions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E2299F6190A3629000496B5 /* LineParserFunctions.mm */; };
+		7E2299F9190A3629000496B5 /* LineParserFunctions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E2299F6190A3629000496B5 /* LineParserFunctions.mm */; };
 		7E2CB973153F00FD00FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
 		7E2CB974153F010B00FEC16E /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA3A23B153823BF0058C603 /* libc++.dylib */; };
 		7E31DEC3153707280043B5BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E31DEC2153707280043B5BE /* Foundation.framework */; };
@@ -94,6 +121,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7E2299DB190A338B000496B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7E8B6C8715388E9400435EDA;
+			remoteInfo = "ObjcScopedGuardTests-CI";
+		};
 		7E31DED5153707280043B5BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
@@ -260,6 +294,11 @@
 		7E195AE0153733DA0050C635 /* libCoverageFopenFix.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCoverageFopenFix.a; sourceTree = "<group>"; };
 		7E20830115986D80005A26EF /* CsvDefaultValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsvDefaultValues.h; sourceTree = "<group>"; };
 		7E20830215986D80005A26EF /* CsvDefaultValues.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CsvDefaultValues.mm; sourceTree = "<group>"; };
+		7E2299C8190A338B000496B5 /* CsvToSqlite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = CsvToSqlite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2299CC190A338B000496B5 /* CsvToSqlite-Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CsvToSqlite-Framework-Info.plist"; sourceTree = "<group>"; };
+		7E2299CE190A338B000496B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7E2299F5190A35A1000496B5 /* LineParserFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LineParserFunctions.hpp; sourceTree = "<group>"; };
+		7E2299F6190A3629000496B5 /* LineParserFunctions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LineParserFunctions.mm; sourceTree = "<group>"; };
 		7E2CB96B153F004100FEC16E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		7E31DEBF153707280043B5BE /* libCsvToSqlite.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCsvToSqlite.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E31DEC2153707280043B5BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -332,6 +371,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7E2299C3190A338B000496B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E2299C9190A338B000496B5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DEBC153707280043B5BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -413,6 +460,23 @@
 			path = Errors;
 			sourceTree = "<group>";
 		};
+		7E2299CA190A338B000496B5 /* CsvToSqlite-Framework */ = {
+			isa = PBXGroup;
+			children = (
+				7E2299CB190A338B000496B5 /* Supporting Files */,
+			);
+			path = "CsvToSqlite-Framework";
+			sourceTree = "<group>";
+		};
+		7E2299CB190A338B000496B5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E2299CC190A338B000496B5 /* CsvToSqlite-Framework-Info.plist */,
+				7E2299CD190A338B000496B5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		7E31DEB4153707280043B5BE = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +485,7 @@
 				7E31DEC4153707280043B5BE /* CsvToSqlite */,
 				7E31DED8153707280043B5BE /* CsvToSqliteTests */,
 				7E9D9B841611B6CE0074876B /* CsvProfiler */,
+				7E2299CA190A338B000496B5 /* CsvToSqlite-Framework */,
 				7E31DEC1153707280043B5BE /* Frameworks */,
 				7E31DEC0153707280043B5BE /* Products */,
 				7E195AC8153713440050C635 /* CsvToSqliteTests copy-Info.plist */,
@@ -434,6 +499,7 @@
 				7E31DEBF153707280043B5BE /* libCsvToSqlite.a */,
 				7E31DECF153707280043B5BE /* CsvToSqliteTests.xctest */,
 				7E9D9B7D1611B6CE0074876B /* CsvProfiler.app */,
+				7E2299C8190A338B000496B5 /* CsvToSqlite.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -533,6 +599,7 @@
 			children = (
 				7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */,
 				7E9986EA153D456C00811BA8 /* ObjcScopedGuardTests.xctest */,
+				7E2299DC190A338B000496B5 /* ObjcScopedGuardTests copy.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -549,6 +616,8 @@
 				65A184D015C59424004759C0 /* StringsChannel.mm */,
 				782095C117956E7C00A50813 /* StringProcessor.h */,
 				782095C217956E7C00A50813 /* StringProcessor.mm */,
+				7E2299F5190A35A1000496B5 /* LineParserFunctions.hpp */,
+				7E2299F6190A3629000496B5 /* LineParserFunctions.mm */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -610,6 +679,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		7E2299C4190A338B000496B5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E2299ED190A33FF000496B5 /* CsvImportError.h in Headers */,
+				7E2299EE190A33FF000496B5 /* CsvBadTableNameError.h in Headers */,
+				7E2299EF190A33FF000496B5 /* CsvSchemaMismatchError.h in Headers */,
+				7E2299F0190A33FF000496B5 /* CsvInitializationError.h in Headers */,
+				7E2299F1190A33FF000496B5 /* CsvToSqlite.h in Headers */,
+				7E2299F2190A33FF000496B5 /* CSVParserCallbacks.h in Headers */,
+				7E2299F3190A33FF000496B5 /* CsvLineEndings.h in Headers */,
+				7E2299F4190A33FF000496B5 /* CsvDefaultValues.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DEBD153707280043B5BE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -638,6 +722,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		7E2299C7190A338B000496B5 /* CsvToSqlite-Framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E2299DD190A338B000496B5 /* Build configuration list for PBXNativeTarget "CsvToSqlite-Framework" */;
+			buildPhases = (
+				7E2299C2190A338B000496B5 /* Sources */,
+				7E2299C3190A338B000496B5 /* Frameworks */,
+				7E2299C4190A338B000496B5 /* Headers */,
+				7E2299C5190A338B000496B5 /* Resources */,
+				7E36EF47190A3B230096B423 /* Fix Headers */,
+				7E2299C6190A338B000496B5 /* Build Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CsvToSqlite-Framework";
+			productName = "CsvToSqlite-Framework";
+			productReference = 7E2299C8190A338B000496B5 /* CsvToSqlite.framework */;
+			productType = "com.apple.product-type.framework.static";
+		};
 		7E31DEBE153707280043B5BE /* CsvToSqlite */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E31DEE3153707280043B5BE /* Build configuration list for PBXNativeTarget "CsvToSqlite" */;
@@ -710,6 +814,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					7E31DECE153707280043B5BE = {
+						TestTargetID = 7E9D9B7C1611B6CE0074876B;
+					};
+				};
 			};
 			buildConfigurationList = 7E31DEB9153707280043B5BE /* Build configuration list for PBXProject "CsvToSqlite" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -744,11 +853,19 @@
 				7E31DEBE153707280043B5BE /* CsvToSqlite */,
 				7E31DECE153707280043B5BE /* CsvToSqliteTests */,
 				7E9D9B7C1611B6CE0074876B /* CsvProfiler */,
+				7E2299C7190A338B000496B5 /* CsvToSqlite-Framework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7E2299DC190A338B000496B5 /* ObjcScopedGuardTests copy.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "ObjcScopedGuardTests copy.xctest";
+			remoteRef = 7E2299DB190A338B000496B5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7E9250871600958A0071D2EC /* libESDatabaseWrapper.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -801,6 +918,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7E2299C5190A338B000496B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E2299CF190A338B000496B5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DECC153707280043B5BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -837,6 +962,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7E2299C6190A338B000496B5 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n# Nothing for the slave script to do\nexit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n    eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\necho \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\nexit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nUFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nUFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nUFW_OTHER_PLATFORM=iphonesimulator\nelse\nUFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\nUFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\necho \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\nONLY_ACTIVE_PLATFORM=${ONLY_ACTIVE_PLATFORM:-$ONLY_ACTIVE_ARCH}\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\nexit 0\nfi\n\nif [ \"${ONLY_ACTIVE_PLATFORM}\" == \"YES\" ]\nthen\necho \"ONLY_ACTIVE_PLATFORM=${ONLY_ACTIVE_PLATFORM}: Skipping other platform build\"\nelse\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nfi\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\nif [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\nthen\necho ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\nln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\nfi\ndone\n\n\nif [ \"${ONLY_ACTIVE_PLATFORM}\" != \"YES\" ]\nthen\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		7E31DECD153707280043B5BE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -850,9 +990,46 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		7E36EF47190A3B230096B423 /* Fix Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "INLINED_PYHON_SCRIPT=\"import sys; import os.path; headerPathFromFind = sys.argv[2]; srcRoot = sys.argv[1]; headerPathFromFindWithoutFilename = os.path.dirname( headerPathFromFind ); relatedPathForDirectory = os.path.relpath( headerPathFromFindWithoutFilename, srcRoot ); print( relatedPathForDirectory );\"\n\n\nFIXED_SRC_ROOT=$SRCROOT\n\n# echo \"====SRCROOT : $SRCROOT=======\"\n# echo \"====FIXED_SRC_ROOT : $FIXED_SRC_ROOT=======\"\n\nHEADERS_ROOT=$FIXED_SRC_ROOT/ESLocale\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$( ls -1 \"$FRAMEWORK_HEADERS_DIR\" )\n\n\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n\nFIND_RESULT=$( find \"$HEADERS_ROOT\" -name \"$PUBLIC_HEADER\" )\nRELATIVE_PATH=$( python -c \"$INLINED_PYHON_SCRIPT\" \"$HEADERS_ROOT\" \"$FIND_RESULT\" )\n\nmkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\nmv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH/$PUBLIC_HEADER\"\ndone\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7E2299C2190A338B000496B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E2299DE190A33B5000496B5 /* CsvImportError.m in Sources */,
+				7E2299DF190A33B5000496B5 /* CsvBadTableNameError.m in Sources */,
+				7E2299E0190A33B5000496B5 /* CsvSchemaMismatchError.m in Sources */,
+				7E2299E1190A33B5000496B5 /* CsvInitializationError.m in Sources */,
+				7E2299E2190A33B5000496B5 /* CsvToSqlite+Database.mm in Sources */,
+				7E2299E3190A33B5000496B5 /* CsvToSqlite+Test.mm in Sources */,
+				7E2299F9190A3629000496B5 /* LineParserFunctions.mm in Sources */,
+				7E2299E4190A33B5000496B5 /* StringsChannel.mm in Sources */,
+				7E2299E5190A33B5000496B5 /* StringProcessor.mm in Sources */,
+				7E2299E6190A33B5000496B5 /* WindowsLineReader.mm in Sources */,
+				7E2299E7190A33B5000496B5 /* UnixLineReader.mm in Sources */,
+				7E2299E8190A33B5000496B5 /* CsvToSqlite.mm in Sources */,
+				7E2299E9190A33B5000496B5 /* CsvColumnsParser.mm in Sources */,
+				7E2299EA190A33B5000496B5 /* StreamUtils.mm in Sources */,
+				7E2299EB190A33B5000496B5 /* DBTableValidator.mm in Sources */,
+				7E2299EC190A33B5000496B5 /* CsvDefaultValues.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E31DEBB153707280043B5BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -863,6 +1040,7 @@
 				7EA3A23915380F750058C603 /* CsvColumnsParser.mm in Sources */,
 				7EA3A2431538265F0058C603 /* StreamUtils.mm in Sources */,
 				7EA3A25115383B610058C603 /* WindowsLineReader.mm in Sources */,
+				7E2299F8190A3629000496B5 /* LineParserFunctions.mm in Sources */,
 				7EA3A25515383D440058C603 /* UnixLineReader.mm in Sources */,
 				7EA3A25F15386BE50058C603 /* DBTableValidator.mm in Sources */,
 				7EA3A263153877150058C603 /* CsvSchemaMismatchError.m in Sources */,
@@ -970,6 +1148,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7E2299CD190A338B000496B5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E2299CE190A338B000496B5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		7E31DEDB153707280043B5BE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1057,6 +1243,7 @@
 		7E195AE5153734570050C635 /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1076,8 +1263,111 @@
 					"-lXCode5gcovPatch",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Coverage;
+		};
+		7E2299D4190A338B000496B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "CsvToSqlite-Framework/CsvToSqlite-Framework-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = CsvToSqlite;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		7E2299D5190A338B000496B5 /* Coverage */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "CsvToSqlite-Framework/CsvToSqlite-Framework-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = CsvToSqlite;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Coverage;
+		};
+		7E2299D6190A338B000496B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_VERSION = A;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CsvToSqlite/CsvToSqlite-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "CsvToSqlite-Framework/CsvToSqlite-Framework-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = CsvToSqlite;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
 		};
 		7E31DEE1153707280043B5BE /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1198,6 +1488,7 @@
 		7E31DEE7153707280043B5BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1211,12 +1502,14 @@
 					"/Volumes/untitled/projects/lib-third-party/CsvToSqlite",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
 		};
 		7E31DEE8153707280043B5BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1230,6 +1523,7 @@
 					"/Volumes/untitled/projects/lib-third-party/CsvToSqlite",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
 		};
@@ -1311,6 +1605,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7E2299DD190A338B000496B5 /* Build configuration list for PBXNativeTarget "CsvToSqlite-Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E2299D4190A338B000496B5 /* Debug */,
+				7E2299D5190A338B000496B5 /* Coverage */,
+				7E2299D6190A338B000496B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7E31DEB9153707280043B5BE /* Build configuration list for PBXProject "CsvToSqlite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
