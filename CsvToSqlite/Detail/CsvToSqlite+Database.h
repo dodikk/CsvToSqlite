@@ -1,9 +1,9 @@
 #import "CsvToSqlite.h"
 
-#include <string>
-#include <vector>
 
+@protocol ESWritableDbWrapper;
 @class StringsChannel;
+
 
 @interface CsvToSqlite (Database)
 
@@ -29,9 +29,3 @@
 
 @end
 
-void generalParseAndStoreLine( const std::string& line_
-                              , NSString* tableName_
-                              , std::vector< char >& buffer_
-                              , const char* headerFields_
-                              , StringsChannel* queryChannel_
-                              , NSError** errorPtr_ );

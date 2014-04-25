@@ -19,6 +19,8 @@
 #import "StringsChannel.h"
 
 #import "StringProcessor.h"
+#include "LineParserFunctions.hpp"
+
 
 using namespace ::Utils;
 
