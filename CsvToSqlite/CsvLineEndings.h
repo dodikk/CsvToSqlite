@@ -2,7 +2,7 @@
 #define CsvToSqlite_CsvLineEndings_h
 
 
-    #import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 
 
 /**
@@ -14,13 +14,13 @@ typedef NS_ENUM( NSInteger, CsvLineEndings )
      CR LF - Windows style.
      */
    CSV_LE_WIN        = 0x0D0A,
-    
+
     /**
      LF - Unix and Mac OS X style
      */
    CSV_LE_UNIX       = 0x0A  ,
-    
-    
+
+
     /**
      CR - Legacy mac style
      */
