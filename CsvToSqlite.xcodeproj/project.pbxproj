@@ -121,13 +121,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7E2299DB190A338B000496B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E9986DE153D456C00811BA8 /* ObjcScopedGuard.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7E8B6C8715388E9400435EDA;
-			remoteInfo = "ObjcScopedGuardTests-CI";
-		};
 		7E31DED5153707280043B5BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E31DEB6153707280043B5BE /* Project object */;
@@ -599,7 +592,6 @@
 			children = (
 				7E9986E8153D456C00811BA8 /* libObjcScopedGuard.a */,
 				7E9986EA153D456C00811BA8 /* ObjcScopedGuardTests.xctest */,
-				7E2299DC190A338B000496B5 /* ObjcScopedGuardTests copy.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -859,13 +851,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7E2299DC190A338B000496B5 /* ObjcScopedGuardTests copy.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "ObjcScopedGuardTests copy.xctest";
-			remoteRef = 7E2299DB190A338B000496B5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		7E9250871600958A0071D2EC /* libESDatabaseWrapper.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1243,7 +1228,6 @@
 		7E195AE5153734570050C635 /* Coverage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1488,7 +1472,6 @@
 		7E31DEE7153707280043B5BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1509,7 +1492,6 @@
 		7E31DEE8153707280043B5BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CsvProfiler.app/CsvProfiler";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
